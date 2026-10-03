@@ -87,7 +87,6 @@ def initialize_engine(
         data_dir=data_dir,
         **backend_options,
     )
-    engine.bind_registry(storage_registry)
     engine.initialize(backend=backend, backend_options=options)
     return engine
 

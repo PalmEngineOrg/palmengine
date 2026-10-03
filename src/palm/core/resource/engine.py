@@ -1,7 +1,7 @@
 """
 Resource engine — coordinates external data providers.
 
-Resolves providers from the registry bound on this engine. Optional definition
+Resolves providers by name from ``provider_registry``. Optional definition
 resolution and event emission are injected at initialize time so core stays
 free of outer Palm packages.
 """
@@ -12,8 +12,7 @@ from collections.abc import Callable
 from typing import Any
 
 from palm.core.base import BasePalmEngine
-from palm.core.exceptions import RegistryError
-from palm.core.registry import Registry
+from palm.core.registry import provider_registry
 from palm.core.resource.base_provider import BaseProvider
 from palm.core.resource.cache import (
     ResourceCacheConfig,
@@ -43,18 +42,11 @@ class ResourceEngine(BasePalmEngine):
         self._cache_config = ResourceCacheConfig()
         self._definition_cache: TtlCache | None = None
         self._result_cache: TtlCache | None = None
-        self._providers: Registry[type[BaseProvider]] | None = None
-
-    def bind_registry(self, registry: Registry[type[BaseProvider]]) -> None:
-        """Use ``registry`` for provider lookup. The system binds this before the walk."""
-        self._providers = registry
 
     def use(self, name: str) -> BaseProvider:
         """Return a connected provider instance for ``name``."""
-        if self._providers is None:
-            raise RegistryError("resource engine has no provider registry")
         if name not in self._active:
-            cls = self._providers.get(name)
+            cls = provider_registry.get(name)
             provider = cls(name=name)
             provider.connect()
             self._active[name] = provider
