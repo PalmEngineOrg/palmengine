@@ -1,5 +1,5 @@
 """
-DAG pattern app manifest — resource-node graphs with dependencies (0.54.3).
+DAG pattern app manifest — resource-node graphs with dependencies.
 """
 
 from __future__ import annotations

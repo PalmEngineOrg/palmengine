@@ -1,5 +1,3 @@
-"""0.68.16 — living README / transform-count / L0 continue copy."""
-
 from __future__ import annotations
 
 from pathlib import Path

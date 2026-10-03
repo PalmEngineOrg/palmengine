@@ -1,4 +1,4 @@
-"""Tests for Design Service (0.25)."""
+"""Tests for Design Service."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""0.71.12 — invert workload_place spec env off isinstance(dict) soup.
+"""Invert workload_place spec env off isinstance(dict) soup.
 
 Typed env at the Mapping payload boundary. Missing → empty. Non-mapping
 fails closed (workload_spec_invalid). No silent drop to {}.

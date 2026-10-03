@@ -1,4 +1,4 @@
-"""0.69.3 — spawn without nested park. Guidance stays operator-wait.
+"""Spawn without nested park. Guidance stays operator-wait.
 
 Park glue: start named work as a same-session sibling. The parked chooser
 stays WAITING_FOR_INPUT. Do not open WaitInterest on the sibling.

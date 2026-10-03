@@ -1,4 +1,4 @@
-"""0.58.12 — product SessionService as surface door over the session plane."""
+"""Product SessionService as surface door over the session plane."""
 
 from __future__ import annotations
 

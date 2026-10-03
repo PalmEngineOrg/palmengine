@@ -1,4 +1,4 @@
-"""0.68.3 — living POST lies composted."""
+"""Living POST lies composted."""
 
 from __future__ import annotations
 

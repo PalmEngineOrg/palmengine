@@ -1,4 +1,4 @@
-"""Hermetic job contract + dogfood definitions (0.54.1-0.54.2)."""
+"""Hermetic job contract + dogfood definitions."""
 
 from __future__ import annotations
 

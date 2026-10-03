@@ -1,8 +1,8 @@
 """
-RecoveryCoordinator (T2 / 0.48.4, seam 5) — host startup recovery.
+RecoveryCoordinator — host startup recovery.
 
 Worker readiness, compensation, webhook dispatcher seat, and projection rebuild.
-Outbox loop start lives on ``system.background.start`` (0.65.2).
+Outbox loop start lives on ``system.background.start``.
 """
 
 from __future__ import annotations
@@ -61,14 +61,14 @@ class RecoveryCoordinator:
         recovery["workers_ready"] = workers_ready
         recovery["workers"] = list(coordinator.registered_workers)
 
-        # 0.67.12: recovery slot aliases the install organ. Do not rebuild a twin.
+        # Recovery slot aliases the install organ. Do not rebuild a twin.
         if host.admission.has_capability(CAPABILITY_COMPENSATION):
             try:
                 self._compensation = host.runtime().install.compensation
             except Exception:
                 self._compensation = None
 
-        # 0.67.14: recovery slot aliases the install dispatcher. URLs refine
+        # Recovery slot aliases the install dispatcher. URLs refine
         # that object. Empty URLs keep empty targets — do not mint a twin.
         self._alias_webhook_dispatcher()
         try:
@@ -76,10 +76,10 @@ class RecoveryCoordinator:
             if store is not None:
                 recovery["outbox_pending"] = store.pending_count()
         except Exception:
-            # Documented ignore: pending count is status-only (CS-005).
+            # Documented ignore: pending count is status-only.
             _log.debug("outbox pending count failed", exc_info=True)
 
-        # 0.67.9: no projection layer (DNA omit) → nothing to rebuild.
+        # No projection layer (DNA omit) → nothing to rebuild.
         if (
             host.admission.has_capability(CAPABILITY_PROJECTIONS)
             and host.settings.rebuild_projections_on_startup
@@ -99,7 +99,7 @@ class RecoveryCoordinator:
 
     def _alias_webhook_dispatcher(self) -> WebhookDispatcher | None:
         host = self._host
-        # 0.67.13: membership is DNA has_capability. 0.67.14: settings URLs
+        # Membership is DNA has_capability. Settings URLs
         # refine the install organ. Settings never bypass membership.
         if not host.admission.has_capability(CAPABILITY_WEBHOOK):
             self._webhook_dispatcher = None

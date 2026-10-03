@@ -1,4 +1,4 @@
-"""0.40.4 — assist open:dataset describe + virtual transform ops."""
+"""Assist open:dataset describe + virtual transform ops."""
 
 from __future__ import annotations
 

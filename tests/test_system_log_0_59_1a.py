@@ -1,4 +1,4 @@
-"""System log (0.59.1a) — ring + boot phase narrative."""
+"""System log — ring + boot phase narrative."""
 
 from __future__ import annotations
 

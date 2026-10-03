@@ -1,4 +1,4 @@
-"""0.55.11 — continue plane open path + index discipline."""
+"""Continue plane open path + index discipline."""
 
 from __future__ import annotations
 

@@ -1,1 +1,1 @@
-"""REST events surface (0.42)."""
+"""REST events surface."""

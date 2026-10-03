@@ -1,4 +1,4 @@
-"""0.55.2 — Wait matcher on runtime.event + resume/fail policy (fake events)."""
+"""Wait matcher on runtime.event + resume/fail policy (fake events)."""
 
 from __future__ import annotations
 

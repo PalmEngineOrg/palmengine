@@ -1,4 +1,4 @@
-"""0.63.37 — CLI + SSR explorer honest admission_refused voice."""
+"""CLI + SSR explorer honest admission_refused voice."""
 
 from __future__ import annotations
 

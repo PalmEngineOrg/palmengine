@@ -1,4 +1,4 @@
-"""DAG pattern v0 — resource nodes with deps (0.54.3)."""
+"""DAG pattern v0 — resource nodes with deps."""
 
 from __future__ import annotations
 
@@ -135,7 +135,7 @@ def test_fan_out_deps_run_after_preflight() -> None:
     pattern = DagPattern(config=cfg, resource_engine=engine)
     state = DictBackedState()
 
-    # 0.54.8 drain_ready: whole fan-out completes in one tick
+    # drain_ready: whole fan-out completes in one tick
     assert pattern.tick(state) == PatternStatus.SUCCESS
     assert calls == ["health-res", "job-res", "job-res", "job-res"]
     assert state.get("a") is not None and state.get("b") is not None

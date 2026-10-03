@@ -2,7 +2,7 @@
 DAG pattern — execute resource **or workload** nodes with dependencies.
 
 v0: one ready node / drain_ready batch per tick. Resource nodes use
-ResourceInvoker; workload nodes use WorkloadDriver (0.56 / 0.57.4). State under ``dag.*``.
+ResourceInvoker; workload nodes use WorkloadDriver. State under ``dag.*``.
 """
 
 from __future__ import annotations
@@ -56,7 +56,7 @@ class DagPattern(BasePattern):
         if dag.get("status") == _STATUS_FAILED:
             return PatternStatus.FAILURE
 
-        # 0.54.8: drain ready-set (and newly unlocked nodes) in one tick when
+        # Drain ready-set (and newly unlocked nodes) in one tick when
         # drain_ready; otherwise a single ready node per tick.
         last = PatternStatus.RUNNING
         while True:

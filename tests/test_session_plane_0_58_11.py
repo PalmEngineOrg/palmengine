@@ -1,4 +1,4 @@
-"""0.58.11 — SI-015 owner gate: bound session must own continue instance."""
+"""Owner gate: bound session must own continue instance."""
 
 from __future__ import annotations
 
@@ -118,7 +118,7 @@ def test_rewrite_rejects_foreign_instance_with_bound_session() -> None:
 
 
 def test_rewrite_bare_orphan_without_bound_session_refused_0_58_15() -> None:
-    """0.58.15: bare orphan continue is refused (strict attribution)."""
+    """Bare orphan continue is refused (strict attribution)."""
     from palm.system.subsystems.planes.session import SessionAttributionError
 
     settings = PalmSettings(load_example_definitions=False)

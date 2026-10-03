@@ -1,4 +1,4 @@
-"""Admission inventory — admitted paths vs dual-readiness residual (0.63.8).
+"""Admission inventory — admitted paths vs dual-readiness residual.
 
 Read this for admitted paths vs dual-readiness residual. Not product control.
 Living admission is on the shell; this map is honest cartography.
@@ -824,7 +824,7 @@ def admission_inventory() -> dict[str, Any]:
         "readiness_edges": list(READINESS_EDGES),
         "gated_count": len(GATED_PATHS),
         "readiness_edge_count": len(READINESS_EDGES),
-        # 0.63.38 exit readiness — open named residuals first-class
+        # Exit readiness — open named residuals first-class
         "open_residuals": open_rows,
         "open_residual_count": len(open_rows),
         "open_residual_ids": [row["id"] for row in open_rows],

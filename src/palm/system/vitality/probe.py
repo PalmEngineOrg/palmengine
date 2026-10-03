@@ -1,11 +1,11 @@
 """
-Probe catalog — extensible discovery seeds for seat walk (0.61.1).
+Probe catalog — extensible discovery seeds for seat walk.
 
 A **probe** is one intentional way to look for a seat on a live instance.
 Probes are *not* a closed product menu: composition attaches seats; probes
 only know *how* to observe known attach points and custom extensions.
 
-This is **not** :class:`VitalityRegistry` (capability fold — 0.61.2).
+This is **not** :class:`VitalityRegistry`.
 Probes answer: *what seats might be on this graph?*
 The registry answers: *which observe/tool capabilities are enabled?*
 """

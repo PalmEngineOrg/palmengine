@@ -1,5 +1,5 @@
 """
-HostServiceRegistry — typed, dependency-ordered construction of host services (T2 / 0.48.2, PD-009).
+HostServiceRegistry — typed, dependency-ordered construction of host services.
 
 Replaces the imperative service-construction block in ``ApplicationHost._wire_cqrs``
 with declarative providers: each service declares what it depends on, and

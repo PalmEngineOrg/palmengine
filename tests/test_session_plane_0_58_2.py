@@ -1,4 +1,4 @@
-"""0.58.2 — Session multi-attach (0..N instances) + reverse index."""
+"""Session multi-attach (0..N instances) + reverse index."""
 
 from __future__ import annotations
 

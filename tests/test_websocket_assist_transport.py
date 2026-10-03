@@ -1,4 +1,4 @@
-"""0.32.1 — WebSocket Assist transport MVP (hello / ping)."""
+"""WebSocket Assist transport MVP (hello / ping)."""
 
 from __future__ import annotations
 
@@ -120,7 +120,7 @@ def test_websocket_info_route_live(palm_server: ServerRuntime) -> None:
 
 
 def test_portal_static_index_and_assets(palm_server: ServerRuntime) -> None:
-    """0.32.4 — dogfood Portal shell is served from the server surface."""
+    """Dogfood Portal shell is served from the server surface."""
     import urllib.error
     import urllib.request
 
@@ -185,7 +185,7 @@ def test_handle_bind_and_dispatch_uses_bound_session(palm_server: ServerRuntime)
     )
     assert bound is not None
     assert bound["op"] == "bound"
-    # Product instance remains for continue; session_id is system subject (0.58.9)
+    # Product instance remains for continue; session_id is system subject
     assert bound["instance_id"] == "inst-bound"
     assert conn.instance_id == "inst-bound"
     assert looks_like_system_session_id(bound.get("session_id"))
@@ -327,7 +327,7 @@ def test_websocket_assist_hello_roundtrip(palm_server: ServerRuntime) -> None:
         assert pong["op"] == "pong"
         assert pong["id"] == "p1"
 
-        # 0.32.2 — dispatch doctor over the wire
+        # Dispatch doctor over the wire
         sock.sendall(
             _mask_client_frame(
                 json.dumps(

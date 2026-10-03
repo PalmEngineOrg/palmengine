@@ -1,4 +1,4 @@
-"""Bound drivers the bundle passes into system start (0.72.6).
+"""Bound drivers the bundle passes into system start.
 
 This module imports nothing from ``drivers``, ``plugins``, ``bundles``,
 ``services``, or a loader.

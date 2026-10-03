@@ -5,7 +5,6 @@ Supports:
 * kind=workspace / service — READY warm box; exec runs argv in workdir
 
 Unsupported as multi-tenant isolation. Dogfood / slim Compose only.
-See ADR-024 D6 · VISION-0.56 §7.
 """
 
 from __future__ import annotations

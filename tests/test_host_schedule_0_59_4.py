@@ -1,4 +1,4 @@
-"""0.59.4 — ApplicationHost walks the full host phase table."""
+"""ApplicationHost walks the full host phase table."""
 
 from __future__ import annotations
 

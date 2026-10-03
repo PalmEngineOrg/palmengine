@@ -4,7 +4,7 @@ No sockets. No OS spawn. No business jobs. System applies effect intents;
 clients read admission. Floor: embedded definition with empty places becomes READY
 after tick when not blocked.
 
-**0.71.15:** place readiness lives only behind a bound ``ready(place_id)`` hand.
+Place readiness lives only behind a bound ``ready(place_id)`` hand.
 No second ``_places_ready`` set. Unbound hand → places stay missing (fail closed).
 """
 
@@ -59,11 +59,7 @@ class StructureEngine(BasePalmEngine):
         *,
         force: bool = False,
     ) -> AdmissionSnapshot:
-        """Load (or replace) desired structure. Resets readiness under new law.
-
-        When the same id/version is already READY, returns without reset unless
-        *force* is True (0.63.18 reassemble edge — external structure change).
-        """
+        """Load (or replace) desired structure. Resets readiness under new law."""
         if not definition.id:
             raise StructureEngineError("structure definition id must be non-empty")
         with self._lock:

@@ -1,4 +1,4 @@
-"""0.67.6 — vitality work_cycle drain is membership, not ready."""
+"""Vitality work_cycle drain is membership, not ready."""
 
 from __future__ import annotations
 

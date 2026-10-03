@@ -1,5 +1,5 @@
 """
-Authoring thin apply — file snapshot then wait (0.70.4).
+Authoring thin apply — file snapshot then wait.
 
 A leaf commits this flow through the adapter. Present starts it by catalog
 id. The resource step writes snapshot **data** (not a definition revision).

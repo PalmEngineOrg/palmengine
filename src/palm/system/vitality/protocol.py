@@ -1,5 +1,5 @@
 """
-SeatReportable — native self-report protocol for living seats (0.61.1).
+SeatReportable — native self-report protocol for living seats.
 
 Seats that implement :meth:`seat_report` are preferred over raw sampling.
 Otherwise vitality raw-dogs public methods/attrs into ``meta.raw``.

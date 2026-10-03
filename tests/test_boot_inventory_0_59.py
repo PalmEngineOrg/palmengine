@@ -1,7 +1,7 @@
-"""0.59.1 — Boot inventory characterization (today's order + spine contracts).
+"""Boot inventory characterization (today's order + spine contracts).
 
-Pins what ApplicationHost and BaseRuntime start do *now* so schedule migration
-cannot drift silently. Not the future phase API — see docs/BOOT-INVENTORY.md.
+Pins what ApplicationHost and BaseRuntime start do *now* so schedule migration cannot drift
+silently.
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ from palm.system.subsystems.planes.session.plane import SessionPlaneService
 from palm.system.subsystems.planes.wait.plane import WaitPlaneService
 
 # Collaborator call order on collapsed all_in_one (server off).
-# 0.59.5: surfaces.mount PhaseSkip before _start_server_surface when
+# surfaces.mount PhaseSkip before _start_server_surface when
 # deployment.server is false — so that collaborator is not invoked.
 HOST_START_PHASE_ORDER: tuple[str, ...] = (
     "kernel.bootstrap",
@@ -30,7 +30,7 @@ HOST_START_PHASE_ORDER: tuple[str, ...] = (
 )
 
 # Full schedule seat ids (walker always visits; optional seats may skip).
-# 0.68.1: empty host.projections.attach composted — DNA hand already attached.
+# Empty host.projections.attach composted — DNA hand already attached.
 HOST_WALK_PHASE_IDS: tuple[str, ...] = (
     "host.system_log",
     "host.kernel.bootstrap",
@@ -125,7 +125,7 @@ def test_spine_host_post_start_contracts(spine_settings: PalmSettings) -> None:
         assert host.session is not None
         assert host.definitions is not None
         assert host.execution is not None
-        # Composition membership truth (0.59.5).
+        # Composition membership truth.
         assert "inspect" in host.composition.services
         assert "session" in host.composition.services
         assert host.admission.has_capability("projections")
@@ -194,7 +194,7 @@ def test_composition_services_gate_build(spine_settings: PalmSettings) -> None:
         # embedded CORE_SERVICES — no assist/design chrome
         assert host.assist is None
         assert host.design is None
-        # 0.67.17: host.analytics is the install organ. Default all_in_one DNA
+        # host.analytics is the install organ. Default all_in_one DNA
         # lists it; composition omit of AnalyticsService does not hide the organ.
         from services.analytics import AnalyticsService
 

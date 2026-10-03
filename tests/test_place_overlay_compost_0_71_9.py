@@ -1,4 +1,4 @@
-"""0.71.9 — compost place-registry overlay.
+"""Compost place-registry overlay.
 
 Bare / os: must not keep a second map beside the workload book.
 Unbound: one local register. Bound: places is book projection only.

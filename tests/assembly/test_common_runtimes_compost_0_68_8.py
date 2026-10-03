@@ -1,4 +1,4 @@
-"""0.68.8 — empty palm.common.runtimes parking lot composted."""
+"""Empty palm.common.runtimes parking lot composted."""
 
 from __future__ import annotations
 

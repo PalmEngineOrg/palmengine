@@ -1,4 +1,4 @@
-"""Tests for registry-driven design command dispatch (0.25.8)."""
+"""Tests for registry-driven design command dispatch."""
 
 from __future__ import annotations
 

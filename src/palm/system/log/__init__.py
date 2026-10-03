@@ -1,8 +1,7 @@
 """
-System log — ordered narrative of Palm system life (0.59.1a).
+System log — ordered narrative of Palm system life.
 
 Observation only. Not the domain event bus. Not the domain EventJournal.
-See docs/SYSTEM-LOG.md.
 """
 
 from __future__ import annotations

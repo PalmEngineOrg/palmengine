@@ -1,4 +1,4 @@
-"""0.69.5 — kit-contributed guidance_definition_id + stamp caller + replace.
+"""kit-contributed guidance_definition_id + stamp caller + replace.
 
 Present kit owns ``guidance_definition_id`` (str | None). Unset → no
 empty-handed start. Stamp after session-side attach iff the started

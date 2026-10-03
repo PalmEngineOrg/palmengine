@@ -1,9 +1,9 @@
 """
-Schedule walker — control path for boot phases (0.59.2+).
+Schedule walker — control path for boot phases.
 
 Observation goes through SystemLog only (no second narrative).
 Missing handlers are honest: skip with reason from seat type.
-Handlers may raise :class:`PhaseSkip` for optional declines (0.59.3).
+Handlers may raise :class:`PhaseSkip` for optional declines.
 """
 
 from __future__ import annotations

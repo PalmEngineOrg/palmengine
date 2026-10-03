@@ -98,7 +98,6 @@ async def test_unsolicited_write_blocked_in_strict_mode(
     inspect_guard_ctx,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """Documents tc4 from conversation_export.xml — blocked in 0.23.0 with input_token."""
     monkeypatch.setenv("PALM_MCP_REQUIRE_INPUT_TOKEN", "1")
     monkeypatch.setenv("PALM_MUTATION_SECRET", "test-secret")
     server, _backend = _mcp_server(inspect_guard_ctx)

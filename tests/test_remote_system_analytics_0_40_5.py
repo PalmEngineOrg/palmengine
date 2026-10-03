@@ -1,4 +1,4 @@
-"""0.40.5+ — Palm A analytics over Palm B via **origin ResourceDefinitions**."""
+"""Palm A analytics over Palm B via **origin ResourceDefinitions**."""
 
 from __future__ import annotations
 

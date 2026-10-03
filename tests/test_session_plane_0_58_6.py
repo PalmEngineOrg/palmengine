@@ -1,4 +1,4 @@
-"""0.58.6 / 0.58.9 — Assist / flow dogfood: session_id is system subject."""
+"""Assist / flow dogfood: session_id is system subject."""
 
 from __future__ import annotations
 

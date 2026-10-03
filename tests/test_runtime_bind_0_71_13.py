@@ -1,4 +1,4 @@
-"""0.71.13 — invert WorkloadEngine initialize runtime bind off isinstance soup.
+"""Invert WorkloadEngine initialize runtime bind off isinstance soup.
 
 Typed bind of named runtimes at the Mapping boundary. Missing → empty.
 Non-mapping fails closed. Non-WorkloadRuntime values fail closed.

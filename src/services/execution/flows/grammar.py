@@ -1,6 +1,6 @@
 """Flow command-path grammar — parse and build REPL-style command chains.
 
-**0.58.19 vocabulary:** product continue segment is ``instance`` /
+Product continue segment is ``instance`` /
 ``instance_id``. System subject stays out of these paths. Legacy segment
 ``session`` is still **parsed**; emitters always use ``instance``.
 """
@@ -15,7 +15,7 @@ class FlowCommandKind(Enum):
     LIST = "list"
     DESCRIBE = "describe"
     CREATE = "create"
-    # Product continue (was SESSION / SESSION_VERB before 0.58.19)
+    # Product continue (was SESSION / SESSION_VERB)
     INSTANCE = "instance"
     INSTANCE_VERB = "instance_verb"
 
@@ -40,7 +40,7 @@ class ParsedFlowCommand:
 
     @property
     def session_id(self) -> str | None:
-        """Product continue handle — alias of :attr:`instance_id` (SI-002 thin)."""
+        """Product continue handle — alias of :attr:`instance_id`."""
         return self.instance_id
 
 

@@ -1,4 +1,4 @@
-"""projections materialize — definition capabilities are the install list (0.67.9)."""
+"""projections materialize — definition capabilities are the install list."""
 
 from __future__ import annotations
 

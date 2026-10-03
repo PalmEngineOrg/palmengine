@@ -1,8 +1,8 @@
 """
-Named journal consumers (0.40.3).
+Named journal consumers.
 
 Doctor / control-plane lag snapshot over :meth:`EventJournal.status`.
-No default consumer names remain (0.68.13). Work drain is the WorkIntent organ.
+No default consumer names remain. Work drain is the WorkIntent organ.
 """
 
 from __future__ import annotations

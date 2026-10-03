@@ -1,4 +1,4 @@
-"""0.42 — event wait helpers + journal-assisted remote wait path."""
+"""Event wait helpers + journal-assisted remote wait path."""
 
 from __future__ import annotations
 

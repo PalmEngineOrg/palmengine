@@ -8,7 +8,7 @@ from typing import Any
 
 @dataclass(frozen=True, slots=True)
 class WorkloadOwner:
-    """Mandatory ownership record (VISION §5.1). At least one id should be set."""
+    """Mandatory ownership record. At least one id should be set."""
 
     job_id: str | None = None
     instance_id: str | None = None

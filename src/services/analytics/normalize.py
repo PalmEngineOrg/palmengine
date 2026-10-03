@@ -1,4 +1,4 @@
-"""ProviderResult → rows; select/limit before present (0.35.2)."""
+"""ProviderResult → rows; select/limit before present."""
 
 from __future__ import annotations
 

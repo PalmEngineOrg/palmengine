@@ -1,5 +1,5 @@
 """
-InstallInterface / SystemInstall — collaborator interface for subsystem install (0.61).
+InstallInterface / SystemInstall — collaborator interface for subsystem install.
 
 Peer of :class:`~palm.system.interfaces.execution.ExecutionPort`:
 

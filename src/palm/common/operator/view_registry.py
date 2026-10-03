@@ -28,10 +28,10 @@ class OperatorViewContext:
     handoff_ready: bool = False
     path: list[str] = field(default_factory=list)
     stored_mutation_gate: dict[str, Any] | None = None
-    # 0.30.1 — intent visibility for design discovery CTAs (not full answers on the wire)
+    # Intent visibility for design discovery CTAs (not full answers on the wire)
     intent: str | None = None
     answers_preview: dict[str, Any] | None = None
-    # 0.32.3 — Portal needs full input schema; MCP keeps it off for tokens (default)
+    # Portal needs full input schema; MCP keeps it off for tokens (default)
     include_input_schema: bool = False
 
 
@@ -92,7 +92,7 @@ def _build_powertool_view(
     context: OperatorViewContext,
 ) -> dict[str, Any]:
     flat = dict(flat_view)
-    # 0.58.9: context.session_id is product instance handle (SI-001 residual).
+    # context.session_id is product instance handle.
     if context.session_id:
         flat.setdefault("instance_id", context.session_id)
         if flat.get("session_id") is None or not str(flat.get("session_id")).startswith(

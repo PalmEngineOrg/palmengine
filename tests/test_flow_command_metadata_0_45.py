@@ -1,4 +1,4 @@
-"""0.45.1 — flow_command_from_body passes metadata and state."""
+"""flow_command_from_body passes metadata and state."""
 
 from __future__ import annotations
 

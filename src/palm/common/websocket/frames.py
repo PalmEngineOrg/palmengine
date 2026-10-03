@@ -1,9 +1,9 @@
-"""Minimal RFC6455 text-frame codec for Palm WebSocket surfaces (0.32.1).
+"""Minimal RFC6455 text-frame codec for Palm WebSocket surfaces.
 
 Server→client frames are unmasked. Client→server frames must be masked.
 Only text and close/ping/pong control frames are supported.
 
-Shared by server transport and palm provider ``PalmEventsWebSocketClient`` (0.43.1).
+Shared by server transport and palm provider ``PalmEventsWebSocketClient``.
 """
 
 from __future__ import annotations

@@ -1,4 +1,4 @@
-"""WaitPlaneService — first-class **continue** plane (0.55.10).
+"""WaitPlaneService — first-class **continue** plane.
 
 Peer of work-drain (**start**): completer events on the event engine match
 open wait interests and resume or fail owner jobs. Install wires
@@ -37,17 +37,17 @@ class WaitPlaneService:
     * :meth:`attach` — wire orchestration + optional event engine + *able*
     * :meth:`detach` — unsubscribe
 
-    **0.63.26:** *able* gates **resume** (product continue). Default fail closed.
+    *able* gates **resume** (product continue). Default fail closed.
     Target **fail** still applies (honest completer failure). Install wires the
     ready query (``started ∧ may_run_business``). Work-plane able may also
-    require ``work_drain`` (0.67.2) — continue does not.
+    require ``work_drain`` — continue does not.
     """
 
     def __init__(self) -> None:
         self._index = WaitOwnerIndex()
         self._matcher: WaitMatcher | None = None
         self._orchestration: Any | None = None
-        # 0.63.26 — fail closed until install wires admission/started able.
+        # Fail closed until install wires admission/started able.
         self._able: Callable[[], bool] = lambda: False
         self._refused_resumes = 0
 
@@ -86,7 +86,7 @@ class WaitPlaneService:
         full runtime.
 
         *able* — when false, match→resume fails the owner closed (admission law);
-        omit / *None* fails closed (0.63.26).
+        omit / *None* fails closed.
         """
         if self._matcher is not None:
             self.detach()
@@ -113,7 +113,7 @@ class WaitPlaneService:
             if job is None:
                 return
             if not self.is_able():
-                # 0.63.26 — product continue: do not re-drive business when
+                # Product continue: do not re-drive business when
                 # admission/started is down. Fail closed (not soft resume dig).
                 self._refused_resumes += 1
                 from palm.system.structure.errors import AdmissionRefusedError
@@ -131,7 +131,7 @@ class WaitPlaneService:
                     owner_id, kind=interest.kind, target_id=interest.target_id
                 )
                 return
-            # Kind/source-pluggable delivery (0.55.16); nested is default register.
+            # Kind/source-pluggable delivery; nested is default register.
             deliver_wait_completion(job, interest, get_job)
             close_wait_on_job(job, kind=interest.kind, target_id=interest.target_id)
             self._index.unregister(
@@ -168,7 +168,7 @@ class WaitPlaneService:
         if event is not None:
             matcher.attach_events(event)
         self._matcher = matcher
-        # 0.55.11 — index is load-bearing; rebuild from live job state.
+        # Index is load-bearing; rebuild from live job state.
         self.rebuild_index()
         return matcher
 

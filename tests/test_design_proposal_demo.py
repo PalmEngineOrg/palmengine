@@ -1,4 +1,4 @@
-"""Integration tests for design_proposal_demo example (0.25.6)."""
+"""Integration tests for design_proposal_demo example."""
 
 from __future__ import annotations
 

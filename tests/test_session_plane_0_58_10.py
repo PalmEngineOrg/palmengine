@@ -1,4 +1,4 @@
-"""0.58.10 — Plane-owned active_instance_id (continue focus)."""
+"""Plane-owned active_instance_id (continue focus)."""
 
 from __future__ import annotations
 

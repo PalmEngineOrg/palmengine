@@ -1,4 +1,4 @@
-"""0.63.14 — place spawn port: OS hands contract, fail closed without body."""
+"""Place spawn port: OS hands contract, fail closed without body."""
 
 from __future__ import annotations
 

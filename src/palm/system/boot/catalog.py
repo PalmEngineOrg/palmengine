@@ -1,5 +1,5 @@
 """
-System phase definition catalog — membership of system start (0.61).
+System phase definition catalog — membership of system start.
 
 **Order** lives on :data:`~palm.system.boot.phases.SYSTEM_PHASES`.
 **How** lives on each subject's phase module (co-located):

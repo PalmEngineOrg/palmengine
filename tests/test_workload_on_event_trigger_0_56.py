@@ -1,4 +1,4 @@
-"""0.56.9 — on_workload triggers: workload.stopped → WorkIntent → drain."""
+"""on_workload triggers: workload.stopped → WorkIntent → drain."""
 
 from __future__ import annotations
 
@@ -76,7 +76,7 @@ def test_work_drain_enqueues_on_workload_stopped() -> None:
     drain.attach(
         storage=storage,
         submit_flow=lambda f, _p: submitted.append(f),
-        able=lambda: True,  # unit drain; host path wires admission (0.63.23)
+        able=lambda: True,  # unit drain; host path wires admission
         event=engine,
         attach_events=True,
     )

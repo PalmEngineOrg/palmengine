@@ -1,4 +1,4 @@
-"""0.72.3 — package names on the composition record, one install stroke.
+"""Package names on the composition record, one install stroke.
 
 The stroke walks those names. CORE_KITS, runner host always-import, and
 include_optional are not the membership law. Every saved record names the

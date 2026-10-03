@@ -1,4 +1,4 @@
-"""Boot walk context — shared seats for phase handlers (0.59.2+ / seat DI)."""
+"""Boot walk context — shared seats for phase handlers."""
 
 from __future__ import annotations
 

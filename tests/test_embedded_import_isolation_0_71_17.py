@@ -1,4 +1,4 @@
-"""0.71.17 — embedded import must not load server (or sibling) surface packages."""
+"""Embedded import must not load server (or sibling) surface packages."""
 
 from __future__ import annotations
 

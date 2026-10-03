@@ -6,7 +6,7 @@ from typing import Any
 
 
 def discover(query: str = "", *, limit: int = 12) -> dict[str, Any]:
-    """Search aliases and high-value routes (0.31.4 progressive discovery)."""
+    """Search aliases and high-value routes."""
     from services.assist.registry import list_mcp_path_aliases
     from services.design.registry import list_design_mcp_aliases
 

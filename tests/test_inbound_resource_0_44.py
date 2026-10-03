@@ -1,4 +1,4 @@
-"""0.44 — inbound store inbox, poll mode, stream workers."""
+"""Inbound store inbox, poll mode, stream workers."""
 
 from __future__ import annotations
 

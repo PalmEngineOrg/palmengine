@@ -4,7 +4,7 @@ Django-style autoloading for provider apps.
 
 from __future__ import annotations
 
-# Real capabilities only — intention stubs listed separately (ST-001 / SD-013).
+# Real capabilities only — intention stubs listed separately.
 INSTALLED_PROVIDERS: tuple[str, ...] = (
     "rest",
     "palm",
@@ -14,7 +14,7 @@ INSTALLED_PROVIDERS: tuple[str, ...] = (
     # neonroot removed 0.56 — isolation is WorkloadRuntime under palm.runners.neonroot
 )
 
-# Not auto-loaded. Purpose lives in docs/STUBS.md; packages may still exist for future work.
+# Not auto-loaded.
 INTENTION_PROVIDERS: tuple[str, ...] = (
     "graphql",
     "postgres",

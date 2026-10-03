@@ -50,7 +50,7 @@ def build_compose_status(
         "job_id",
         "committed",
         "result",
-        # 0.32.3 Portal input schema
+        # Portal input schema
         "required",
         "validation_rules",
         "item_fields",

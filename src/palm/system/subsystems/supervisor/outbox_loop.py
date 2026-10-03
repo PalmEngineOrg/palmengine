@@ -1,4 +1,4 @@
-"""Continuous outbox poll as a supervised system service (0.60.6)."""
+"""Continuous outbox poll as a supervised system service."""
 
 from __future__ import annotations
 

@@ -21,7 +21,7 @@ def product_start_ports(
 ) -> tuple[Callable[..., Any], Callable[[], bool], Callable[[], bool]]:
     """Build ``submit`` / drain ``able`` / ready ``admission_able``.
 
-    0.67.3 — work-plane able is ``started ∧ ready ∧ work_drain``.
+    work-plane able is ``started ∧ ready ∧ work_drain``.
     Wait stays ready-only (``started ∧ may_run_business``).
     """
 

@@ -1,4 +1,4 @@
-"""0.63.24 — product resource invoke is a business path that needs admission (fail closed)."""
+"""Product resource invoke is a business path that needs admission (fail closed)."""
 
 from __future__ import annotations
 

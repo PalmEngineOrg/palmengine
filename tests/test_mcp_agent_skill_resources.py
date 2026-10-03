@@ -29,7 +29,7 @@ def skill_server():
 
 @pytest.mark.asyncio
 async def test_agent_card_resource(skill_server) -> None:
-    """L1 progressive guide (0.31.3)."""
+    """L1 progressive guide."""
     async with Client(skill_server) as client:
         result = await client.read_resource("palm://agent/card")
     text = "".join(block.text for block in result if hasattr(block, "text"))

@@ -1,4 +1,4 @@
-"""0.67.5 — tick_schedules is drain-able; ready is not membership."""
+"""tick_schedules is drain-able; ready is not membership."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""0.61.1 — seat report protocol + dynamic walk + raw sampling."""
+"""Seat report protocol + dynamic walk + raw sampling."""
 
 from __future__ import annotations
 
@@ -133,7 +133,6 @@ def test_system_planes_ensure_on_and_install_wait() -> None:
 
 
 def test_plane_definitions_at_edge_not_open_coded_on_hub() -> None:
-    """SD-015: install law on definitions; hub walks catalog."""
     import inspect
 
     from palm.system.subsystems.planes.catalog import DEFAULT_PLANE_DEFINITIONS
@@ -160,7 +159,7 @@ def test_plane_definitions_at_edge_not_open_coded_on_hub() -> None:
 
 
 def test_install_context_ports_not_runtime_bag_in_definitions() -> None:
-    """CS-008: plane install signatures take InstallContext, not runtime."""
+    """Plane install signatures take InstallContext, not runtime."""
     import inspect
 
     from palm.system.subsystems.planes.session.definition import install_session_plane
@@ -174,7 +173,7 @@ def test_install_context_ports_not_runtime_bag_in_definitions() -> None:
 
 
 def test_supervisor_install_walks_definitions() -> None:
-    """CS-006: schedule must not open-code continuous service construct."""
+    """Schedule must not open-code continuous service construct."""
     import inspect
 
     from palm.system.boot.system_schedule import build_system_handlers
@@ -206,7 +205,6 @@ def test_supervisor_install_walks_definitions() -> None:
 
 
 def test_subsystem_protocol_and_package_layout() -> None:
-    """SD-016: Subsystem protocol + interfaces/subsystems packages."""
     from palm.system.interfaces import InstallInterface, SystemInstall
     from palm.system.subsystems import Subsystem
     from palm.system.subsystems.planes.hub import SystemPlanes
@@ -248,7 +246,6 @@ def test_boot_context_publishes_seats() -> None:
 
 
 def test_boot_context_engine_seats_and_supervisor_ensure_on() -> None:
-    """SD-016: boot publishes engine seats; supervisor seats like planes."""
     from palm.system.boot.context import BootContext
     from palm.system.boot.phases import SYSTEM_PHASES
     from palm.system.boot.system_schedule import build_system_handlers

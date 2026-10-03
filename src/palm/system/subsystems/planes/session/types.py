@@ -1,4 +1,4 @@
-"""Session plane types — system outside subject (0.58).
+"""Session plane types — system outside subject.
 
 Session ≠ instance ≠ job. One session may attach many instances
 (:meth:`~palm.system.subsystems.planes.session.plane.SessionPlaneService.attach_instance`).
@@ -37,7 +37,7 @@ def looks_like_system_session_id(value: Any) -> bool:
     return text.startswith("sess-")
 
 
-# Well-known **service** origins (0.58.13). Not outside subjects.
+# Well-known **service** origins. Not outside subjects.
 # Automated start (work drain, schedules) uses stable service sessions so
 # every instance has an owner without minting a random session per job.
 HOST_SESSION_ORIGIN = "host"
@@ -93,13 +93,12 @@ class SessionRecord:
     until :meth:`~SessionPlaneService.attach_instance` binds work under
     this session.
 
-    ``active_instance_id`` (0.58.10) is the plane-owned **continue focus**
+    ``active_instance_id`` is the plane-owned **continue focus**
     among attached instances. Not equal to ``session_id``. None when no
     instance is attached (or after detach of the last).
 
-    Focus is not ownership: only ids on ``instance_ids`` may be active.
-    Another session cannot point active at this session's instances.
-    See VISION-0.58 §4.1 and ADR-027 D9–D10.
+    Focus is not ownership: only ids on ``instance_ids`` may be active. Another session cannot point
+    active at this session's instances.
     """
 
     session_id: str
@@ -136,7 +135,7 @@ class SessionRecord:
         instance_ids = [str(i) for i in ids]
         active: str | None = None
         if "active_instance_id" not in data:
-            # Legacy store rows (pre-0.58.10): seed focus to last attached.
+            # Legacy store rows: seed focus to last attached.
             if instance_ids:
                 active = instance_ids[-1]
         else:
@@ -164,7 +163,7 @@ class SessionBind:
 
     ``session_id`` is always a system session id (not an instance id).
     ``created`` is True when bind opened a new record.
-    ``active_instance_id`` is the plane continue focus when one is set (0.58.10).
+    ``active_instance_id`` is the plane continue focus when one is set.
     """
 
     session_id: str

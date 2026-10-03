@@ -1,4 +1,4 @@
-"""System structure errors — admission gate (0.63) and capability require (0.67)."""
+"""System structure errors — admission gate and capability require."""
 
 from __future__ import annotations
 
@@ -146,7 +146,7 @@ def require_business_admission(source: object) -> AdmissionSnapshot:
 
     *source* is a published gate shape (runtime shell, seat, host admission
     property, snapshot, or zero-arg factory) — product should inject one of
-    these rather than dig the composition root for readiness (VISION-ASSEMBLY §3).
+    these rather than dig the composition root for readiness.
     Hosts without an ``admission`` attribute (test doubles) must expose one
     that reflects readiness — there is no silent bypass.
 

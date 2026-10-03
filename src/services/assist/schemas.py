@@ -43,7 +43,7 @@ class AssistSessionContext:
         if fmt == "verbose":
             return self._verbose_dict()
         flat = dict(self.detail)
-        # 0.58.9: self.session_id is product instance handle (SI-001 internal).
+        # self.session_id is product instance handle.
         # Envelope session_id is system subject when detail already carries sess-…
         flat.setdefault("instance_id", self.session_id)
         if self.session_id:
@@ -112,7 +112,7 @@ class AssistSessionContext:
                 "compositional-parent",
                 "coconut-npc",
             ) and (self.handoff_ready or not self.waiting_for_input):
-                # 0.32.5 — human Start {flow} CTAs first; thin session verbs after
+                # Human Start {flow} CTAs first; thin session verbs after
                 merged = merge_assistant_actions(extras_list, base, design_ctas)
                 merged = _prioritize_flow_handoff_actions(merged)
             else:
@@ -125,7 +125,7 @@ class AssistSessionContext:
         return payload
 
     def _verbose_dict(self) -> dict[str, Any]:
-        # instance_id = continue; session_id = system when known (0.58.9)
+        # instance_id = continue; session_id = system when known
         system_sid = self.detail.get("session_id") if isinstance(self.detail, dict) else None
         if system_sid is not None and not str(system_sid).startswith("sess-"):
             system_sid = None
@@ -171,7 +171,7 @@ class AssistSessionContext:
 
 
 def _prioritize_flow_handoff_actions(actions: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Keep Start {flow} / handoff first; drop noisy inspect/send for chat (0.32.5)."""
+    """Keep Start {flow} / handoff first; drop noisy inspect/send for chat."""
     primary: list[dict[str, Any]] = []
     secondary: list[dict[str, Any]] = []
     drop_labels = {

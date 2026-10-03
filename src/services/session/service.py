@@ -6,11 +6,11 @@ ownership, active focus, watches). This service shapes that law for product
 use and adds helpers surfaces need to drive **other** services correctly
 (continue target, submit metadata, journey view, event filter).
 
-**0.58.14:** :class:`BoundSurface` is the session-owned surface context handle
+:class:`BoundSurface` is the session-owned surface context handle
 (session_id + instance focus + kind/origin + session metadata). Prefer
 session-context metadata for walk/surface facts; job metadata stays run facts.
 
-**0.58.18:** product **operate** verbs — ``focus`` / ``list_owned_waiting`` /
+Product **operate** verbs — ``focus`` / ``list_owned_waiting`` /
 ``cancel_owned`` (system cancel under owner gate) and richer ``surface_view``
 v2 (waiting, refs, actions catalog). No private session resume.
 
@@ -92,7 +92,7 @@ class SessionService(BaseService):
         self._inspect = door
         self._runtime = runtime
         self._runtime_resolver = runtime_resolver
-        # 0.58.15: when plane ready, continue/start must be attributed.
+        # When plane ready, continue/start must be attributed.
         # Set False only for a short compat window (tests / migration).
         self.strict_attribution = bool(strict_attribution)
 
@@ -107,12 +107,12 @@ class SessionService(BaseService):
 
     @property
     def inspect(self) -> InspectService:
-        """Product inspect door (0.61.4 / SD-007)."""
+        """Product inspect door."""
         return self._inspect
 
     @property
     def system(self) -> InspectService:
-        """Deprecated alias for :attr:`inspect` (SD-007 migration)."""
+        """Deprecated alias for :attr:`inspect`."""
         return self._inspect
 
     def plane(self) -> SessionPlaneService:
@@ -152,7 +152,7 @@ class SessionService(BaseService):
             surface=surface,
         )
 
-    # ── BoundSurface + session context metadata (0.58.14) ──────────────────
+    # ── BoundSurface + session context metadata ──────────────────
 
     def bind_surface(
         self,
@@ -292,7 +292,7 @@ class SessionService(BaseService):
     ) -> BoundSurface:
         """Merge session-context facts onto the plane record; return BoundSurface.
 
-        Prefer this over stuffing walk facts into job metadata (ADR-027 D14).
+        Prefer this over stuffing walk facts into job metadata.
         """
         self.plane().merge_metadata(session_id, metadata)
         return self.surface_from_session(session_id)
@@ -309,7 +309,7 @@ class SessionService(BaseService):
     def stamp(
         self, session_id: str, key: str, instance_id: str
     ) -> BoundSurface:
-        """Product door: stamp a named instance-id key if absent (0.69.8).
+        """Product door: stamp a named instance-id key if absent.
 
         Plane stores. Degenerate allow is owner + attached instance.
         Does not stamp on attach. Callers own meaning of *key*.
@@ -356,7 +356,7 @@ class SessionService(BaseService):
         return self.plane().attach_instance(session_id, instance_id)
 
     def attach_after_start(self, session_id: str, instance_id: str) -> BoundSurface:
-        """Session-side attach after execution start (0.69.2).
+        """Session-side attach after execution start.
 
         Geometry attach on the bound session. Does not copy ``session_id``
         onto the job. Does not stamp walk-role metadata. Kit start()
@@ -375,7 +375,7 @@ class SessionService(BaseService):
         return self.plane().clear_active_instance(session_id)
 
     def focus(self, session_id: str, instance_id: str) -> BoundSurface:
-        """Product operate: set continue focus on an owned instance (0.58.18).
+        """Product operate: set continue focus on an owned instance.
 
         Same law as :meth:`set_active_instance` (attach list only; no resume).
         Returns a :class:`BoundSurface` so surfaces need no second assembly step.
@@ -384,7 +384,7 @@ class SessionService(BaseService):
         return self.surface_from_session(session_id)
 
     def clear_focus(self, session_id: str) -> BoundSurface:
-        """Product operate: clear continue focus without detaching (0.58.18)."""
+        """Product operate: clear continue focus without detaching."""
         self.plane().clear_active_instance(session_id)
         return self.surface_from_session(session_id)
 
@@ -417,7 +417,7 @@ class SessionService(BaseService):
     def require_owned_instance(
         self, session_id: str, instance_id: str
     ) -> SessionRecord:
-        """Owner gate (SI-015): bound session must own continue instance."""
+        """Owner gate: bound session must own continue instance."""
         return self.plane().require_owned_instance(session_id, instance_id)
 
     def resolve_continue_instance(self, session_id: str) -> str | None:
@@ -454,7 +454,7 @@ class SessionService(BaseService):
 
         * System-shaped ``session_id`` + missing instance → resolve focus.
         * System-shaped value only in ``instance_id`` → treat as session and resolve.
-        * When ``gate`` and both known → ownership / attribution (0.58.11-15).
+        * When ``gate`` and both known → ownership / attribution.
         * Bare instance without session: under strict attribution, resolve owner
           from plane or raise :class:`SessionAttributionError`.
         """
@@ -473,7 +473,7 @@ class SessionService(BaseService):
                 self.require_owned_instance(sid, iid)
             return ContinueTarget(session_id=sid, instance_id=iid)
 
-        # No system session in args — attribute via plane or refuse (0.58.15).
+        # No system session in args — attribute via plane or refuse.
         if iid and looks_like_system_session_id(iid):
             # Misplaced sess- only in instance slot without session_id handled above.
             resolved = self.resolve_continue_instance(str(iid))
@@ -500,7 +500,7 @@ class SessionService(BaseService):
         strict: bool | None = None,
         allow_unknown: bool = True,
     ) -> str | None:
-        """Continue attribution gate (SI-015 + 0.58.15 strict policy).
+        """Continue attribution gate.
 
         When the session plane is ready and *strict* (default
         :attr:`strict_attribution`):
@@ -514,8 +514,7 @@ class SessionService(BaseService):
         * no owner + not *allow_unknown* → :class:`SessionAttributionError`
           (operator rewrite / explicit continue_target)
 
-        When *strict* is False: legacy SI-015 only (gate only if system
-        ``session_id`` is present). Plane missing → no-op.
+        Plane missing → no-op.
 
         Returns the bound system session id, or ``None`` when not enforced.
         """
@@ -571,7 +570,7 @@ class SessionService(BaseService):
         """Return a system session id for job metadata / start paths.
 
         Prefers an existing system-shaped id on *session_id* or *metadata*.
-        When *origin* is set, uses a stable **service** session (0.58.13)
+        When *origin* is set, uses a stable **service** session
         instead of minting a new outside subject. Otherwise binds a new
         outside session when *create* is true.
         """
@@ -601,7 +600,7 @@ class SessionService(BaseService):
         *,
         metadata: dict[str, Any] | None = None,
     ) -> str | None:
-        """Stable system session for automated / internal *origin* (0.58.13).
+        """Stable system session for automated / internal *origin*.
 
         Surfaces still :meth:`bind` for outside subjects. Work drain, schedules,
         and host housekeeping use service sessions so every job-path start has
@@ -722,7 +721,7 @@ class SessionService(BaseService):
         metadata: dict[str, Any] | None = None,
         origin: str,
     ) -> str | None:
-        """0.58.16: inherit system session from signal, else service session.
+        """Inherit system session from signal, else service session.
 
         Does **not** mint a random outside ``sess-…``. Workloads still inherit
         only via EventContext / job metadata (no separate workload session type).
@@ -742,7 +741,7 @@ class SessionService(BaseService):
     ) -> dict[str, Any]:
         """Attribute automated start: **inherit** parent session or **service** origin.
 
-        Law (0.58.16 / SI-011):
+        Law:
 
         * Signal carries system ``session_id`` → inherit (parent walk not stolen).
         * Else → stable ``sess-svc-…`` for *origin* (``work-drain:…``,
@@ -818,7 +817,7 @@ class SessionService(BaseService):
         return list(data.get("waiting_on") or [])
 
     def list_owned_waiting(self, session_id: str) -> list[dict[str, Any]]:
-        """Alias for :meth:`list_waiting` — product operate vocabulary (0.58.18)."""
+        """Alias for :meth:`list_waiting` — product operate vocabulary."""
         return self.list_waiting(session_id)
 
     def job_id_for_instance(self, instance_id: str) -> str | None:
@@ -859,7 +858,7 @@ class SessionService(BaseService):
         instance_id: str | None = None,
         job_id: str | None = None,
     ) -> dict[str, Any]:
-        """Cancel a job for an **owned** instance via system execution (0.58.18).
+        """Cancel a job for an **owned** instance via system execution.
 
         Owner gate applies. Does **not** invent session-private resume or
         cancel outside the attach list. Drive cancel through
@@ -929,7 +928,7 @@ class SessionService(BaseService):
         *,
         only_waiting: bool = False,
     ) -> dict[str, Any]:
-        """Cancel jobs for all owned instances that resolve a job id (0.58.18).
+        """Cancel jobs for all owned instances that resolve a job id.
 
         *only_waiting* limits cancel to instances with open waits. Still
         drives :meth:`~services.inspect.service.InspectService.cancel_job`
@@ -1011,7 +1010,7 @@ class SessionService(BaseService):
         return None
 
     def surface_view(self, session_id: str) -> dict[str, Any]:
-        """Enriched operate view for surfaces (v2, 0.58.18).
+        """Enriched operate view for surfaces.
 
         Surfaces use this to know which instance to drive and which other
         services (execution inspect, assist, system cancel) to call — without
@@ -1058,7 +1057,7 @@ class SessionService(BaseService):
     def _operate_actions(
         self, session_id: str, continue_instance_id: str | None
     ) -> list[dict[str, Any]]:
-        """Catalog of product operate paths for this session (SI-007 partial)."""
+        """Catalog of product operate paths for this session."""
         sid = session_id
         actions: list[dict[str, Any]] = [
             {

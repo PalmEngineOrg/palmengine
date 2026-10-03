@@ -148,7 +148,7 @@ def rest_base_url(http_echo_server: str) -> str:
 
 @pytest.fixture
 def host(fast_settings: PalmSettings) -> Iterator[ApplicationHost]:
-    """Started full host for integration tests — boot mode ``all_in_one`` (0.59.8).
+    """Started full host for integration tests — boot mode ``all_in_one``.
 
     Named mode (not anonymous constructor). Full services/capabilities; no HTTP.
     Lean isolation: use ``test_mode_host`` / ``safe_mode_host`` instead.
@@ -161,7 +161,7 @@ def host(fast_settings: PalmSettings) -> Iterator[ApplicationHost]:
 
 @pytest.fixture
 def test_mode_host(fast_settings: PalmSettings) -> Iterator[ApplicationHost]:
-    """Started host pinned to boot mode ``test`` (0.59.6 CI dogfood).
+    """Started host pinned to boot mode ``test``.
 
     Prefer this for new spine/isolation tests that do not need full chrome.
     """
@@ -173,7 +173,7 @@ def test_mode_host(fast_settings: PalmSettings) -> Iterator[ApplicationHost]:
 
 @pytest.fixture
 def safe_mode_host(fast_settings: PalmSettings) -> Iterator[ApplicationHost]:
-    """Started host pinned to boot mode ``safe`` (0.59.6 CI isolation)."""
+    """Started host pinned to boot mode ``safe``."""
     application_host = ApplicationHost.for_mode("safe", settings=fast_settings)
     application_host.start()
     yield application_host

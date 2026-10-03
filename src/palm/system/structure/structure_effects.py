@@ -1,4 +1,4 @@
-"""Place registry + structure-intent effect port (0.63.15).
+"""Place registry + structure-intent effect port.
 
 Closed intent set from pure structure: ensure/release place, invalidate/refresh
 projection, apply structure policy, request structure seed. System hands only.

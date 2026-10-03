@@ -86,7 +86,7 @@ class ApplicationHost:
     """
     Composition-root shell — roles, CQRS, projections, recovery collaborators.
 
-    **Start law lives in** ``palm.app.host.boot`` (0.59.4+). ``start()`` walks
+    **Start law lives in** ``palm.app.host.boot``. ``start()`` walks
     ``HOST_PHASES``; do not grow private boot order here — add a host phase
     handler under boot.
 
@@ -115,7 +115,7 @@ class ApplicationHost:
         self.boot_mode = mode
         # Mode supplies defaults only when caller omits profile/composition.
         # Resolve deployment first so settings→composition can fold role membership
-        # (0.59.5) without a second OR at phase time.
+        # without a second OR at phase time.
         self.profile = (
             profile
             if profile is not None
@@ -130,7 +130,7 @@ class ApplicationHost:
         elif mode is not None:
             self.composition = mode.composition
         else:
-            # 0.72.2 — build from a saved record. No preset method.
+            # Build from a saved record. No preset method.
             # server / worker / cli names still follow the deployment seed so the
             # phenotype matches the structure seed (that seed uses the same name).
             from palm.system.structure.seed import boot_mode_name_for_deployment
@@ -181,7 +181,7 @@ class ApplicationHost:
         storage: StorageEngine | None = None,
         server_port: int | None = None,
     ) -> Self:
-        """Build a host pinned to a named boot mode (0.59.6+ dogfood entry).
+        """Build a host pinned to a named boot mode.
 
         Prefer this over hand-assembling profile/composition when you want a
         declared phenotype (``safe`` / ``test`` / ``dev`` / shapes).
@@ -191,7 +191,7 @@ class ApplicationHost:
         Other modes default to a plain :class:`PalmSettings` — pass
         ``PalmSettings.for_tests(...)`` in CI for full/shape dogfood.
 
-        ``server_port`` (0.59.7): when the mode's deployment has ``server`` and
+        ``server_port``: when the mode's deployment has ``server`` and
         ``profile`` is omitted, pin the bind port (use ``0`` for ephemeral CI).
         """
         from dataclasses import replace
@@ -231,7 +231,7 @@ class ApplicationHost:
 
     @property
     def system_log(self):
-        """Process system log (ordered boot / system narrative). See docs/SYSTEM-LOG.md."""
+        """Process system log (ordered boot / system narrative)."""
         return get_system_log()
 
     @property
@@ -249,17 +249,17 @@ class ApplicationHost:
 
     @property
     def inspect(self):
-        """Product inspect door — doctor / list / cancel / present (0.61.4 / SD-007)."""
+        """Product inspect door — doctor / list / cancel / present."""
         return self._inspect
 
     @property
     def system(self):
-        """Deprecated alias for :attr:`inspect` (SD-007 migration)."""
+        """Deprecated alias for :attr:`inspect`."""
         return self._inspect
 
     @property
     def session(self):
-        """Product session door (0.58.12) — bind, continue target, journey, watches.
+        """Product session door — bind, continue target, journey, watches.
 
         Surfaces use this instead of reinventing plane access. Plane remains law.
         """
@@ -287,7 +287,7 @@ class ApplicationHost:
 
     @property
     def analytics(self):
-        """Analytics organ — live install read (0.67.17)."""
+        """Analytics organ — live install read."""
         try:
             return self.runtime().install.analytics
         except Exception:
@@ -295,12 +295,12 @@ class ApplicationHost:
 
     @property
     def event_journal(self):
-        """Append-only event journal (0.38) — offsets + redrive."""
+        """Append-only event journal — offsets + redrive."""
         return self._workplane.event_journal
 
     @property
     def inbound(self):
-        """Inbound resource bindings (0.43) — webhook/stream → WorkIntent."""
+        """Inbound resource bindings — webhook/stream → WorkIntent."""
         return self._workplane.inbound
 
     @property
@@ -325,7 +325,7 @@ class ApplicationHost:
 
     @property
     def webhook_dispatcher(self) -> WebhookDispatcher | None:
-        # 0.67.14: live install read so mount/omit/health see the same object.
+        # Live install read so mount/omit/health see the same object.
         try:
             return self.runtime().install.webhook
         except Exception:
@@ -352,7 +352,7 @@ class ApplicationHost:
 
     @property
     def session_plane(self) -> Any | None:
-        """System session plane on the primary runtime (0.58), if started."""
+        """System session plane on the primary runtime, if started."""
         try:
             runtime = self._app.runtime()
         except Exception:
@@ -367,7 +367,7 @@ class ApplicationHost:
         metadata: dict[str, Any] | None = None,
         surface: str | None = None,
     ) -> Any:
-        """Bind law entry for host surfaces (0.58.3 / 0.58.12 via SessionService).
+        """Bind law entry for host surfaces.
 
         Resolves or creates a **system** session. Prefer product
         :attr:`session` for new surface code.
@@ -391,7 +391,7 @@ class ApplicationHost:
         )
 
     def inspect_session(self, session_id: str) -> dict[str, Any]:
-        """Session journey view (instances + open waits). Inspect only (0.58.5)."""
+        """Session journey view (instances + open waits). Inspect only."""
         self._require_started()
         if self._session is not None:
             return self._session.inspect(session_id)
@@ -401,7 +401,7 @@ class ApplicationHost:
         return plane.inspect(session_id)
 
     def resolve_session_continue(self, session_id: str) -> str | None:
-        """Instance id under system session for continue (0.58.8). Not resume."""
+        """Instance id under system session for continue. Not resume."""
         self._require_started()
         if self._session is not None:
             return self._session.resolve_continue_instance(session_id)
@@ -411,7 +411,7 @@ class ApplicationHost:
         return plane.resolve_continue_instance(session_id)
 
     def require_session_owns_instance(self, session_id: str, instance_id: str) -> Any:
-        """SI-015 owner gate (0.58.11): bound session must own instance."""
+        """Owner gate: bound session must own instance."""
         self._require_started()
         if self._session is not None:
             return self._session.require_owned_instance(session_id, instance_id)
@@ -433,7 +433,7 @@ class ApplicationHost:
     def start(self, **options: Any) -> Self:
         """Hand control to the host boot schedule (``HOST_PHASES``).
 
-        0.59.4 — no private soup here. Rules live in
+        No private soup here. Rules live in
         ``palm.app.host.boot.host_schedule``. Observation via SystemLog.
         """
         if self._started:
@@ -496,7 +496,7 @@ class ApplicationHost:
     def membership_snapshot(self) -> dict[str, list[str]]:
         """Declared composition membership (services / surfaces / capabilities).
 
-        0.59.5 — doctor and system log use this as the single membership report.
+        Doctor and system log use this as the single membership report.
         """
         return {
             "services": list(self.composition.services),
@@ -508,7 +508,7 @@ class ApplicationHost:
     def boot_walk(self) -> list[dict[str, Any]] | None:
         """Last host schedule walk as plain dicts (after ``start``), or None.
 
-        0.59.6 — public dogfood surface so tests and doctor need not touch
+        Public dogfood surface so tests and doctor need not touch
         ``_last_boot_walk``. Each row matches :meth:`WalkedPhase.to_dict`.
         """
         if self._last_boot_walk is None:
@@ -650,7 +650,7 @@ class ApplicationHost:
     ) -> ProviderResult:
         """Invoke a resource definition or direct provider on the host runtime.
 
-        **0.63.33:** host packaging door for business start — admission fail closed
+        Host packaging door for business start — admission fail closed
         (ports remain a second admission check; product façades are preferred
         for surfaces).
         """
@@ -677,11 +677,11 @@ class ApplicationHost:
         metadata: dict[str, Any] | None = None,
         session_id: str | None = None,
     ) -> Job:
-        """Submit a flow. Optional ``session_id`` is the system session owner (0.58.4).
+        """Submit a flow. Optional ``session_id`` is the system session owner.
 
         Job metadata and edge use one name: ``session_id`` (system subject only).
 
-        **0.63.33:** host packaging door for business start — admission fail closed.
+        Host packaging door for business start — admission fail closed.
         """
         self._require_business_admission()
         meta = dict(metadata or {})
@@ -712,7 +712,7 @@ class ApplicationHost:
     ) -> Job | list[Job]:
         """Submit a process.
 
-        **0.63.33:** host packaging door for business start — admission fail closed.
+        Host packaging door for business start — admission fail closed.
         """
         self._require_business_admission()
         return self.execute(
@@ -731,7 +731,7 @@ class ApplicationHost:
     ) -> str | None:
         """Provide interactive input for a waiting job.
 
-        **0.63.33:** host packaging door for business start — admission fail closed.
+        Host packaging door for business start — admission fail closed.
         """
         self._require_business_admission()
         return self.execute(
@@ -745,7 +745,7 @@ class ApplicationHost:
     def resume_process(self, instance_id: str, *, runtime_name: str | None = None) -> Job:
         """Resume a process/instance (product continue packaging door).
 
-        **0.63.33:** host packaging door for business continue — admission fail closed.
+        Host packaging door for business continue — admission fail closed.
         """
         self._require_business_admission()
         return self.execute(
@@ -758,7 +758,7 @@ class ApplicationHost:
     def resume_job(self, job_id: str, *, runtime_name: str | None = None) -> None:
         """Resume orchestration for a job (packaging continue door).
 
-        **0.63.34:** host packaging door for business continue — admission fail
+        Host packaging door for business continue — admission fail
         closed; port remains a second admission check. Surfaces must use this
         instead of the kernel.
         """
@@ -791,10 +791,10 @@ class ApplicationHost:
 
     def _wire_cqrs(self) -> None:
         wire_command_bus(self._command_bus, self._app, self._router)
-        # 0.67.10: host slots alias the install organ. Membership is DNA
+        # Host slots alias the install organ. Membership is DNA
         # (has_capability). Omit is embedded/worker DNA. Pattern extras stay host.
         if self.admission.has_capability(CAPABILITY_PROJECTIONS):
-            # 0.67.10: host slots alias the install organ. Do not rebuild core.
+            # Host slots alias the install organ. Do not rebuild core.
             try:
                 bag = self.runtime().install.projections
             except Exception:
@@ -821,12 +821,10 @@ class ApplicationHost:
                     instance_manager=self._app.instance_manager,
                 )
         else:
-            # 0.51.6: projection-less (lean) shape — serve reads direct-from-runtime,
-            # reusing the standalone read handlers over the host's primary runtime, so a
-            # lean ApplicationHost is read-complete, not just submit-complete. Single-runtime
-            # assumption: reads reflect the primary runtime (the lean shapes are
-            # single-runtime; see docs/SCOUT-0.51.6-serverctx-foldin.md). ServerContext stays
-            # — this is only the read half of the convergence, no surface re-typing.
+            # projection-less (lean) shape — serve reads direct-from-runtime, reusing the
+            # standalone read handlers over the host's primary runtime, so a lean ApplicationHost
+            # is read-complete, not just submit-complete. ServerContext stays — this is only the
+            # read half of the convergence, no surface re-typing.
             wire_standalone_query_bus(self._query_bus, self.runtime())
         self._schema_registry = build_schema_registry()
         service_ctx = HostServiceContext(
@@ -840,7 +838,7 @@ class ApplicationHost:
         )
         # Build only the services this app is composed of (+ their transitive deps).
         # Default composition (all_in_one) is full services, so this is behaviour-preserving.
-        # 0.72.4: import the record's service names. INSTALLED_SERVICES is the catalog.
+        # Import the record's service names. INSTALLED_SERVICES is the catalog.
         from services._apps import autoload as autoload_services
 
         autoload_services(tuple(self.composition.services))
@@ -860,7 +858,7 @@ class ApplicationHost:
         self._execution = bag.execution
         self._assist = bag.assist
         self._design = bag.design
-        # 0.67.17: product slot aliases the install organ. Do not keep a twin.
+        # Product slot aliases the install organ. Do not keep a twin.
         self._alias_analytics(bag)
         # Host-only packaging: workplane seats (not product service identity).
         self._workplane.wire_start_ports()
@@ -897,7 +895,7 @@ class ApplicationHost:
         return self._workplane.reload_work_triggers()
 
     def reload_inbound_bindings(self) -> int:
-        """Rescan resources with metadata.inbound (0.43)."""
+        """Rescan resources with metadata.inbound."""
         return self._workplane.reload_inbound_bindings()
 
     def tick_work(self, *, limit: int = 10, schedules: bool = True) -> int:
@@ -906,7 +904,7 @@ class ApplicationHost:
 
     @property
     def admission(self) -> Any:
-        """Primary runtime admission snapshot (0.63) — fail closed when absent."""
+        """Primary runtime admission snapshot — fail closed when absent."""
         from palm.core.structure import AdmissionSnapshot
 
         try:
@@ -915,7 +913,7 @@ class ApplicationHost:
             return AdmissionSnapshot.empty()
 
     def packaging_status(self) -> dict[str, Any]:
-        """Single residual packaging bag (CS-002) — not living seat law.
+        """Single residual packaging bag — not living seat law.
 
         Prefer :meth:`~services.inspect.InspectService.top` /
         :meth:`~services.inspect.InspectService.vitality` for living eyes.
@@ -923,15 +921,15 @@ class ApplicationHost:
         return self._observability.packaging_status()
 
     def event_plane_status(self) -> dict[str, Any]:
-        """Residual bus packaging (CS-002) — prefer packaging_status / inspect top."""
+        """Residual bus packaging — prefer packaging_status / inspect top."""
         return self._observability.event_plane_status()
 
     def ops_status(self) -> dict[str, Any]:
-        """Residual ops packaging (CS-002) — prefer packaging_status / inspect top."""
+        """Residual ops packaging — prefer packaging_status / inspect top."""
         return self._observability.ops_status()
 
     def control_plane_status(self) -> dict[str, Any]:
-        """Residual work/journal/boot packaging (CS-002) — not living seat law.
+        """Residual work/journal/boot packaging — not living seat law.
 
         Same body as :meth:`packaging_status`. Prefer that name for new callers.
         """
@@ -942,7 +940,7 @@ class ApplicationHost:
             raise RuntimeError("ApplicationHost is not started; call start() first")
 
     def _require_business_admission(self) -> None:
-        """Host packaging door for business start (0.63.33) — fail closed on admission."""
+        """Host packaging door for business start — fail closed on admission."""
         from palm.system.structure.errors import require_business_admission
 
         require_business_admission(self.admission)
@@ -960,7 +958,7 @@ def run_host(
 
     Library helper for standalone master/worker/server processes.
 
-    **0.63.12:** when *boot_mode* is omitted, deployment roles seed structure
+    When *boot_mode* is omitted, deployment roles seed structure
     definition via host spawn (server → ``local.server``, worker → ``local.worker``, …).
     Pass *boot_mode* to pin a BootMode seed explicitly.
     """

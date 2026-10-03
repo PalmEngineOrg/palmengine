@@ -1,4 +1,4 @@
-"""MCP surface profiles (0.31.1) — tool registration filters."""
+"""MCP surface profiles — tool registration filters."""
 
 from __future__ import annotations
 

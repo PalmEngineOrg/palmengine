@@ -81,7 +81,7 @@ class InstancePersistenceHook(JobHookAdapter):
             try:
                 flow = FlowDefinition.from_dict(flow_def)
             except (TypeError, ValueError, KeyError) as exc:
-                # Documented ignore: bad embedded flow_definition (CS-005).
+                # Documented ignore: bad embedded flow_definition.
                 _log.debug(
                     "instance create skipped: flow_definition invalid instance_id=%s: %s",
                     iid,
@@ -98,7 +98,7 @@ class InstancePersistenceHook(JobHookAdapter):
                 )
                 return True
             except Exception:
-                # Documented ignore: persistence must not fail job lifecycle (CS-005).
+                # Documented ignore: persistence must not fail job lifecycle.
                 _log.exception(
                     "instance create failed instance_id=%s job_id=%s",
                     iid,
@@ -106,7 +106,7 @@ class InstancePersistenceHook(JobHookAdapter):
                 )
                 return False
         except Exception:
-            # Documented ignore: update path best-effort (CS-005).
+            # Documented ignore: update path best-effort.
             _log.exception(
                 "instance update failed instance_id=%s job_id=%s",
                 iid,
@@ -146,7 +146,7 @@ class InstancePersistenceHook(JobHookAdapter):
             elif self._outbox_store is not None:
                 self._outbox_store.enqueue(event)
         except Exception:
-            # Documented ignore: outbox publish must not fail job lifecycle (CS-005).
+            # Documented ignore: outbox publish must not fail job lifecycle.
             _log.exception(
                 "instance event enqueue failed type=%s instance_id=%s",
                 event_type,

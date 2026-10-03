@@ -5,7 +5,7 @@ Shared libraries for Palm (non-plugin, non-core).
 and residual server transport — glue used by system and product.
 
 The **system instance**, executions, job hooks, and planes live under
-``palm.system`` (0.57). Package-root lazy exports may still surface a few
+``palm.system``. Package-root lazy exports may still surface a few
 system types for import convenience; prefer ``palm.system`` for new code.
 
 Extensible plugins live elsewhere:

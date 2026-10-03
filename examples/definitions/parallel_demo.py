@@ -1,8 +1,6 @@
 """
 Parallel sub-workflow demo — schemas, scoped branches, and merge validation.
 
-Demonstrates Phase 4 + Phase 5 CLI visibility:
-
 - **Parallel branches** — each runs in an isolated scope + blackboard
 - **Multi-step sub-workflows** — two wizard steps per branch
 - **Per-step schemas** — integer age on alpha, string role on beta

@@ -1,4 +1,4 @@
-"""0.68.9 — Pattern MCP second ready() call composted."""
+"""Pattern MCP second ready() call composted."""
 
 from __future__ import annotations
 

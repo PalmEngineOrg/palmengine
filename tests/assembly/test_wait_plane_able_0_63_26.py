@@ -1,4 +1,4 @@
-"""0.63.26 — wait-plane continue resume is able-gated (admission fail closed)."""
+"""wait-plane continue resume is able-gated (admission fail closed)."""
 
 from __future__ import annotations
 

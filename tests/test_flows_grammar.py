@@ -62,7 +62,7 @@ def test_command_path_builder() -> None:
     ]
 
 def test_parse_legacy_session_segment_still_accepted() -> None:
-    """0.58.19 soft land: segment ``session`` still parses as continue."""
+    """Soft land: segment ``session`` still parses as continue."""
     parsed = parse_flow_command(["flows", "approve", "session", "inst-1", "input"])
     assert parsed.kind == FlowCommandKind.INSTANCE_VERB
     assert parsed.instance_id == "inst-1"

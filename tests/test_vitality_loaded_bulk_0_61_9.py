@@ -1,4 +1,4 @@
-"""0.61.9 — loaded_bulk (attached seats · modules · composition)."""
+"""loaded_bulk (attached seats · modules · composition)."""
 
 from __future__ import annotations
 

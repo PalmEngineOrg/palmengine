@@ -1,4 +1,4 @@
-"""REST: public event catalog + journal poll (0.42) — composition catch-up without WS."""
+"""REST: public event catalog + journal poll — composition catch-up without WS."""
 
 from __future__ import annotations
 

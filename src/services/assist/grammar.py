@@ -1,6 +1,6 @@
 """Assist command-path grammar — parse transport-agnostic assist routes.
 
-**0.58.19 vocabulary:** product continue segment is ``instance`` /
+Product continue segment is ``instance`` /
 ``instance_id``. ``session_id`` is the system subject only (not a path
 segment here). Legacy segment ``session`` is still **parsed** for one
 slice of soft land; emitters always use ``instance``.
@@ -17,7 +17,7 @@ class AssistCommandKind(Enum):
     DESCRIBE_SCENARIO = "describe_scenario"
     START_SCENARIO = "start_scenario"
     SCENARIO_INSPECT = "scenario_inspect"
-    # Product continue (was SESSION / SESSION_VERB before 0.58.19)
+    # Product continue (was SESSION / SESSION_VERB)
     INSTANCE = "instance"
     INSTANCE_VERB = "instance_verb"
     DOCTOR = "doctor"
@@ -51,7 +51,7 @@ class ParsedAssistCommand:
 
     @property
     def session_id(self) -> str | None:
-        """Product continue handle — alias of :attr:`instance_id` (SI-002 thin)."""
+        """Product continue handle — alias of :attr:`instance_id`."""
         return self.instance_id
 
 

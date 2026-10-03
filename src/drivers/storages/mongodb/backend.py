@@ -1,5 +1,5 @@
 """
-MongoDB storage backend — intention stub (docs/STUBS.md ST-002).
+MongoDB storage backend — intention stub.
 """
 
 from __future__ import annotations

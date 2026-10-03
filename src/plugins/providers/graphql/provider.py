@@ -8,7 +8,7 @@ from palm.core.resource import BaseProvider
 
 
 class GraphqlProvider(BaseProvider):
-    """Intention stub — not a live GraphQL backend (docs/STUBS.md ST-001)."""
+    """Intention stub — not a live GraphQL backend."""
 
     def connect(self) -> None:
         raise NotImplementedError(

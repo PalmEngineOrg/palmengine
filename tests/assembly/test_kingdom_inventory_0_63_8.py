@@ -1,4 +1,4 @@
-"""0.63.8 — admission inventory: gated map + packaging admission pointer."""
+"""Admission inventory: gated map + packaging admission pointer."""
 
 from __future__ import annotations
 

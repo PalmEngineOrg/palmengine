@@ -37,7 +37,7 @@ class FlowSession:
     def context(self, *, sync_gate: bool = False) -> SessionContext:
         """Pattern-aware session view with command-path hints."""
         view = self._flows.inspect_session(self.session_id)
-        # 0.58.9: expose system subject on the view; product handle is instance_id.
+        # Expose system subject on the view; product handle is instance_id.
         view = dict(view) if isinstance(view, dict) else {"raw": view}
         view.setdefault("instance_id", self.session_id)
         meta = self._flows.get_instance_metadata(self.session_id)
@@ -67,7 +67,7 @@ class FlowSession:
     def input(self, value: Any, *, params: dict[str, Any] | None = None) -> SessionContext:
         """Deliver interactive input (product continue).
 
-        **0.63.30:** requires admission via published ``flows.admission_gate()``
+        Requires admission via published ``flows.admission_gate()``
         (published admission — same law as assist continue / provide_input).
         """
         from palm.common.operator.mutation_gate import assert_on_write, should_validate_mutation
@@ -115,7 +115,7 @@ class FlowSession:
     def backtrack(self, to_step: str | None = None) -> SessionContext:
         """Backtrack an interactive flow (product continue).
 
-        **0.63.30:** requires admission via published ``flows.admission_gate()``.
+        Requires admission via published ``flows.admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 
@@ -140,7 +140,7 @@ class FlowSession:
     def resume(self) -> FlowSession:
         """Re-drive a waiting interactive flow (product continue).
 
-        **0.63.30:** requires admission via published ``flows.admission_gate()``.
+        Requires admission via published ``flows.admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 
@@ -163,11 +163,7 @@ class FlowSession:
         return self
 
     def cancel(self) -> dict[str, Any]:
-        """Cancel the orchestration job — control path (not a business path that needs admission).
-
-        Stays available when admission is closed (named residual under SD-020,
-        same spirit as stop_workload / assist cancel).
-        """
+        """Cancel the orchestration job — control path (not a business path that needs admission)."""
         view = self._flows.inspect_session(self.session_id)
         job_id = str(view.get("job_id") or self.session_id)
         result = self._flows.dispatch_command(CancelJobCommand(job_id=job_id))

@@ -1,4 +1,4 @@
-"""Present kit — library walk over session + execution (0.69.4 / 0.69.5).
+"""Present kit — library walk over session + execution.
 
 One object holds one :class:`~services.session.bound_surface.BoundSurface`
 and walks existing doors: bind, present, submit, start, attach, focus.
@@ -9,7 +9,7 @@ Stamp / replace callers live here; SessionService writes a named key.
 
 Not a ``PresentService``. Not ``palm.kits.server``. Turn invert: this kit
 walks; the pattern fills ``JobInspectable`` / ``InputCapable``. Handle class
-name stays unnamed (VISION-NAVIGATOR §5).
+name stays unnamed.
 """
 
 from __future__ import annotations

@@ -1,12 +1,10 @@
-"""Characterization tests for residual host packaging status (T2 / 0.48 · CS-002).
+"""Characterization tests for residual host packaging status.
 
 0.48 pinned JSON shapes for the ``HostObservability`` extraction.
-0.61.7 (CS-002): those bags are **host packaging residual**, not living-load
+Those bags are **host packaging residual**, not living-load
 law. Tests assert packaging domain keys still exist (superset OK for demotion
 markers) and that demotion stamps are present. Living eyes are
 ``inspect.top`` / ``inspect.vitality`` → ``palm.system.vitality``.
-
-See docs/VISION-0.61.md · TECH-DEBT CS-002 · ADR-030 D9.
 """
 
 from __future__ import annotations

@@ -18,7 +18,7 @@ def flatten_session_view(ctx: Any) -> dict[str, Any]:
 def submission_view(result: dict[str, Any]) -> dict[str, Any]:
     """Normalize create-session payloads for MCP consumers.
 
-    **0.58.19:** keep system ``session_id`` and product ``instance_id`` distinct.
+    Keep system ``session_id`` and product ``instance_id`` distinct.
     Do not copy system subject into ``instance_id``.
     """
     payload = dict(result)

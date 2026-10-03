@@ -1,4 +1,4 @@
-"""0.66.1 — seat publishes installed names; product reads the gate."""
+"""Seat publishes installed names; product reads the gate."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""0.58.4 — Job path link: instance session owner + event attribution + plane attach."""
+"""Job path link: instance session owner + event attribution + plane attach."""
 
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ from palm.system.executions.flow_submission import prepare_flow_submission
 
 def test_session_id_from_job_metadata() -> None:
     assert session_id_from_job_metadata({"session_id": "sess-a"}) == "sess-a"
-    # 0.58.9 — no palm_session_id dual; ignored if present
+    # No palm_session_id dual; ignored if present
     assert session_id_from_job_metadata({"palm_session_id": "sess-b"}) is None
     assert session_id_from_job_metadata({}) is None
     assert session_id_from_job_metadata({"session_id": "  "}) is None
@@ -96,7 +96,7 @@ def test_prepare_flow_submission_normalizes_session_id() -> None:
     )
     assert submission.metadata["session_id"] == "sess-prep"
     assert submission.metadata["instance_id"] == "inst-prep"
-    # 0.58.9 — palm_session_id is not normalized into session_id
+    # palm_session_id is not normalized into session_id
     bare = prepare_flow_submission(
         flow,
         state=None,

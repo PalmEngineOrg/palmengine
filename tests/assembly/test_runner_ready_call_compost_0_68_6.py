@@ -1,6 +1,6 @@
-"""0.68.6 — runner ready() call composted. Pattern/Provider ready stays.
+"""Runner ready() call composted. Pattern/Provider ready stays.
 
-0.68.7 dropped the RunnerApp postcard, so register() cannot call ready().
+Dropped the RunnerApp postcard, so register() cannot call ready().
 """
 
 from __future__ import annotations

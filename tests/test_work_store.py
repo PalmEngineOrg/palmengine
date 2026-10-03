@@ -1,4 +1,4 @@
-"""WorkIntentStore — coalesce, exclusive claim, reclaim (0.37 · 0.62)."""
+"""WorkIntentStore — coalesce, exclusive claim, reclaim."""
 
 from __future__ import annotations
 
@@ -68,7 +68,7 @@ def test_second_claim_does_not_reclaim_same_intent() -> None:
 
 
 def test_two_claimers_never_share_same_intent() -> None:
-    """Concurrent claimers: each intent claimed at most once (SD-017)."""
+    """Concurrent claimers: each intent claimed at most once."""
     store = WorkIntentStore(_storage())
     n = 40
     for i in range(n):

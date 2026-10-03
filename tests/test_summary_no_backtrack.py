@@ -1,4 +1,4 @@
-"""0.32.5 — summary confirm: human 'no' goes back, not validation error."""
+"""Summary confirm: human 'no' goes back, not validation error."""
 
 from __future__ import annotations
 

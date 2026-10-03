@@ -22,7 +22,7 @@ def wire_builtin_design_contributors() -> None:
 
         for hook in iter_provider_design_contributor_hooks():
             hook()
-        # 0.41.2 — dashboard tile validation
+        # Dashboard tile validation
         from services.analytics.dashboard_design import (
             validate_dashboard_design_proposal,
         )

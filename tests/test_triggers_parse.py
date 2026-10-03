@@ -1,4 +1,4 @@
-"""0.37 — trigger parse + registry match."""
+"""Trigger parse + registry match."""
 
 from __future__ import annotations
 

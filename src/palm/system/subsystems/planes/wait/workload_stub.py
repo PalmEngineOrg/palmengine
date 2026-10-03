@@ -1,12 +1,10 @@
-"""Workload wait-kind stub (0.55.7) — socket for 0.56 WorkloadEngine.
+"""Workload wait-kind stub — socket for 0.56 WorkloadEngine.
 
 Proves the reactive grammar for ``kind=workload`` without a full engine:
 
 * open wait interest on an owner job
 * emit self-describing ``workload.*`` lifecycle events on ``runtime.event``
 * WaitMatcher resumes or fails the owner
-
-Full placement / runners / WorkloadLeaf land in 0.56 ([VISION-0.56], ADR-024).
 """
 
 from __future__ import annotations

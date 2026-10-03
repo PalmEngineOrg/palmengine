@@ -1,5 +1,5 @@
 """
-WorkloadDriver — narrow effect protocol for graphs (0.57.4 / P2).
+WorkloadDriver — narrow effect protocol for graphs.
 
 WorkloadLeaf and patterns call this instead of requiring concrete WorkloadEngine.
 WorkloadEngine implements it. System adapters map ExecutionPort onto it.

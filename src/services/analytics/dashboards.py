@@ -1,4 +1,4 @@
-"""Dashboard registry + render (0.39) with durable store hook (0.41)."""
+"""Dashboard registry + render with durable store hook."""
 
 from __future__ import annotations
 

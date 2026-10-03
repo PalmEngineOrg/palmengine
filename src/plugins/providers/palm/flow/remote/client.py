@@ -271,7 +271,7 @@ def wait_for_job_remote(
 ) -> dict[str, Any]:
     """Wait until remote job satisfies *wait_mode*.
 
-    0.42: when the origin exposes ``/v1/api/events/journal``, use journal
+    When the origin exposes ``/v1/api/events/journal``, use journal
     signals between status fetches (fewer GET /jobs polls). Falls back to
     pure status polling if the events API is missing or fails.
     """

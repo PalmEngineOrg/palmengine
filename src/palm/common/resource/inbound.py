@@ -1,4 +1,4 @@
-"""Parse ``ResourceDefinition.metadata.inbound`` — resources can listen (0.43)."""
+"""Parse ``ResourceDefinition.metadata.inbound`` — resources can listen."""
 
 from __future__ import annotations
 
@@ -77,7 +77,7 @@ class InboundSpec:
     coalesce_field: str | None = None
     debounce_seconds: float = 0.0
     store_action: str | None = None  # action on store_resource (default: resource action or put)
-    store_resource: str | None = None  # inbox resource — persist envelope before WorkIntent (0.44)
+    store_resource: str | None = None  # inbox resource — persist envelope before WorkIntent
     event_types: tuple[str, ...] = ()
     skip_self: bool = True
     skip_flows: tuple[str, ...] = ()

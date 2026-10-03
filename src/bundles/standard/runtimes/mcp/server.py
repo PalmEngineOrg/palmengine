@@ -38,7 +38,7 @@ def create_mcp_server(
     """Build a FastMCP server wired to in-process services or a REST backend.
 
     Tool registration is filtered by ``config.surface`` / ``PALM_MCP_SURFACE``
-    (0.31.1): ``full`` (default), ``assist`` (meta-tool only), ``core``,
+: ``full`` (default), ``assist`` (meta-tool only), ``core``,
     ``experimental``. MCP resources and prompts always register (progressive
     docs); only *tools* are surface-gated.
     """

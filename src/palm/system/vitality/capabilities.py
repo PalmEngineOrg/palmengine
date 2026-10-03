@@ -1,9 +1,9 @@
 """
-Default vitality capabilities (0.61.2+).
+Default vitality capabilities.
 
 **Installed observe:** ``seat_walk`` · ``emission_window`` ·
-``process_resources`` · ``loaded_bulk``.  
-**Installed tool (off by default):** ``benchmark`` (0.61.10).  
+``process_resources`` · ``loaded_bulk``.
+**Installed tool (off by default):** ``benchmark``.
 Other catalog ids may exist as intention stubs (disabled) so the registry
 shape is honest about growth without fake-green bodies.
 

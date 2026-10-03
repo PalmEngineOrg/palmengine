@@ -1,7 +1,7 @@
 """
 System runtime package — instance shell, schedulers, wiring, job hooks.
 
-**Import law (0.59.3):** this package ``__init__`` must **not** eagerly import
+**Import law:** this package ``__init__`` must **not** eagerly import
 ``BaseRuntime``. Boot owns system start and may import hooks/wiring as
 collaborators; if ``__init__`` pulls ``base``, boot → runtime → base → boot cycles.
 

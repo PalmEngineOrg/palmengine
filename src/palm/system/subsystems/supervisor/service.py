@@ -1,4 +1,4 @@
-"""Supervised continuous service contract (0.60.1)."""
+"""Supervised continuous service contract."""
 
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 """
-Seat walk — dynamic discovery of living seats on a SystemInstance (0.61.1).
+Seat walk — dynamic discovery of living seats on a SystemInstance.
 
 Observation only. Does not start, stop, or continue work.
 Walks the probe catalog on the live instance graph; expands supervisor

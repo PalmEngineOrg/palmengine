@@ -20,11 +20,10 @@ class TransformLeaf(LeafNode):
     """
     Read a value from ``source_key``, transform it, and write to ``target_key``.
 
-    Supports a single ``rule``, an ordered ``chain`` of rules, and batch mode.
-    When ``batch`` is ``None`` (default), list inputs use per-item processing for
-    single-mode rules and whole-list processing for batch-mode rules (e.g.
-    ``put_resource``, ``filter_items``). Set ``batch=True`` or ``batch=False``
-    to override. See ``docs/TRANSFORMS.md``.
+    Supports a single ``rule``, an ordered ``chain`` of rules, and batch mode. When ``batch`` is
+    ``None`` (default), list inputs use per-item processing for single-mode rules and whole-list
+    processing for batch-mode rules (e.g. ``put_resource``, ``filter_items``). Set ``batch=True`` or
+    ``batch=False`` to override.
 
     Reads and writes respect ``scoped`` when a state scope is active. Output may
     be validated against :meth:`~palm.core.context.BaseState.effective_schema`.

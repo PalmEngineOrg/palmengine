@@ -1,8 +1,8 @@
 """
 Migrate instance demo — revision upgrade wizard for durable instances.
 
-Demonstrates definition revisioning (0.24.1), migration rules (0.24.2), and
-instance migration execution (0.24.3).
+Demonstrates definition revisioning, migration rules, and
+instance migration execution.
 
 Workflow::
 

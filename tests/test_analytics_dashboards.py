@@ -1,4 +1,4 @@
-"""0.39 — DashboardDefinition + render."""
+"""DashboardDefinition + render."""
 
 from __future__ import annotations
 

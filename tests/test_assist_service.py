@@ -42,7 +42,7 @@ def test_start_operator_entry_returns_first_turn(assist_host: ApplicationHost) -
 def test_optional_collection_field_schema_and_skip(
     assist_host: ApplicationHost,
 ) -> None:
-    """0.32.9 — due_date required=false + empty/skip advances to priority."""
+    """due_date required=false + empty/skip advances to priority."""
     from bundles.standard.runtimes.server.surfaces.websocket.session import (
         _ConnectionState,
         handle_client_message,
@@ -91,7 +91,7 @@ def test_optional_collection_field_schema_and_skip(
 def test_ws_auto_continues_introduction_to_real_step(
     assist_host: ApplicationHost,
 ) -> None:
-    """0.32.8 — intro welcome should not force a free-text ack on Portal."""
+    """Intro welcome should not force a free-text ack on Portal."""
     from bundles.standard.runtimes.server.surfaces.websocket.session import (
         _ConnectionState,
         handle_client_message,
@@ -132,7 +132,7 @@ def test_ws_auto_continues_introduction_to_real_step(
     step = (payload.get("compose") or {}).get("step")
     assert step == "todos", f"expected todos after intro auto-continue, got {step!r}"
     assert payload.get("status") == "waiting"
-    # 0.32.10 — intro is a separate banner; question is the real menu prompt
+    # Intro is a separate banner; question is the real menu prompt
     banner = payload.get("intro_banner") or ""
     q = payload.get("question") or ""
     assert banner, "expected intro_banner for Portal split bubbles"
@@ -144,7 +144,7 @@ def test_ws_auto_continues_introduction_to_real_step(
 
 
 def test_ws_auto_start_binds_business_flow_id(assist_host: ApplicationHost) -> None:
-    """0.32.7 — after Todo Builder auto-start, bound.flow_id must be todo-builder.
+    """After Todo Builder auto-start, bound.flow_id must be todo-builder.
 
     Sticky operator-entry flow_id caused subsequent inputs to path as
     flows/flow-palm-operator-entry/session/{todo-session}/input.
@@ -188,7 +188,7 @@ def test_ws_auto_start_binds_business_flow_id(assist_host: ApplicationHost) -> N
     )
     assert handoff is not None and handoff["op"] == "turn"
     assert "todo-builder" in str(handoff["bound"]["flow_id"])
-    # 0.58.9: system session is stable; continue handle (instance) changes on handoff
+    # System session is stable; continue handle (instance) changes on handoff
     assert handoff["bound"]["session_id"] == sid
     if start_instance is not None:
         assert handoff["bound"].get("instance_id") != start_instance
@@ -213,7 +213,7 @@ def test_ws_auto_start_binds_business_flow_id(assist_host: ApplicationHost) -> N
 def test_portal_greeting_shape_preserves_question_and_input(
     assist_host: ApplicationHost,
 ) -> None:
-    """0.32.6 regression: value=Hi + include_input_schema must not lock the chat.
+    """value=Hi + include_input_schema must not lock the chat.
 
     WebSocket Portal often sends a greeting as params.value on first dispatch.
     Rebuild-from-assistant used to wipe question and set mutations_allowed=false.
@@ -294,7 +294,7 @@ def test_assist_session_includes_actions_block(assist_host: ApplicationHost) -> 
 
 
 def test_operator_entry_enricher_handoff_cta(assist_host: ApplicationHost) -> None:
-    """Demo intents complete without summary; handoff CTA/hint present (0.32.5+)."""
+    """Demo intents complete without summary; handoff CTA/hint present."""
     started = assist_host.assist.start_scenario("operator-entry", {})
     session_id = started["session_id"]
     updated = assist_host.assist.dispatch(
@@ -345,7 +345,7 @@ def test_handoff_todo_builder_still_kind_flow(assist_host: ApplicationHost) -> N
 
 def test_assist_session_input_and_context(assist_host: ApplicationHost) -> None:
     started = assist_host.assist.start_scenario("operator-entry", {})
-    # System subject + continue handle (0.58.9); product paths resolve sess-…
+    # System subject + continue handle; product paths resolve sess-…
     system_sid = started["session_id"]
     instance_id = started["instance_id"]
     assert str(system_sid).startswith("sess-")

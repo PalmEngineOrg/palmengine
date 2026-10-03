@@ -1,4 +1,4 @@
-"""0.55.7 — workload wait kind stub: open wait → emit ready/fail → matcher."""
+"""Workload wait kind stub: open wait → emit ready/fail → matcher."""
 
 from __future__ import annotations
 

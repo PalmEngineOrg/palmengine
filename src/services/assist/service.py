@@ -25,7 +25,7 @@ if TYPE_CHECKING:
 class AssistService(BaseService):
     """Meta-orchestration façade — leaf services own domain work.
 
-    Layout (0.33+)::
+    Layout::
 
         assist.scenarios  — start / describe / inspect-catalog
         assist.sessions   — session handle, verbs, handoff
@@ -34,7 +34,6 @@ class AssistService(BaseService):
         assist.profiles   — tool vs chat
 
     Public methods on this class remain stable and delegate to leafs.
-    See ``docs/VISION-0.33.md``.
     """
 
     def __init__(
@@ -63,7 +62,7 @@ class AssistService(BaseService):
         self._session = session
         self._runtime = runtime
         self._runtime_resolver = runtime_resolver
-        # 0.63.22 — published admission gate (snapshot factory or
+        # Published admission gate (snapshot factory or
         # object with .admission). Prefer inject over resolve_runtime dig.
         self._admission_source = admission_source
         self._analytics = analytics
@@ -94,7 +93,7 @@ class AssistService(BaseService):
 
     @property
     def analytics(self) -> Any | None:
-        """Optional AnalyticsService (0.40.4 — open:dataset / describe)."""
+        """Optional AnalyticsService."""
         return self._analytics
 
     def bind_analytics(self, analytics: Any | None) -> None:
@@ -107,17 +106,17 @@ class AssistService(BaseService):
 
     @property
     def inspect(self) -> InspectService:
-        """Product inspect door (0.61.4 / SD-007)."""
+        """Product inspect door."""
         return self._inspect
 
     @property
     def system(self) -> InspectService:
-        """Deprecated alias for :attr:`inspect` (SD-007 migration)."""
+        """Deprecated alias for :attr:`inspect`."""
         return self._inspect
 
     @property
     def product_session(self) -> SessionService | None:
-        """Product session door when host-wired (0.58.12).
+        """Product session door when host-wired.
 
         Named distinctly from :meth:`session` (AssistSession handle API) so
         the product door is never shadowed.
@@ -260,7 +259,7 @@ class AssistService(BaseService):
         return self._sessions.handoff(session_id)
 
     def doctor(self) -> dict[str, Any]:
-        """Legacy anatomy packaging (OD-001) — prefer :meth:`top` / :meth:`vitality`."""
+        """Legacy anatomy packaging — prefer :meth:`top` / :meth:`vitality`."""
         return self._catalog.doctor()
 
     def top(self) -> dict[str, Any]:
@@ -306,7 +305,7 @@ class AssistService(BaseService):
         return self._execution.flows.resolve_runtime(runtime_name)
 
     def admission_gate(self) -> object:
-        """Published admission source for product start/continue (0.63.22).
+        """Published admission source for product start/continue.
 
         Prefer the injected *admission_source* (snapshot, factory, or object
         with ``.admission``). Fallback digs the execution runtime shell only

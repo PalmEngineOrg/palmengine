@@ -1,4 +1,4 @@
-"""0.42.3 — native PalmEventsWebSocketClient against /ws/v1/events."""
+"""Native PalmEventsWebSocketClient against /ws/v1/events."""
 
 from __future__ import annotations
 

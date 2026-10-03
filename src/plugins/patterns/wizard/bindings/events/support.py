@@ -66,7 +66,7 @@ def build_prompt_bundle(
         "choices": list(step.choices),
         "step_index": step_index,
         "step_kind": step.step_kind,
-        # 0.32.3 — Portal/dynamic input schema
+        # Portal/dynamic input schema
         "required": bool(step.required),
     }
     if step.validation:

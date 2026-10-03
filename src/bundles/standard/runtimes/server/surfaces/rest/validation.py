@@ -16,7 +16,7 @@ from bundles.standard.runtimes.server.surfaces.rest.schemas import (
 )
 
 # PaginationParams / DEFAULT_LIMIT / MAX_LIMIT canonically live in the shared surface layer
-# (palm.common.surfaces.pagination, 0.47.3); re-exported here so REST importers keep working.
+# ; re-exported here so REST importers keep working.
 __all__ = [
     "DEFAULT_LIMIT",
     "MAX_LIMIT",

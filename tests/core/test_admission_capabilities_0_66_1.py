@@ -1,4 +1,4 @@
-"""0.66.1 — AdmissionSnapshot publishes installed capability names."""
+"""AdmissionSnapshot publishes installed capability names."""
 
 from __future__ import annotations
 

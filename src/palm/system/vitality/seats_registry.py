@@ -1,5 +1,5 @@
 """
-Default VitalityRegistry factory (0.61.2).
+Default VitalityRegistry factory.
 
 Separate from seat *probe* catalog (:func:`default_probe_catalog`).
 """

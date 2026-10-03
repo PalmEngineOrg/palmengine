@@ -1,4 +1,4 @@
-"""Tests for wizard prompt ``{{ state.* }}`` interpolation (0.27.1)."""
+"""Tests for wizard prompt ``{{ state.* }}`` interpolation."""
 
 from __future__ import annotations
 

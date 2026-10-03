@@ -1,9 +1,9 @@
-"""Session store over :class:`~palm.core.storage.StorageEngine` (0.58).
+"""Session store over :class:`~palm.core.storage.StorageEngine`.
 
 Same pattern as :class:`~palm.system.subsystems.planes.work.store.WorkIntentStore`:
 keys on the system instance storage backend (memory, filesystem, …).
 
-**Keys (0.58.2):**
+**Keys:**
 
 * ``palm:session:entry:{session_id}`` — session record dict
 * ``palm:session:index`` — list of session ids

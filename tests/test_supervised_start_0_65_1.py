@@ -1,4 +1,4 @@
-"""0.65.1 — supervised start walks registration; seats carry outbox ports."""
+"""Supervised start walks registration; seats carry outbox ports."""
 
 from __future__ import annotations
 

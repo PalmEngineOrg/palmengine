@@ -1,4 +1,4 @@
-"""0.41.0 — durable dashboard registry on StorageEngine."""
+"""Durable dashboard registry on StorageEngine."""
 
 from __future__ import annotations
 
@@ -49,7 +49,7 @@ def test_attach_survives_clear_memory() -> None:
         persist=True,
     )
     clear_dashboards()  # memory only — store still holds def
-    # get_dashboard rehydrates from store (0.41)
+    # get_dashboard rehydrates from store
     assert get_dashboard("persist-me") is not None
     clear_dashboards()
     n = attach_dashboard_store(storage)

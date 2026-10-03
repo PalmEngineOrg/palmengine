@@ -1,4 +1,4 @@
-"""Tests for append-only flow definition revisions (0.24.1)."""
+"""Tests for append-only flow definition revisions."""
 
 from __future__ import annotations
 

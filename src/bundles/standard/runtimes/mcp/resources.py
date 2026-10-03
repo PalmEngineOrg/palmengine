@@ -188,7 +188,6 @@ def register_core_resources(mcp: Any, rest_client: Any, *, config: Any) -> None:
 
 
 def _resolve_agent_card_path() -> Path | None:
-    """Locate docs/mcp-card.txt (dev checkout or bundled data)."""
     from importlib import resources
 
     try:

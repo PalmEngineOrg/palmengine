@@ -1,4 +1,4 @@
-"""0.63.31 — execution product façades use published admission at the edge."""
+"""Execution product façades use published admission at the edge."""
 
 from __future__ import annotations
 

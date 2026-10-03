@@ -32,7 +32,7 @@ def dispatch_operator_path(
     if not path:
         raise ValueError("dispatch path must not be empty")
     path = list(path)
-    # 0.58.8 — system session subject may appear where product expects instance id
+    # System session subject may appear where product expects instance id
     path, params = rewrite_system_session_continue(ctx, path, params)
     prefix = path[0]
     if prefix not in _DELEGATED_PREFIXES:
@@ -98,7 +98,7 @@ def dispatch_definitions(ctx: Any, path: list[str], params: dict[str, Any]) -> A
 
 
 def _resolve_session_service(ctx: Any) -> Any | None:
-    """Product SessionService — kit single door (0.58.17)."""
+    """Product SessionService — kit single door."""
     from plugins.kits.server.middleware import resolve_session_service
 
     return resolve_session_service(ctx)
@@ -111,23 +111,23 @@ def rewrite_system_session_continue(
 ) -> tuple[list[str], dict[str, Any]]:
     """Map system session ids to product continue handles (attach list).
 
-    **0.58.9 law:** ``session_id`` is always the system subject. Product path
-    segments still expect an **instance** id (SI-001/005). When a path or
+    ``session_id`` is always the system subject. Product path
+    segments still expect an **instance** id. When a path or
     param carries ``sess-…`` where product needs an instance, resolve via
     product :class:`~services.session.SessionService`
     ``resolve_continue_instance`` (active → waiting → last). Does **not**
     invent resume. Does **not** write the instance back into ``session_id``.
 
-    **0.58.11 SI-015:** when a system ``session_id`` is bound and the path is a
+    When a system ``session_id`` is bound and the path is a
     product continue/inspect under that subject, the continue ``instance_id``
     must be on the session attach list
     (:meth:`~services.session.SessionService.require_owned_instance`).
 
-    **0.58.15 strict attribution:** continue paths without a system session
+    Continue paths without a system session
     resolve the owner from the plane; orphan / bare instances raise
     :class:`~palm.system.subsystems.planes.session.SessionAttributionError`.
 
-    **0.58.17:** product door only — no raw ``session_plane`` fallback.
+    Product door only — no raw ``session_plane`` fallback.
     """
     from palm.system.subsystems.planes.session import looks_like_system_session_id
 
@@ -149,8 +149,6 @@ def rewrite_system_session_continue(
         out_params["session_id"] = system_sid
         out_params["instance_id"] = inst
 
-    # Path: assist/instance/{id}/… or flows/{flow}/instance/{id}/…
-    # (legacy segment ``session`` still accepted — 0.58.19 soft land)
     if (
         len(out_path) >= 3
         and out_path[0] == "assist"
@@ -176,9 +174,6 @@ def rewrite_system_session_continue(
                 out_path[3] = inst
                 _apply_instance(inst, str(raw))
 
-    # Explicit product instance in the path is the continue target (do not
-    # replace it with resolve_continue_instance of the bound session — that
-    # would hide SI-015 foreign-instance attempts).
     path_inst = _path_continue_instance(out_path)
     if path_inst and not looks_like_system_session_id(path_inst):
         out_params["instance_id"] = path_inst
@@ -202,7 +197,7 @@ def rewrite_system_session_continue(
         if inst:
             out_params["instance_id"] = inst
 
-    # SI-015 + 0.58.15: continue attribution via product door only
+    # Continue attribution via product door only
     _gate_continue_owner(product, out_path, out_params)
 
     return out_path, out_params
@@ -231,7 +226,7 @@ def _gate_continue_owner(
     path: list[str],
     params: dict[str, Any],
 ) -> None:
-    """Continue attribution via product SessionService (0.58.11 / 0.58.15 / 0.58.17)."""
+    """Continue attribution via product SessionService."""
     from palm.system.subsystems.planes.session import looks_like_system_session_id
 
     if not _is_session_continue_path(path):
@@ -263,7 +258,7 @@ def _gate_continue_owner(
 def dispatch_system(ctx: Any, path: list[str], params: dict[str, Any]) -> Any:
     """Operate door for inspect product (paths may still say ``system/*``)."""
     params = params or {}
-    # Normalize inspect/* → system/* for residual wire matching (SD-007 residual).
+    # Normalize inspect/* → system/* for residual wire matching.
     if path and path[0] == "inspect":
         path = ["system", *path[1:]]
     door = getattr(ctx, "inspect", None) or ctx.system
@@ -273,7 +268,7 @@ def dispatch_system(ctx: Any, path: list[str], params: dict[str, Any]) -> Any:
         return door.top(ctx.runtime)
     if path == ["system", "vitality"]:
         return door.vitality(ctx.runtime)
-    # 0.58.8 / 0.58.12 / 0.58.17 / 0.58.18 — session journey + operate (product door)
+    # Session journey + operate (product door)
     if len(path) >= 3 and path[0] == "system" and path[1] == "session":
         door = _resolve_session_service(ctx)
         if door is None:

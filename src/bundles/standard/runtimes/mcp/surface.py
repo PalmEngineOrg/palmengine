@@ -1,4 +1,4 @@
-"""MCP surface profiles — which tool groups register on palm-mcp (0.31.1)."""
+"""MCP surface profiles — which tool groups register on palm-mcp."""
 
 from __future__ import annotations
 

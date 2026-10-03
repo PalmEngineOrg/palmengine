@@ -1,5 +1,5 @@
 """
-SeatReport — versioned unit of vitality truth (0.61.1).
+SeatReport — versioned unit of vitality truth.
 
 Each discovered seat contributes one report. Projection (later) folds many
 reports into a snapshot. This type is the protocol surface for native seats
@@ -55,8 +55,7 @@ def _clean_load(load: Mapping[str, Any] | None) -> dict[str, Any]:
 class SeatReport:
     """One seat's self-report (or honest absent / error / skipped).
 
-    Fields match VISION-0.61 §6.3 / ADR-030 D4. Extra structured detail may
-    live under :attr:`load` (vitality counters) or :attr:`meta` (lineage
+    Extra structured detail may live under :attr:`load` (vitality counters) or :attr:`meta` (lineage
     provenance, raw fragment refs — not dual truth).
     """
 
@@ -78,7 +77,7 @@ class SeatReport:
         self.kind = str(self.kind or "").strip() or "other"
         self.state = str(self.state or "").strip() or STATE_ERROR
         self.lineage = str(self.lineage or "").strip() or LINEAGE_NATIVE
-        # CS-007: coerce legacy adapter lineage to sampled (do not emit adapter).
+        # Coerce legacy adapter lineage to sampled (do not emit adapter).
         if self.lineage == LINEAGE_ADAPTER or self.lineage in LEGACY_LINEAGES:
             self.meta = dict(self.meta or {})
             self.meta.setdefault("legacy_lineage", LINEAGE_ADAPTER)

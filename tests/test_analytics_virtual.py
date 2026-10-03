@@ -1,4 +1,4 @@
-"""0.36 — virtual view transform + query."""
+"""Virtual view transform + query."""
 
 from __future__ import annotations
 

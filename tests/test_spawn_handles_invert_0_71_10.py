@@ -1,4 +1,4 @@
-"""0.71.10 — invert RegisteredPlaceSpawn.handles off the mixed bag.
+"""Invert RegisteredPlaceSpawn.handles off the mixed bag.
 
 Place-id body stash lives on typed register_body / body / forget_body.
 os: process registry is typed os_registry. No handles dict. No __os_registry__.

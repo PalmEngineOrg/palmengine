@@ -1,4 +1,4 @@
-"""0.40.2 — continuous drain loop · debounce · depth storm guard (system work plane)."""
+"""Continuous drain loop · debounce · depth storm guard (system work plane)."""
 
 from __future__ import annotations
 

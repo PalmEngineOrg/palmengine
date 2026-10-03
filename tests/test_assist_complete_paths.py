@@ -1,4 +1,4 @@
-"""0.31.2 — assist-only happy paths (doctor, catalog, waiting, resume aliases)."""
+"""assist-only happy paths (doctor, catalog, waiting, resume aliases)."""
 
 from __future__ import annotations
 

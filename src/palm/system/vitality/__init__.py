@@ -1,5 +1,5 @@
 """
-System vitality — living-kernel observation (0.61).
+System vitality — living-kernel observation.
 
 Eyes on the live ``SystemInstance`` graph: seat discovery, seat reports,
 capability registry, and projection snapshot. **Observation only** — not a
@@ -7,17 +7,9 @@ plane of start/continue.
 
 | Slice | Landed |
 |-------|--------|
-| **0.61.1** | Seat-report protocol + dynamic walk |
-| **0.61.2** | VitalityRegistry + VitalityProjection (``seat_walk``) |
-| **0.61.3** | ``emission_window`` + actor_kind partition |
-| **0.61.8** | ``process_resources`` (stdlib RSS/CPU/threads) |
-| **0.61.9** | ``loaded_bulk`` (attached seats · modules · composition) |
-| **0.61.10** | ``benchmark`` tool (recipe · snapshot diff; off by default) |
 
 **Sample law:** raw-dog public seat APIs into ``meta.raw`` (``lineage: sampled``).
 Product present interprets. No adapter maps in system vitality.
-
-See [VISION-0.61](../../../../docs/vision/closed/VISION-0.61.md) · [ADR-030](docs/adr/030-system-vitality.md).
 """
 
 from __future__ import annotations

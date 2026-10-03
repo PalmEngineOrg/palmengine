@@ -1,4 +1,4 @@
-"""Tests for design service CQRS transport bindings (0.25.7)."""
+"""Tests for design service CQRS transport bindings."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""0.45.1 — append_item transform rule."""
+"""append_item transform rule."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""0.35.4b — REST /v1/api/analytics/*."""
+"""REST /v1/api/analytics/*."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""0.68.11 — unused webhook journal facade composted."""
+"""Unused webhook journal facade composted."""
 
 from __future__ import annotations
 

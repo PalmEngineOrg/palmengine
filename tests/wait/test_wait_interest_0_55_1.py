@@ -1,4 +1,4 @@
-"""0.55.1 — Wait interest contract + open/close helpers (pure, no I/O)."""
+"""Wait interest contract + open/close helpers (pure, no I/O)."""
 
 from __future__ import annotations
 

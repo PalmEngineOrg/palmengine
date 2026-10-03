@@ -101,7 +101,7 @@ class WorkPlaneCoordinator:
 
     def wire_event_journal(self) -> None:
         host = self._host
-        # 0.67.8: host slot reads the hand's journal. Do not attach again.
+        # Host slot reads the hand's journal. Do not attach again.
         if not host.admission.has_capability(CAPABILITY_JOURNAL):
             self._event_journal = None
             return
@@ -115,7 +115,7 @@ class WorkPlaneCoordinator:
     def reload_work_triggers(self) -> int:
         """Reload definition triggers into the work drain (after design/example load).
 
-        **0.60.7:** when the drain is the system work plane and product
+        When the drain is the system work plane and product
         definitions are unavailable, fall back to the runtime definition
         repository on the system instance.
         """
@@ -156,12 +156,12 @@ class WorkPlaneCoordinator:
             return 0
 
     def reload_inbound_bindings(self) -> int:
-        """Rescan resources with metadata.inbound (0.43)."""
+        """Rescan resources with metadata.inbound."""
         if self._inbound is None:
             return 0
         try:
             n = int(self._inbound.reload_from_definitions() or 0)
-            # Prefer supervisor start when inbound is registered (0.60.8).
+            # Prefer supervisor start when inbound is registered.
             try:
                 runtime = self._host._app.runtime()
                 sup = getattr(runtime, "supervisor", None)

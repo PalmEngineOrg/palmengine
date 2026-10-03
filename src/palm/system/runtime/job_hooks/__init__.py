@@ -1,9 +1,4 @@
-"""Job lifecycle hooks registered on the orchestration engine.
-
-Canonical home for instance persistence, session ownership, outbox drain,
-and state snapshots.
-
-"""
+"""Job lifecycle hooks registered on the orchestration engine."""
 
 from palm.system.runtime.job_hooks.instance_persistence import InstancePersistenceHook
 from palm.system.runtime.job_hooks.outbox_drain import OutboxDrainHook

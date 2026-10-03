@@ -1,4 +1,4 @@
-"""0.58.3 — Bind law: surfaces resolve/create system session on entry."""
+"""Bind law: surfaces resolve/create system session on entry."""
 
 from __future__ import annotations
 

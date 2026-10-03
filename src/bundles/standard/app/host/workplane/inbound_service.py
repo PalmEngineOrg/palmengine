@@ -1,4 +1,4 @@
-"""Compatibility re-export — inbound lives on the system work plane (0.60.8)."""
+"""Compatibility re-export — inbound lives on the system work plane."""
 
 from __future__ import annotations
 

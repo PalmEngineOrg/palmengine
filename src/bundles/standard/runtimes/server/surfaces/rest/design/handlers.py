@@ -48,7 +48,7 @@ def propose_flow(ctx: ServerContext, request: ServerRequest) -> ServerResponse:
 
 
 def propose_dashboard(ctx: ServerContext, request: ServerRequest) -> ServerResponse:
-    """POST /v1/api/design/dashboards — propose dashboard definition (0.41.2)."""
+    """POST /v1/api/design/dashboards — propose dashboard definition."""
     auth_error = require_auth(ctx, request)
     if auth_error is not None:
         return auth_error
@@ -72,7 +72,7 @@ def propose_dashboard(ctx: ServerContext, request: ServerRequest) -> ServerRespo
 
 
 def publish_dashboard(ctx: ServerContext, request: ServerRequest) -> ServerResponse:
-    """POST /v1/api/design/dashboards/publish — one-shot dashboard (0.41.2)."""
+    """POST /v1/api/design/dashboards/publish — one-shot dashboard."""
     auth_error = require_auth(ctx, request)
     if auth_error is not None:
         return auth_error

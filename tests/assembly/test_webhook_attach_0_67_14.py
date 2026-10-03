@@ -1,4 +1,4 @@
-"""webhook leftover — one dispatcher, URLs on that object, not a loop (0.67.14)."""
+"""webhook leftover — one dispatcher, URLs on that object, not a loop."""
 
 from __future__ import annotations
 

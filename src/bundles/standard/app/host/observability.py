@@ -1,8 +1,8 @@
 """
-HostObservability — residual packaging status for ApplicationHost (CS-002).
+HostObservability — residual packaging status for ApplicationHost.
 
-0.48.1 (PD-018): extracted the three status reports from the composition root.
-0.61.7 (CS-002): demoted — these bags are **host packaging residual**, not
+Extracted the three status reports from the composition root.
+Demoted — these bags are **host packaging residual**, not
 living-load law. Living eyes live in ``palm.system.vitality`` and are
 presented via ``InspectService.top`` / ``.vitality``.
 
@@ -27,7 +27,7 @@ from palm.system.log import get_system_log
 if TYPE_CHECKING:
     from bundles.standard.app.host.application_host import ApplicationHost
 
-# CS-002 demotion markers — packaging residual, not seat / vitality law.
+# Demotion markers — packaging residual, not seat / vitality law.
 PACKAGING_ROLE = "host_packaging"
 EYES_LAW = "palm.system.vitality"
 OPERATE_EYES_PATHS = (
@@ -75,7 +75,7 @@ class HostObservability:
         return self.control_plane_status()
 
     def event_plane_status(self) -> dict[str, Any]:
-        """Residual bus/packaging map (0.45.5). Not living seat law."""
+        """Residual bus/packaging map. Not living seat law."""
         host = self._host
         orchestration_bus = "host_fallback"
         try:
@@ -121,7 +121,7 @@ class HostObservability:
         )
 
     def ops_status(self) -> dict[str, Any]:
-        """Residual operator ergonomics packaging (0.45.8). Not living seat law."""
+        """Residual operator ergonomics packaging. Not living seat law."""
         host = self._host
         storage = host._app.storage
         backend_name = storage.backend_name if storage is not None else None
@@ -169,7 +169,7 @@ class HostObservability:
         )
 
     def control_plane_status(self) -> dict[str, Any]:
-        """Residual work/journal/boot packaging (0.38 / 0.40.3). Not living seat law."""
+        """Residual work/journal/boot packaging. Not living seat law."""
         host = self._host
         work_pending = 0
         plane = None
@@ -239,7 +239,7 @@ class HostObservability:
                     "last_walk": getattr(host, "boot_walk", None),
                     "note": domain_note,
                 },
-                # 0.63.8 admission inventory — nest live admission; packaging does not invent readiness.
+                # Admission inventory — nest live admission; packaging does not invent readiness.
                 "structure": structure_bag,
                 "event_plane": self.event_plane_status(),
                 "ops": self.ops_status(),
@@ -248,7 +248,7 @@ class HostObservability:
         )
 
     def _structure_packaging(self) -> dict[str, Any]:
-        """Pointer to living admission (0.63) — not a second ready flag."""
+        """Pointer to living admission — not a second ready flag."""
         host = self._host
         try:
             from palm.system.structure.inventory import admission_inventory_snapshot
@@ -266,7 +266,7 @@ class HostObservability:
                 "capabilities": list(adm.get("capabilities") or []),
                 "gated_count": snap.get("gated_count"),
                 "readiness_edge_count": snap.get("readiness_edge_count"),
-                # 0.63.38 exit residuals (cartography, not dual ready)
+                # Exit residuals (cartography, not dual ready)
                 "open_residual_count": snap.get("open_residual_count"),
                 "open_residual_ids": snap.get("open_residual_ids"),
                 "paid_edge_count": snap.get("paid_edge_count"),

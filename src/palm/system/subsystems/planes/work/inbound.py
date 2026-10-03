@@ -1,4 +1,4 @@
-"""Inbound resource bindings — system start-plane collaborator (0.43+ · home 0.60.8).
+"""Inbound resource bindings — system start-plane collaborator.
 
 Listen, persist, enqueue WorkIntent when able. Continuous workers are supervised
 via :class:`~palm.system.subsystems.supervisor.SystemSupervisor` when the host wires them.
@@ -233,7 +233,7 @@ class InboundBindingService:
         }
 
     def _start_internal_listeners(self) -> int:
-        """Subscribe to host EventEngine for mode=internal bindings (0.45.2)."""
+        """Subscribe to host EventEngine for mode=internal bindings."""
         self._stop_internal_listeners()
         if self._event is None:
             return 0
@@ -291,7 +291,7 @@ class InboundBindingService:
         binding: InboundBinding,
         envelope: dict[str, Any],
     ) -> bool:
-        """Declarative loop guard for internal orchestration events (0.45.6)."""
+        """Declarative loop guard for internal orchestration events."""
         spec = binding.spec
         event_type = str(envelope.get("type") or "")
         if event_type not in spec.skip_event_types:
@@ -544,7 +544,7 @@ class InboundBindingService:
     def _store_envelope(
         self, binding: InboundBinding, envelope: dict[str, Any]
     ) -> dict[str, Any]:
-        """Optional inbox persist via store_resource before WorkIntent (0.44)."""
+        """Optional inbox persist via store_resource before WorkIntent."""
         spec = binding.spec
         store_name = (spec.store_resource or "").strip()
         if not store_name or self._invoke_resource is None:
@@ -573,7 +573,7 @@ class InboundBindingService:
         return {"stored": True, "store_resource": store_name, "store_action": action}
 
     def flush_debounced(self) -> int:
-        """Enqueue deferred inbound signals after debounce quiet period (0.45.6)."""
+        """Enqueue deferred inbound signals after debounce quiet period."""
         now = time.monotonic()
         with self._lock:
             due_keys = [k for k, until in self._debounce_until.items() if now >= until]
@@ -649,7 +649,7 @@ class InboundBindingService:
             "source": source,
             **meta,
         }
-        # 0.58.16: inherit system session from envelope/meta when present.
+        # Inherit system session from envelope/meta when present.
         for key in ("session_id", "palm_session"):
             raw = payload.get(key) or (
                 envelope.get(key) if isinstance(envelope, dict) else None

@@ -1,4 +1,4 @@
-"""0.35.3 — pure present profiles."""
+"""Pure present profiles."""
 
 from __future__ import annotations
 

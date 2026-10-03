@@ -1,5 +1,5 @@
 """
-Core host service providers (T2 / 0.48.2).
+Core host service providers.
 
 Core services and their construction, declared as dependency-ordered
 ``ServiceProvider`` entries. The host builds them via
@@ -12,8 +12,8 @@ The ``assist.bind_analytics(analytics)`` cross-wire is a shared post-build
 packaging step (:func:`~palm.app.host.services.packaging.apply_product_packaging`),
 not a construction dependency — both host and host-less ServerContext call it.
 
-**0.58.12:** product ``session`` is the surface door over the system session plane.
-**0.61.4 / SD-007:** product inspect door is ``inspect`` (was ``system``).
+Product ``session`` is the surface door over the system session plane.
+Product inspect door is ``inspect`` (was ``system``).
 """
 
 from __future__ import annotations
@@ -49,7 +49,7 @@ def _build_definitions(ctx: HostServiceContext, built: dict[str, Any]) -> Any:
 
 
 def _build_execution(ctx: HostServiceContext, built: dict[str, Any]) -> Any:
-    # 0.63.30/31 — inject published admission for execution product façades.
+    # Inject published admission for execution product façades.
     from services.execution import ExecutionService
     from services.execution.flows import FlowExecutionService
     from services.execution.processes import ProcessExecutionService
@@ -93,7 +93,7 @@ def _build_execution(ctx: HostServiceContext, built: dict[str, Any]) -> Any:
 
 
 def _build_assist(ctx: HostServiceContext, built: dict[str, Any]) -> Any:
-    # 0.63.22/23 — inject published admission; packaging binds it once.
+    # Inject published admission; packaging binds it once.
     from services.assist import AssistService
     from palm.system.structure.access import admission_source_from_runtime_resolver
 

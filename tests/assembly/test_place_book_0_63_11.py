@@ -1,4 +1,4 @@
-"""0.63.11 — in-process place registry hands for ENSURE_PLACE."""
+"""in-process place registry hands for ENSURE_PLACE."""
 
 from __future__ import annotations
 
@@ -30,7 +30,7 @@ def test_place_registry_ensure_release() -> None:
 
 
 def test_seat_assemble_with_places_converges() -> None:
-    seat = StructureSeat()  # default StructureEffectPort (0.63.15)
+    seat = StructureSeat()  # default StructureEffectPort
     dna = StructureDefinition(
         id="local.with_places",
         version="1",
@@ -56,7 +56,7 @@ def test_runtime_default_place_registry_hands() -> None:
     try:
         assert rt.admission.may_run_business is True
         assert rt.structure is not None
-        # Bound book: places is body projection; bare ready via registry.ready (0.71.11).
+        # Bound book: places is body projection; bare ready via registry.ready.
         assert "manor_a" in rt.structure.status().places_ready
         assert rt.structure.effects.registry.ready("manor_a") is True  # type: ignore[union-attr]
         assert "manor_a" not in rt.structure.effects.registry.places  # type: ignore[union-attr]

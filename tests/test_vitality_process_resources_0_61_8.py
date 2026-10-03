@@ -1,4 +1,4 @@
-"""0.61.8 — process_resources (stdlib RSS/CPU/threads)."""
+"""process_resources (stdlib RSS/CPU/threads)."""
 
 from __future__ import annotations
 

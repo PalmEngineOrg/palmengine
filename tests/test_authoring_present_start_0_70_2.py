@@ -1,4 +1,4 @@
-"""0.70.2 — present starts the committed catalog definition.
+"""Present starts the committed catalog definition.
 
 Remaining Authoring floor: land/commit on embedded definitions, then
 plugins.kits.present starts that catalog id on the same host.

@@ -1,4 +1,4 @@
-"""0.35.2 — AnalyticsService gates, list, query normalize (fakes; no host)."""
+"""AnalyticsService gates, list, query normalize (fakes; no host)."""
 
 from __future__ import annotations
 

@@ -6,7 +6,7 @@ from typing import Any
 
 
 def shape_menu_assistant(result: dict[str, Any]) -> dict[str, Any]:
-    """Pass through structured menu page for chat/tool consumers (0.34)."""
+    """Pass through structured menu page for chat/tool consumers."""
     if not isinstance(result, dict):
         return {
             "status": "ok",
@@ -62,7 +62,7 @@ def shape_discover_assistant(result: dict[str, Any]) -> dict[str, Any]:
 
 
 def shape_doctor_assistant(result: Any) -> dict[str, Any]:
-    """Compact doctor report for assist-only agents (0.31.2)."""
+    """Compact doctor report for assist-only agents."""
     report = result if isinstance(result, dict) else {"value": result}
     preflight = report.get("resource_preflight") if isinstance(report, dict) else None
     hint = "Engine health OK." if report else "Doctor returned no data."
@@ -86,7 +86,7 @@ def shape_doctor_assistant(result: Any) -> dict[str, Any]:
 
 
 def shape_flows_catalog_assistant(result: Any) -> dict[str, Any]:
-    """List flows as a short assistant turn (0.31.2)."""
+    """List flows as a short assistant turn."""
     rows = result if isinstance(result, list) else []
     names: list[str] = []
     for row in rows[:30]:
@@ -126,7 +126,7 @@ def shape_waiting_assistant(
     *,
     params: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Waiting jobs/sessions as assistant turn (0.31.2 / 0.34.5 resume chips)."""
+    """Waiting jobs/sessions as assistant turn."""
     del params  # reserved for future filters
     rows: list[Any]
     if isinstance(result, list):

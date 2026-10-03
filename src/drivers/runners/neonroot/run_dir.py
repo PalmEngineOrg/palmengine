@@ -1,4 +1,4 @@
-"""Palm-owned hermetic run directories for NeonRoot bind/copy (0.54.8).
+"""Palm-owned hermetic run directories for NeonRoot bind/copy.
 
 Stages a small host tree NeonRoot can ``--seed`` (prefer ``seed_mode=bind``
 for live write-back into ``output/``). Does **not** store workspace trees in

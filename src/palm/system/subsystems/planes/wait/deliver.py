@@ -1,6 +1,6 @@
 """Deliver wait-target completion into the owner job (continue plane).
 
-**0.55.16** — pluggable deliverers (kind / source / predicate). Nested wizard
+— pluggable deliverers (kind / source / predicate). Nested wizard
 is the default registration; the plane calls :func:`deliver_wait_completion`
 and never hardcodes a single product shape.
 

@@ -41,7 +41,7 @@ def test_design_publish_flow_one_shot() -> None:
 
 
 def test_assist_dispatch_body_publishes_via_design_alias() -> None:
-    """0.30.5: palm_assist(params={body}) → design/publish without extra tools."""
+    """palm_assist(params={body}) → design/publish without extra tools."""
     from bundles.standard.runtimes.mcp.assist.dispatch import (
         normalize_assist_dispatch_args,
         resolve_dispatch_path,

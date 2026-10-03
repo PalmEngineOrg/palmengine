@@ -1,4 +1,4 @@
-"""System structure — loop, effect port, seat, admission on the shell (0.63)."""
+"""System structure — loop, effect port, seat, admission on the shell."""
 
 from palm.system.structure.access import admission_source_from_runtime_resolver
 from palm.system.structure.effects import EffectPort, RecordingEffectPort

@@ -1,5 +1,5 @@
 """
-Resolve graph effect surfaces from PatternBuildContext (0.57.4).
+Resolve graph effect surfaces from PatternBuildContext.
 
 Prefer ExecutionPort when present so production builds share the same port
 as product. Fall back to engine fields for unit tests that inject engines only.

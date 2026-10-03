@@ -1,4 +1,4 @@
-"""0.63.30 — flow product continue doors are business paths that need admission; cancel_job named residual."""
+"""Flow product continue doors are business paths that need admission; cancel_job named residual."""
 
 from __future__ import annotations
 
@@ -71,7 +71,7 @@ def test_flow_session_backtrack_refused_on_oath() -> None:
 
 
 def test_flow_session_cancel_not_admission_citizen() -> None:
-    """Cancel stays control path when admission is closed (named residual)."""
+    """Cancel stays control path when admission is closed."""
     closed = AdmissionSnapshot(
         may_run_business=False,
         phase=StructurePhase.BLOCKED,

@@ -1,7 +1,4 @@
-"""Workload lifecycle status (normative state machine).
-
-See docs/VISION-0.56.md §5 and ADR-024.
-"""
+"""Workload lifecycle status (normative state machine)."""
 
 from __future__ import annotations
 
@@ -92,5 +89,5 @@ def is_terminal(status: WorkloadStatus) -> bool:
 
 
 def is_exec_allowed(status: WorkloadStatus) -> bool:
-    """exec is only valid on READY workspace/service (VISION §5)."""
+    """exec is only valid on READY workspace/service."""
     return status is WorkloadStatus.READY

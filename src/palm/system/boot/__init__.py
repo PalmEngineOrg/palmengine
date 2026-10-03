@@ -1,5 +1,5 @@
 """
-Palm system boot — schedule control for how the system comes up (0.59–0.61).
+Palm system boot — schedule control for how the system comes up.
 
 **What boot owns**
 
@@ -20,7 +20,7 @@ Palm system boot — schedule control for how the system comes up (0.59–0.61).
 New system start step = subject ``phase_*.py`` + catalog entry + PhaseSpec row.
 Do not open-code phase bodies under ``boot/``.
 
-Observation: ``palm.system.log``. Map: docs/VISION-0.59.md · ADR-028 · SD-016.
+Observation: ``palm.system.log``.
 """
 
 from __future__ import annotations

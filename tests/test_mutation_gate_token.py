@@ -1,4 +1,4 @@
-"""Tests for CSRF-style input_token mutation gate (0.23.0)."""
+"""Tests for CSRF-style input_token mutation gate."""
 
 from __future__ import annotations
 

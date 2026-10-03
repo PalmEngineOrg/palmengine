@@ -25,7 +25,7 @@ class WorkIntent:
     depth: int = 0
     status: str = "pending"  # pending | claimed | done | failed
     last_error: str | None = None
-    # Exclusive claim (0.62) — multi-claimer lease; empty when pending
+    # Exclusive claim — multi-claimer lease; empty when pending
     claimed_by: str | None = None
     lease_until: str | None = None  # ISO timestamp
 

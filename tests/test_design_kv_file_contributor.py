@@ -1,4 +1,4 @@
-"""KV and file design contributors (0.28.3)."""
+"""KV and file design contributors."""
 
 from __future__ import annotations
 

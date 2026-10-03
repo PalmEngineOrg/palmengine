@@ -106,7 +106,7 @@ _registry: list[CommandSpec] = [
 ]
 
 _BUILTIN_MCP_ALIASES: dict[str, tuple[str, ...]] = {
-    # 0.58.19 — instance segment; legacy alias names kept as soft land keys
+    # Instance segment; legacy alias names kept as soft land keys
     "flows/instance-input": (
         "flows",
         "{flow_id}",
@@ -154,7 +154,7 @@ _BUILTIN_MCP_ALIASES: dict[str, tuple[str, ...]] = {
     "assist/vitality": ("assist", "vitality"),
     "design/publish": ("design", "publish"),
     "design/publish-resource": ("design", "publish-resource"),
-    # 0.56 — workload product surface (assist-only friendly)
+    # Workload product surface (assist-only friendly)
     "workloads/start": ("workloads", "start"),
     "workloads/list": ("workloads", "list"),
     "workloads/runtimes": ("workloads", "runtimes"),
@@ -228,7 +228,7 @@ def resolve_mcp_alias(
 ) -> tuple[str, ...] | None:
     """Resolve an alias to a concrete command path, substituting ``params`` tokens.
 
-    **0.58.19:** ``{instance_id}`` accepts legacy ``session_id`` as the continue
+    ``{instance_id}`` accepts legacy ``session_id`` as the continue
     handle when ``instance_id`` is absent. A system subject (``sess-…``) may be
     placed in the path; :func:`~palm.runtimes.mcp.assist.operator.rewrite_system_session_continue`
     then resolves it to the owned instance.

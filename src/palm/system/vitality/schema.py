@@ -1,5 +1,5 @@
 """
-Vitality schema constants — versioned seat-report contract (0.61.1).
+Vitality schema constants — versioned seat-report contract.
 
 Stable names for kinds, states, lineage, and the schema id. Growth adds
 fields behind a new schema version; do not silently reshape ``/1``.
@@ -79,7 +79,7 @@ LINEAGE_NATIVE: Final[str] = "native"
 LINEAGE_SAMPLED: Final[str] = "sampled"
 """Eyes read public seat API and stash **raw** under ``meta.raw``; product presents."""
 
-# Deprecated read residue (CS-007 paid): old snapshots may still say "adapter".
+# Deprecated read residue: old snapshots may still say "adapter".
 # Coerce to sampled on load; do not emit new adapter reports.
 LINEAGE_ADAPTER: Final[str] = "adapter"
 
@@ -90,7 +90,7 @@ LEGACY_LINEAGES: Final[frozenset[str]] = frozenset({LINEAGE_ADAPTER})
 
 # ── Well-known seat ids (discovery seeds — not a closed forever menu) ───────
 # New seats appear by attachment + probe registration. These ids stay stable
-# for the seeds Palm attaches after system start (0.57–0.60 living graph).
+# for the seeds Palm attaches after system start.
 
 # Planes hub + member seat ids (members expanded from live SystemPlanes).
 SEAT_PLANES: Final[str] = "planes"
@@ -109,9 +109,9 @@ SEAT_BOOT_MEMBERSHIP: Final[str] = "boot_membership"
 # Supervisor service seats use: supervisor.<service_name>
 SUPERVISOR_SERVICE_PREFIX: Final[str] = "supervisor."
 
-# ── Walk options / capability seed (registry body lands 0.61.2) ─────────────
+# ── Walk options / capability seed ─────────────
 
-# ── Snapshot / capability ids (0.61.2+) ──────────────────────────────────────
+# ── Snapshot / capability ids ──────────────────────────────────────
 
 VITALITY_SNAPSHOT_SCHEMA: Final[str] = "palm.vitality_snapshot/1"
 """Versioned projection snapshot document id."""
@@ -125,7 +125,7 @@ CAPABILITY_SEAT_WALK: Final[str] = "seat_walk"
 CAPABILITY_EMISSION_WINDOW: Final[str] = "emission_window"
 """Observe: recent emissions + actor partition (0.61.3 body)."""
 
-# ── Emission identity (ADR-030 D8) ───────────────────────────────────────────
+# ── Emission identity ───────────────────────────────────────────
 
 ACTOR_KIND_HUMAN: Final[str] = "human"
 ACTOR_KIND_AGENT: Final[str] = "agent"

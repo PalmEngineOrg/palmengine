@@ -27,7 +27,7 @@ class PalmMcpConfig:
     llms_txt_path: Path | None = None
     skill_root: Path | None = None
     in_process: bool = False
-    # 0.31.1 — which MCP tool groups to register (full | assist | core | experimental)
+    # Which MCP tool groups to register (full | assist | core | experimental)
     surface: str = DEFAULT_SURFACE
 
     @classmethod

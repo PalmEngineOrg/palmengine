@@ -1,7 +1,6 @@
 """Universal, versioned WorkloadSpec — portable intent (JSON-serializable).
 
-Commands are argv lists only (no shell strings in v1). Secrets are refs, not
-inline material. See docs/VISION-0.56.md §4 and ADR-024 D2/D3.
+Commands are argv lists only (no shell strings in v1). Secrets are refs, not inline material.
 """
 
 from __future__ import annotations

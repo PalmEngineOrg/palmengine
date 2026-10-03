@@ -1,4 +1,4 @@
-"""REST: inbound resource webhook ingress (0.43)."""
+"""REST: inbound resource webhook ingress."""
 
 from __future__ import annotations
 

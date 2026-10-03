@@ -1,4 +1,4 @@
-"""0.63.20 — product workload start is a business path that needs admission (fail closed)."""
+"""Product workload start is a business path that needs admission (fail closed)."""
 
 from __future__ import annotations
 

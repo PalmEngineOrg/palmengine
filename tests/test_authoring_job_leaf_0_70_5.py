@@ -1,4 +1,4 @@
-"""0.70.5 — a leaf of the pack run commits via the authoring adapter.
+"""A leaf of the pack run commits via the authoring adapter.
 
 Present starts the pack. Submit is a FlowDefinition body. A resource step
 in that job walks land/commit. Pytest is not the leaf. Present starts the

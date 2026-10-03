@@ -4,7 +4,7 @@ Floor: no place-registry spawn yet. ENSURE_PLACE is recorded and can be
 auto-satisfied for tests via ``auto_ack_places`` (default off in production;
 on for pure loop dogfood when no place registry is wired).
 
-**0.71.15:** auto-ack owns a ``ready(place_id)`` hand (no engine second set).
+auto-ack owns a ``ready(place_id)`` hand (no engine second set).
 """
 
 from __future__ import annotations

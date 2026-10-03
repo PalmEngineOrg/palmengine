@@ -38,7 +38,7 @@ class PalmKernel:
     PalmKernel is **not** the system layer. It boots infra and registers started
     system instances (today :class:`~palm.system.runtime.base.BaseRuntime`).
     Effects for graphs and product use ports on those instances
-    (``runtime.execution``), not this class as a second kernel API (SD-006).
+    (``runtime.execution``), not this class as a second kernel API.
 
     For role-based orchestration, CQRS, and recovery, prefer
     :class:`~palm.app.host.ApplicationHost`, which wraps ``PalmKernel`` as its

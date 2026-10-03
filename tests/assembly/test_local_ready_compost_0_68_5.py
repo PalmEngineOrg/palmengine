@@ -1,6 +1,6 @@
-"""0.68.5 — LocalRunnerApp empty ready() override composted.
+"""LocalRunnerApp empty ready() override composted.
 
-0.68.7 dropped the RunnerApp bag, so the override cannot return.
+Dropped the RunnerApp bag, so the override cannot return.
 """
 
 from __future__ import annotations

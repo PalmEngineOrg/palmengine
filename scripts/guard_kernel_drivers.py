@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Kernel driver guard (0.72.6).
+"""Kernel driver guard.
 
 ``palm.system`` does not import ``drivers``. The bundle binds storage and
 workload runtimes before ``start``.

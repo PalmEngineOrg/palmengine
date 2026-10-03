@@ -1,4 +1,4 @@
-"""0.70.4 — thin apply speaks a file snapshot; present drives.
+"""Thin apply speaks a file snapshot; present drives.
 
 Dogfood on embedded: pack waits; leaf commits apply via adapter; resource
 lands via host.definitions.create_resource; present starts apply by catalog

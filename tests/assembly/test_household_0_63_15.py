@@ -1,4 +1,4 @@
-"""0.63.15 — structure assemble / place-registry intents + OS process spawn."""
+"""Structure assemble / place-registry intents + OS process spawn."""
 
 from __future__ import annotations
 

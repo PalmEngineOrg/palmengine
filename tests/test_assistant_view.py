@@ -54,7 +54,7 @@ def test_assistant_view_choice_humanize() -> None:
     )
     payload = build_assistant_view(_operator_entry_flat(), context=ctx)
 
-    # 0.58.9: instance_id is continue handle; session_id only when system subject
+    # instance_id is continue handle; session_id only when system subject
     assert payload.get("instance_id") == "inst-1"
     assert payload.get("session_id") is None or str(payload["session_id"]).startswith(
         "sess-"

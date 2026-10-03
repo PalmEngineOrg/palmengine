@@ -1,4 +1,4 @@
-"""kpi profile — single aggregate over one field (delta always null in 0.35)."""
+"""kpi profile — single aggregate over one field (delta always null)."""
 
 from __future__ import annotations
 

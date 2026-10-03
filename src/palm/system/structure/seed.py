@@ -1,14 +1,14 @@
-"""Structure seed map — env/composition are seed only; after load, status under the definition is truth (0.63.5+).
+"""Structure seed map — env/composition are seed only; after load, status under the definition is truth.
 
 Profiles, boot modes, composition, and structure-shaped env are **seeds**, not
 parallel law. After load, structure status under the definition is truth.
 
-**0.63.13 — env/composition are seed only (SD-021 growth):**
+**env/composition are seed only:**
 - ``PALM_STRUCTURE_DEFINITION_ID`` / ``settings.structure_definition_id`` is the explicit definition seed.
 - Membership-shaped flags feed composition at resolve for organs that still
   live there. ``work_drain`` is not one of them.
 
-**0.63.19 — full membership seed cartography (SD-021 residual):**
+**Full membership seed cartography:**
 - Every ``enable_*`` / analytics flag that feeds composition is catalogued here.
 - Bootstrap derives capabilities from this map — one truth for seed resolve.
 - ``work_drain``, ``outbox``, ``journal``, ``projections``, ``compensation``,
@@ -31,7 +31,7 @@ from palm.core.structure import (
     resolve_builtin_definition,
 )
 
-# BootMode.name → builtin structure-definition id (VISION-0.63 §6)
+# BootMode.name → builtin structure-definition id
 _MODE_TO_DEFINITION: dict[str, str] = {
     "safe": LOCAL_EMBEDDED_ID,
     "test": LOCAL_EMBEDDED_ID,
@@ -44,16 +44,16 @@ _MODE_TO_DEFINITION: dict[str, str] = {
     "dev": LOCAL_ALL_IN_ONE_ID,
 }
 
-# 0.63.19 — settings field → composition capability at resolve only.
+# Settings field → composition capability at resolve only.
 # Single source for bootstrap ``_capabilities_from_settings`` and cartography.
 # Always-on membership (workloads) has no flag — not listed.
-# compensation / webhook / analytics are DNA (0.67.11 / 0.67.13 / 0.67.16).
+# compensation / webhook / analytics are DNA.
 MEMBERSHIP_CAPABILITY_SEEDS: tuple[dict[str, str], ...] = ()
 
 # Capabilities always present on settings-composed hosts (no enable_* seed).
 ALWAYS_ON_MEMBERSHIP_CAPABILITIES: frozenset[str] = frozenset({"workloads"})
 
-# 0.63.13 / 0.63.19 — cartography: env / settings that *seed* structure (not packaging).
+# Cartography: env / settings that *seed* structure (not packaging).
 # Packaging stays free (storage, ports, log, pool widths, secrets).
 STRUCTURE_SEED_ENV: tuple[dict[str, str], ...] = (
     {
@@ -138,7 +138,7 @@ def membership_capabilities_from_settings(
     *,
     deployment: Any | None = None,
 ) -> frozenset[str]:
-    """Derive composition capabilities from membership *seeds* (0.63.19).
+    """Derive composition capabilities from membership *seeds*.
 
     Settings ``enable_*`` / analytics flags seed membership **at resolve only**.
     ``work_drain``, ``outbox``, ``journal``, ``projections``, ``compensation``,
@@ -178,7 +178,7 @@ def resolve_seed_definition(
 
 
 def boot_mode_name_for_deployment(profile: Any) -> str | None:
-    """Map DeploymentProfile roles to a BootMode-like seed name (0.63.12)."""
+    """Map DeploymentProfile roles to a BootMode-like seed name."""
     if profile is None:
         return None
     master = bool(getattr(profile, "master", False))
@@ -198,10 +198,8 @@ def boot_mode_name_for_deployment(profile: Any) -> str | None:
 def seed_structure_options_from_host(host: Any) -> dict[str, Any]:
     """Build runtime.start kwargs for structure seed from ApplicationHost-like shell.
 
-    Priority for definition id: settings.structure_definition_id → boot mode →
-    deployment → composition inference. Membership surfaces always come from
-    the host composition (refuse checks dual surface membership — 0.63.6).
-    Composition capabilities still feed definition inference only.
+    Priority for definition id: settings.structure_definition_id → boot mode → deployment →
+    composition inference. Composition capabilities still feed definition inference only.
     """
     mode = getattr(host, "boot_mode", None)
     mode_name = getattr(mode, "name", None) if mode is not None else None
@@ -228,7 +226,7 @@ def seed_structure_options_from_host(host: Any) -> dict[str, Any]:
     return {
         "structure_definition_id": definition.id,
         "structure_definition": definition,
-        # Surface membership for refuse (0.63.6) — seed only; status under the definition is truth.
+        # Surface membership for refuse — seed only; status under the definition is truth.
         "structure_surfaces": list(surfaces),
     }
 

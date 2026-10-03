@@ -1,4 +1,4 @@
-"""0.43 — inbound as ResourceDefinition.metadata.inbound."""
+"""Inbound as ResourceDefinition.metadata.inbound."""
 
 from __future__ import annotations
 

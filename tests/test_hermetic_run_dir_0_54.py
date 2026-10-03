@@ -1,4 +1,4 @@
-"""Hermetic run directory staging (0.54.8)."""
+"""Hermetic run directory staging."""
 
 from __future__ import annotations
 

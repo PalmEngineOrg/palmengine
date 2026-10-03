@@ -1,4 +1,4 @@
-"""0.60.9 — lean system seats without ApplicationHost (dual-root honesty)."""
+"""Lean system seats without ApplicationHost (dual-root honesty)."""
 
 from __future__ import annotations
 

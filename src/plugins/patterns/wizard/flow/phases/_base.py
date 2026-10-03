@@ -146,7 +146,7 @@ def is_affirmative(value: Any) -> bool:
 
 
 def is_negative(value: Any) -> bool:
-    """Human 'no' / cancel / back on confirm steps (0.32.5)."""
+    """Human 'no' / cancel / back on confirm steps."""
     if value is False:
         return True
     if not isinstance(value, str):

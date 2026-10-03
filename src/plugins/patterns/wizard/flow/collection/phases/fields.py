@@ -130,7 +130,7 @@ class CollectionFieldLeaf(LeafNode):
             field_type=self._field.field_type,
             choices=list(self._field.choices),
             title=self._field.title,
-            # Active field required — not the parent collection step (0.32.9)
+            # Active field required — not the parent collection step
             required=bool(self._field.required),
             step_kind="collection",
             collection_phase="field",

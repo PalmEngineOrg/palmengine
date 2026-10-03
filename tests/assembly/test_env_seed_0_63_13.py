@@ -1,4 +1,4 @@
-"""0.63.13 — env structure seed (SD-021): definition from settings; drain listed on definition."""
+"""Env structure seed: definition from settings; drain listed on definition."""
 
 from __future__ import annotations
 

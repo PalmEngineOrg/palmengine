@@ -35,7 +35,7 @@ class ProviderExecutionService(BaseService):
         self._runtime_resolver = runtime_resolver
         self._definitions = definitions
         self._event_engine = event_engine
-        # 0.63.31 — published admission (product façade; no base class).
+        # Published admission (product façade; no base class).
         self._admission_source = admission_source
 
     def resolve_runtime(self, runtime_name: str | None = None) -> BaseRuntime:
@@ -46,7 +46,7 @@ class ProviderExecutionService(BaseService):
         return self._runtime
 
     def admission_gate(self) -> object:
-        """Published admission source for product provider invoke (0.63.31)."""
+        """Published admission source for product provider invoke."""
         if self._admission_source is not None:
             return self._admission_source
         return self.resolve_runtime()
@@ -64,7 +64,7 @@ class ProviderExecutionService(BaseService):
     ) -> dict[str, Any]:
         """Invoke a resource (product start — admission + ExecutionPort).
 
-        **0.63.31:** product edge fails closed via ``admission_gate()``.
+        Product edge fails closed via ``admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 

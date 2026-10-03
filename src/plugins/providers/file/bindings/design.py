@@ -1,4 +1,4 @@
-"""File document provider design proposal validation (0.28.1+ provider)."""
+"""File document provider design proposal validation."""
 
 from __future__ import annotations
 

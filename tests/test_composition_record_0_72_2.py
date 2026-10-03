@@ -1,6 +1,6 @@
-"""0.72.2 — the host builds CompositionProfile from a saved record.
+"""The host builds CompositionProfile from a saved record.
 
-Preset classmethods are not the path. Package names are 0.72.3.
+Preset classmethods are not the path.
 """
 
 from __future__ import annotations

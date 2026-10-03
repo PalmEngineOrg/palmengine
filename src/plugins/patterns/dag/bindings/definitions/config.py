@@ -1,4 +1,4 @@
-"""DAG pattern configuration — resource nodes with dependencies (0.54.3 v0)."""
+"""DAG pattern configuration — resource nodes with dependencies."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from typing import Any
 
 @dataclass(frozen=True)
 class DagNodeSpec:
-    """One DAG node: resource invoke **or** workload Spec (0.56)."""
+    """One DAG node: resource invoke **or** workload Spec."""
 
     id: str
     resource_ref: str | None = None
@@ -72,8 +72,8 @@ class DagConfig:
     initial_state: dict[str, Any] = field(default_factory=dict)
     #: If True (default), nodes with empty depends_on are chained in list order.
     chain_implicit: bool = True
-    #: If True (default, 0.54.8), run all currently ready nodes in one tick
-    #: (sequential invokes). If False, run only the first ready node per tick.
+    # : If True, run all currently ready nodes in one tick
+    # : (sequential invokes). If False, run only the first ready node per tick.
     drain_ready: bool = True
 
     @classmethod

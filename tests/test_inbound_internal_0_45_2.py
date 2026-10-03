@@ -1,4 +1,4 @@
-"""0.45.2 — same-process inbound (mode=internal)."""
+"""same-process inbound (mode=internal)."""
 
 from __future__ import annotations
 

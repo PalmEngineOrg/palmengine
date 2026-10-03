@@ -1,11 +1,9 @@
-"""System supervisor — continuous system services for one SystemInstance (0.60).
+"""System supervisor — continuous system services for one SystemInstance.
 
 Planes carry reactive traffic. The supervisor owns **lifecycle** for long-running
 loops and worker sets (work drain, outbox poll, inbound workers, …).
 
-Install law lives on continuous **definitions** (CS-006); the supervisor walks them.
-
-See docs/VISION-0.60.md · ADR-029.
+Install law lives on continuous **definitions**; the supervisor walks them.
 """
 
 from __future__ import annotations

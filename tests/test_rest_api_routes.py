@@ -88,7 +88,7 @@ def test_get_session_context_via_command_path(server: ServerRuntime) -> None:
     )
     assert status in {200, 202}
     assert isinstance(created, dict)
-    # Product REST continue path keys by instance (SI-001 residual).
+    # Product REST continue path keys by instance.
     instance_id = created.get("instance_id")
     system_sid = created.get("session_id")
     assert instance_id

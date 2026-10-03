@@ -1,4 +1,4 @@
-"""0.68.13 — unused work_drain journal consumer + host redrive facade composted."""
+"""Unused work_drain journal consumer + host redrive facade composted."""
 
 from __future__ import annotations
 

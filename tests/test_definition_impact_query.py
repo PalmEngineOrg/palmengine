@@ -1,4 +1,4 @@
-"""Tests for definition revision impact analysis (0.24.2)."""
+"""Tests for definition revision impact analysis."""
 
 from __future__ import annotations
 

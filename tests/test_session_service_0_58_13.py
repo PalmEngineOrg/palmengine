@@ -1,4 +1,4 @@
-"""0.58.13 — service / origin sessions for automated and host attribution (SI-011)."""
+"""Service / origin sessions for automated and host attribution."""
 
 from __future__ import annotations
 

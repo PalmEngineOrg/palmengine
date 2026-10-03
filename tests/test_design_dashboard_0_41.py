@@ -1,4 +1,4 @@
-"""0.41.2 — design propose/publish dashboard."""
+"""Design propose/publish dashboard."""
 
 from __future__ import annotations
 

@@ -148,7 +148,7 @@ class WorkloadEngine(BasePalmEngine):
                 f"Runtime {runtime.name!r} does not support isolation={spec.isolation!s}; "
                 f"supports {[str(m) for m in sorted(caps.isolation_modes, key=str)]}"
             )
-        # Hard rule: hermetic must never land on host runtime (VISION §13 / ADR-024)
+        # Hard rule: hermetic must never land on host runtime
         if spec.isolation is IsolationPolicy.HERMETIC and runtime.name == "host":
             raise WorkloadPolicyError("Hermetic isolation cannot select host runtime")
 

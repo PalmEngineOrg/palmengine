@@ -1,4 +1,4 @@
-"""Durable schedule ticks → WorkIntent enqueue (0.41.1).
+"""Durable schedule ticks → WorkIntent enqueue.
 
 Next-fire times live on StorageEngine so restarts do not reset intervals.
 """
@@ -117,7 +117,7 @@ class ScheduleRegistry:
             interval = float(raw.get("interval_seconds") or 60)
             sched_payload = dict(raw.get("payload") or {})
             sched_payload.setdefault("trigger", "schedule")
-            # 0.58.16: schedule intents are service-origin at submit
+            # Schedule intents are service-origin at submit
             # (no parent signal to inherit unless payload already has sess-).
             intent = WorkIntent(
                 kind="run_flow",

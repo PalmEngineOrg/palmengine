@@ -1,4 +1,4 @@
-"""0.71.8 — invert adopt payload handle off dict | base_url dual.
+"""Invert adopt payload handle off dict | base_url dual.
 
 AdoptPlaceSpawn / place→engine boundary takes typed WorkloadHandle only.
 EffectIntent payload may still be a Mapping; dict handle and bare base_url

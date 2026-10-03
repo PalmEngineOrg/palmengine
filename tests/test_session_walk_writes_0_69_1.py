@@ -1,8 +1,8 @@
-"""0.69.1 — walk-write seam: stamp / replace a named session-metadata instance id.
+"""walk-write seam: stamp / replace a named session-metadata instance id.
 
 Floor allow is degenerate: owner session + attached instance.
-Callers pass the key (0.69.8). Attach, focus, and owner check stay
-geometry — they do not stamp. Interface type unnamed (VISION-NAVIGATOR §5).
+Callers pass the key. Attach, focus, and owner check stay
+geometry — they do not stamp. Interface type unnamed.
 """
 
 from __future__ import annotations

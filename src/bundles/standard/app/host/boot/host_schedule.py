@@ -1,5 +1,5 @@
 """
-Host schedule handlers — start law for ApplicationHost (0.59.4 / 0.59.5).
+Host schedule handlers — start law for ApplicationHost.
 
 **Ownership:** host boot owns *when* and *in what order* the composition root
 comes up. Handlers here are the rules. Collaborators (kernel, spawner, CQRS
@@ -64,9 +64,9 @@ def build_host_handlers(
             composition=host.composition,
             **options,
         )
-        # 0.72.5 — kernel bootstrap already installed this composition.
+        # Kernel bootstrap already installed this composition.
         # The system schedule does not install.
-        # 0.63.5 / 0.63.13 — seed structure definition + membership for refuse.
+        # Seed structure definition + membership for refuse.
         # Caller definition override still wins; membership always seeds so dual shapes
         # fail closed under refuse (env/composition cannot hide from admission).
         if not merged.get("structure_skip"):
@@ -95,7 +95,7 @@ def build_host_handlers(
 
     def product_wire(_ctx: BootContext) -> None:
         host._wire_cqrs()
-        # Membership truth narrative (0.59.5) — what services the schedule built.
+        # Membership truth narrative — what services the schedule built.
         built = [
             name for name in host.composition.services if getattr(host, name, None) is not None
         ]

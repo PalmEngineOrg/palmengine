@@ -1,8 +1,8 @@
 """
 Design Service demo — propose, validate, impact, commit with auto-migrate.
 
-Demonstrates the Design Service (0.25) revision loop and post-commit instance
-migration on top of definition revisioning (0.24).
+Demonstrates the Design Service revision loop and post-commit instance
+migration on top of definition revisioning.
 
 **Script (library / CI):**
 

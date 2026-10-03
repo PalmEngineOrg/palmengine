@@ -1,4 +1,4 @@
-"""Compat re-export — wait rehydrate lives in ``palm.core.wait`` (0.71.19)."""
+"""Compat re-export — wait rehydrate lives in ``palm.core.wait``."""
 
 from __future__ import annotations
 

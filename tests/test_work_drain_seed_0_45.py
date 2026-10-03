@@ -1,4 +1,4 @@
-"""0.45.1 — work drain seeds pipeline state from inbound."""
+"""Work drain seeds pipeline state from inbound."""
 
 from __future__ import annotations
 

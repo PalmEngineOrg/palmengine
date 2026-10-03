@@ -1,4 +1,4 @@
-"""0.38 — EventJournal append, offsets, compact, redrive."""
+"""EventJournal append, offsets, compact, redrive."""
 
 from __future__ import annotations
 

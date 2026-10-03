@@ -26,7 +26,7 @@ def apply_view_transform(
             return []
         return [r for r in value if isinstance(r, dict)]
 
-    # 0.40.4 — lightweight pure ops (no new engine types)
+    # Lightweight pure ops (no new engine types)
     if op in {"filter_eq", "where_eq"}:
         field = transform.get("field")
         if not field:

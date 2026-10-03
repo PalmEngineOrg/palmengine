@@ -8,8 +8,8 @@ Patterns demonstrated:
 
 - Hub-and-spoke topic menu with loop-back (``"more": "topic"``)
 - ``string_format`` + ``lookup`` + ``conditional`` transform steps
-- ``step_kind: branch`` — skip reputation when ``is_returning`` (ADR-012)
-- Cross-session KV persistence keyed by ``player_name`` (``kv`` provider, 0.28.2)
+- ``step_kind: branch`` — skip reputation when ``is_returning``
+- Cross-session KV persistence keyed by ``player_name``
 
 Try::
 

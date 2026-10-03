@@ -1,5 +1,5 @@
 """
-Host boot — modes + host schedule handlers (0.59.4).
+Host boot — modes + host schedule handlers.
 
 System phase protocol + walker live in ``palm.system.boot``.
 Host *start law* (handlers, modes) lives here. ApplicationHost is the shell.

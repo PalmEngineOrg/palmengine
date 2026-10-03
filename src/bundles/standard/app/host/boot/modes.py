@@ -1,12 +1,10 @@
 """
-Boot modes — presets over composition + deployment + schedule strictness (0.59.2+).
+Boot modes — presets over composition + deployment + schedule strictness.
 
 Modes are not a fourth composition root. They select axes and system-log defaults.
 Dogfood entry:
-- 0.59.6 — ``ApplicationHost.for_mode("safe"|"test")`` CI isolation green bar
-- 0.59.7 — ``dev`` / ``prod`` + shape presets (cli/mcp/worker/server/all_in_one)
-
-See docs/VISION-0.59.md §6.3 and ADR-028 D3.
+- ``ApplicationHost.for_mode("safe"|"test")`` CI isolation green bar
+- ``dev`` / ``prod`` + shape presets (cli/mcp/worker/server/all_in_one)
 """
 
 from __future__ import annotations

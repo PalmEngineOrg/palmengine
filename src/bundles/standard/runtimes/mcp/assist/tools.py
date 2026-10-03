@@ -14,7 +14,7 @@ from bundles.standard.runtimes.mcp.assist.dispatch import (
 from bundles.standard.runtimes.mcp.descriptions import tool_description
 from bundles.standard.runtimes.mcp.rest_client import PalmRestError
 
-# L0 (0.31.3) — keep always-on description short; deep docs → palm://agent/card
+# L0 — keep always-on description short; deep docs → palm://agent/card
 _PALM_ASSIST_DESC = tool_description(
     "palm_assist",
     "Primary Palm meta-tool: operator-entry, run flows, publish designs, doctor/catalog.",
@@ -67,7 +67,7 @@ def register_assist_tools(mcp: Any, backend: Any) -> None:
             if resolved[0] == "assist" and "format" not in dispatch_params:
                 dispatch_params["format"] = view_format
             result = backend.assist_dispatch(resolved, params=dispatch_params)
-            # 0.30.6 — after create, re-inspect first turn so agents get question/choices
+            # After create, re-inspect first turn so agents get question/choices
             if (
                 view_format == "assistant"
                 and len(resolved) >= 2

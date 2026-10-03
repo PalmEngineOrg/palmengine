@@ -1,4 +1,4 @@
-"""Native WebSocket client for Palm ``/ws/v1/events`` (0.42.3).
+"""Native WebSocket client for Palm ``/ws/v1/events``.
 
 Stdlib only (RFC6455). Complements :class:`PalmEventsClient` (HTTP journal poll).
 """

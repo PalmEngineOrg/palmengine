@@ -12,7 +12,7 @@ The ``palm`` package is organized in layers:
 - ``palm.definitions`` — flow and process definition models
 - ``palm.runtimes`` — CLI, embedded, server, and daemon surfaces
 
-Public API version: ``palm.__version__`` (currently 0.68.0).
+Public API version: ``palm.__version__``.
 
 PyPI distribution name: ``palmengine`` (``pip install palmengine``).
 """

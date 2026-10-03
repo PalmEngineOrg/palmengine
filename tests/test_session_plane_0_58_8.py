@@ -1,4 +1,4 @@
-"""0.58.8 — Session watches / fan-in + continue resolve from attach list."""
+"""Session watches / fan-in + continue resolve from attach list."""
 
 from __future__ import annotations
 
@@ -58,7 +58,7 @@ def test_resolve_continue_prefers_waiting_then_last() -> None:
     sid = plane.bind().session_id
     plane.attach_instance(sid, "inst-1")
     plane.attach_instance(sid, "inst-2")
-    # 0.58.10: new attach sets active → resolve returns active (inst-2)
+    # New attach sets active → resolve returns active (inst-2)
     assert plane.resolve_continue_instance(sid) == "inst-2"
     plane.clear_active_instance(sid)
     # No active + no runtime waits → last attached

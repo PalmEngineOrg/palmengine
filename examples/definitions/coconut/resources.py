@@ -1,5 +1,5 @@
 """
-Coconut NPC resource definitions — local KV persistence (0.28+).
+Coconut NPC resource definitions — local KV persistence.
 
 Cross-session player profiles keyed by ``player_name``. Wired into
 ``coconut-npc`` flow; definitions register here for design/invoke.

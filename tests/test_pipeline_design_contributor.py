@@ -1,4 +1,4 @@
-"""Tests for pipeline pattern design proposal contributor (0.25.5)."""
+"""Tests for pipeline pattern design proposal contributor."""
 
 from __future__ import annotations
 

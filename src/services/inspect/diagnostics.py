@@ -1,13 +1,13 @@
 """Inspect anatomy packaging for the legacy doctor verb.
 
-0.61.6 / OD-001: this module builds **anatomy packaging** only (storage,
+This module builds **anatomy packaging** only (storage,
 registries, job counts, host control_plane residual). It does **not**
 invent living seat law. Living eyes live in ``palm.system.vitality`` and
 are presented via ``InspectService.top`` / ``.vitality``. Prefer those
 paths; call this only as residual packaging consumed by
 :meth:`InspectService.doctor` / CLI health dumps.
 
-0.71.21: home is inspect (not ``palm.kits.server``) so ApplicationHost does
+Home is inspect (not ``palm.kits.server``) so ApplicationHost does
 not pull the server kit for doctor anatomy.
 """
 
@@ -21,7 +21,7 @@ from palm.core.transform.registry import transform_registry
 from palm.system.subsystems.planes.wait.plane import WaitPlaneService
 from palm.system.subsystems.planes.wait.present import waiting_on_from_job
 
-# OD-001 residual marker — not living seat law.
+# Residual marker — not living seat law.
 _ANATOMY_ROLE = "anatomy_packaging"
 _ANATOMY_NOTE = (
     "Anatomy packaging residual (OD-001). Living eyes: InspectService.top / "
@@ -113,7 +113,7 @@ def build_doctor_report(
 
     cp = control_plane if isinstance(control_plane, dict) else {}
     if not cp:
-        # ServerRuntime.host is bind address; prefer host packaging residual (CS-002).
+        # ServerRuntime.host is bind address; prefer host packaging residual.
         for attr in ("application_host", "host_bridge", "_host_bridge", "host"):
             host = getattr(runtime, attr, None)
             if host is None:
@@ -174,7 +174,6 @@ def build_doctor_report(
         "resource_count": resource_count,
         "resource_preflight": resource_preflight,
         "workloads": workloads,
-        # control_plane from host is CS-002 residual — packaging, not living law.
         "control_plane": cp
         or {
             "work_pending": 0,

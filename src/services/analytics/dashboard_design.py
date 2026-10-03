@@ -1,4 +1,4 @@
-"""Validate and build dashboard definitions for design commit (0.41.2)."""
+"""Validate and build dashboard definitions for design commit."""
 
 from __future__ import annotations
 

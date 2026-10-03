@@ -37,8 +37,8 @@ class AssistSession:
         operator_mode = metadata.get("operator_mode")
         if operator_mode:
             view["operator_mode"] = operator_mode
-        # 0.58.9 vocabulary: view.session_id = system subject; instance_id = continue.
-        # Product handle self.session_id is still the instance id (SI-001 internal).
+        # Vocabulary: view.session_id = system subject; instance_id = continue.
+        # Product handle self.session_id is still the instance id.
         view["instance_id"] = self.session_id
         system_sid = metadata.get("session_id")
         if (
@@ -74,7 +74,7 @@ class AssistSession:
     ) -> AssistSessionContext:
         """Deliver interactive input (product continue).
 
-        **0.63.29:** requires admission via published ``admission_gate()``
+        Requires admission via published ``admission_gate()``
         (published admission — same law as start / provide_input).
         """
         from palm.common.operator.flows_session_input import flatten_session_read_model
@@ -97,7 +97,7 @@ class AssistSession:
     def backtrack(self, to_step: str | None = None, *, view_format: str = "assistant") -> AssistSessionContext:
         """Backtrack an interactive flow (product continue).
 
-        **0.63.29:** requires admission via published ``admission_gate()``.
+        Requires admission via published ``admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 
@@ -108,7 +108,7 @@ class AssistSession:
     def resume(self) -> AssistSession:
         """Re-drive a waiting interactive session (product continue).
 
-        **0.63.29:** requires admission via published ``admission_gate()``.
+        Requires admission via published ``admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 
@@ -117,11 +117,7 @@ class AssistSession:
         return self
 
     def cancel(self) -> dict[str, Any]:
-        """Cancel the backing job — control path (not a business path that needs admission).
-
-        Stays available when admission is closed so operators can stop work
-        (named residual under SD-020, same spirit as stop_workload).
-        """
+        """Cancel the backing job — control path (not a business path that needs admission)."""
         return self._flow_session().cancel()
 
     def _flow_session(self) -> Any:

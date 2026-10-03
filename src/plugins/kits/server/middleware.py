@@ -1,10 +1,10 @@
 """
 HTTP-layer middleware for server surfaces.
 
-Includes cookie-like **system session** transport (0.58.7): header or cookie
+Includes cookie-like **system session** transport: header or cookie
 carry the system ``session_id``; the session plane owns truth.
 
-**0.58.17 — single kit door:** product surfaces resolve
+**Single kit door:** product surfaces resolve
 :func:`resolve_session_service` only. Do **not** call
 :func:`resolve_session_plane` for product verbs (bind, gate, inspect,
 continue resolve, event filter). The plane remains system law behind
@@ -22,7 +22,7 @@ if TYPE_CHECKING:
     from palm.system.runtime.base import BaseRuntime
 
 PALM_SUBJECT_HEADER = "X-Palm-Subject"
-# Cookie-like bind transport for system session (0.58.7) — not product instance id.
+# Cookie-like bind transport for system session — not product instance id.
 PALM_SESSION_HEADER = "X-Palm-Session"
 PALM_SESSION_COOKIE = "palm_session"
 
@@ -99,7 +99,7 @@ def set_cookie_header_value(
 
 
 def resolve_session_service(ctx: Any) -> Any | None:
-    """Product :class:`~services.session.SessionService` — **single kit door** (0.58.17).
+    """Product :class:`~services.session.SessionService` — **single kit door**.
 
     Surfaces (CLI / MCP / WS / REST) use this for all product session verbs:
 
@@ -144,7 +144,7 @@ def resolve_session_plane(ctx: Any) -> Any | None:
     """Find :class:`~palm.system.subsystems.planes.session.SessionPlaneService` on host or runtime.
 
     **System / tests only.** Product surfaces must use
-    :func:`resolve_session_service` (0.58.17). Prefer ``svc.plane()`` when
+    :func:`resolve_session_service`. Prefer ``svc.plane()`` when
     you already hold the product door.
     """
     if ctx is None:

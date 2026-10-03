@@ -112,7 +112,7 @@ def _build_handler(app: TransportApp) -> type[BaseHTTPRequestHandler]:
             self._dispatch("DELETE")
 
         def _try_websocket_upgrade(self) -> bool:
-            """0.32.1 — handle WebSocket upgrade for Assist channel.
+            """Handle WebSocket upgrade for Assist channel.
 
             Proxies (Cloudflare Tunnel / cloudflared) may:
 

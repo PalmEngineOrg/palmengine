@@ -1,4 +1,4 @@
-"""Palm provider event consumer — journal poll over HTTP (0.42).
+"""Palm provider event consumer — journal poll over HTTP.
 
 WS live subscribe is at ``/ws/v1/events``. This client uses the **HTTP journal**
 for catch-up and composition waits (works with any HTTP stack).

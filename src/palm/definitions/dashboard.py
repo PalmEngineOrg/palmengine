@@ -1,5 +1,5 @@
 """
-Dashboard definition — layout of analytics tiles (0.39).
+Dashboard definition — layout of analytics tiles.
 
 Pure contract data. No query logic; AnalyticsService renders tiles via query().
 """

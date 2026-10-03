@@ -1,7 +1,7 @@
 """
 ServerContext — surface-facing single-runtime view + lean composition root.
 
-Retained as a type (ADR-019 / scout 0.51.6): surfaces need ``ctx.runtime`` as a
+Retained as a type: surfaces need ``ctx.runtime`` as a
 property; ApplicationHost keeps multi-runtime ``runtime(name)``. Product services
 build through the same ``core_service_registry`` + shared packaging helper.
 """
@@ -45,8 +45,8 @@ class _RuntimeKernelView:
     ``HostServiceContext.app``; a host-less ``ServerContext`` has only its single
     runtime. This thin view presents the two members the providers touch —
     ``repository()`` and ``storage`` — so both composition roots can construct
-    services through the same ``core_service_registry()`` (0.50.5e). It is the
-    bridge the runtime↔kernel seam (0.50.5c) pointed toward.
+    services through the same ``core_service_registry()``. It is the
+    bridge the runtime↔kernel seam pointed toward.
     """
 
     __slots__ = ("_runtime",)
@@ -83,7 +83,7 @@ class ServerContext:
     :class:`~palm.app.host.application_host.ApplicationHost` (BI-003 packaging
     residual). What stays distinct is *dispatch phenotype*: an attached host
     routes through projection-ful buses; host-less, local buses serve reads live
-    from the runtime. The type is **retained** (ADR-019 · scout 0.51.6) — dual
+    from the runtime. The type is **retained** — dual
     *types* for host vs surface view; one *structure law* for product services.
     """
 
@@ -197,7 +197,7 @@ class ServerContext:
 
         An attached host contributes its ``CompositionProfile``; standalone, the
         server context *is* the server shape. Both roots speak the same
-        ``composition`` language (0.50.5+); the type stays as the surface view.
+        ``composition`` language; the type stays as the surface view.
         """
         return (
             self._host.composition
@@ -227,19 +227,19 @@ class ServerContext:
 
     @property
     def inspect(self) -> InspectService:
-        """Product inspect door (0.61.4 / SD-007)."""
+        """Product inspect door."""
         if self._host is not None:
             return self._host.inspect
         return self._inspect
 
     @property
     def system(self) -> InspectService:
-        """Deprecated alias for :attr:`inspect` (SD-007 migration)."""
+        """Deprecated alias for :attr:`inspect`."""
         return self.inspect
 
     @property
     def session(self) -> SessionService | None:
-        """Product session door (0.58.12) when composed."""
+        """Product session door when composed."""
         if self._host is not None:
             return self._host.session
         return getattr(self, "_session", None)

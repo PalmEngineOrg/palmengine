@@ -1,4 +1,4 @@
-"""0.58.14 — BoundSurface + session context metadata (session owns surface context)."""
+"""BoundSurface + session context metadata (session owns surface context)."""
 
 from __future__ import annotations
 

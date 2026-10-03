@@ -1,17 +1,16 @@
-"""SessionPlaneService — system **session** plane (0.58).
+"""SessionPlaneService — system **session** plane.
 
 Outside subject on :class:`SessionStore` (:class:`~palm.core.storage.StorageEngine`).
 
 * Lifecycle: open / get / close / list
-* Multi-attach (0.58.2): attach/detach instances; reverse index
-* **Bind law (0.58.3):** surfaces call :meth:`bind` / :meth:`require_open`
+* Multi-attach: attach/detach instances; reverse index
+* **Bind law:** surfaces call :meth:`bind` / :meth:`require_open`
   before driving work — no silent instance-only subject
 * **Ownership:** one instance → one owner session (exclusive attach)
-* **Active instance (0.58.10):** continue **focus** on the record — only among
+* **Active instance:** continue **focus** on the record — only among
   attached ids. Not a pass to drive foreign instances.
 
 Does **not** resume jobs. Continue remains the wait plane.
-Law detail: docs/VISION-0.58.md §4.1 · ADR-027 D9–D11.
 """
 
 from __future__ import annotations
@@ -47,7 +46,7 @@ class InstanceAlreadyAttachedError(SessionPlaneError):
 
 
 class InstanceNotOwnedError(SessionPlaneError):
-    """Bound session does not own the instance (SI-015 owner gate).
+    """Bound session does not own the instance.
 
     Raised when a surface carries a system ``session_id`` and tries to
     continue/drive an ``instance_id`` that is not on that session's attach
@@ -56,7 +55,7 @@ class InstanceNotOwnedError(SessionPlaneError):
 
 
 class SessionAttributionError(SessionPlaneError):
-    """Continue or start lacks required system session attribution (0.58.15).
+    """Continue or start lacks required system session attribution.
 
     Raised under **strict attribution** when the session plane is ready and:
 
@@ -76,12 +75,11 @@ class SessionPlaneService:
     * :meth:`attach` / :meth:`detach` — optional inspect collaborators
       (instance manager, job resolve, wait plane). Not a full runtime bag.
     * :meth:`open` / :meth:`get` / :meth:`close` / :meth:`list_sessions`
-    * :meth:`attach_instance` / :meth:`detach_instance` — multi-attach (0.58.2)
-    * :meth:`set_active_instance` / :attr:`SessionRecord.active_instance_id` (0.58.10)
+    * :meth:`attach_instance` / :meth:`detach_instance` — multi-attach
+    * :meth:`set_active_instance` / :attr:`SessionRecord.active_instance_id`
     * :meth:`session_for_instance` — reverse lookup
-    * :meth:`owns_instance` / :meth:`require_owned_instance` — SI-015 gate (0.58.11)
-    * :meth:`require_continue_attribution` — strict attribution (0.58.15)
-    * :meth:`bind` / :meth:`require_open` — surface entry law (0.58.3)
+    * :meth:`require_continue_attribution` — strict attribution
+    * :meth:`bind` / :meth:`require_open` — surface entry law
     * :meth:`resolve_continue_instance` — active → waiting → last attached
     """
 
@@ -214,7 +212,7 @@ class SessionPlaneService:
         *,
         metadata: dict[str, Any] | None = None,
     ) -> SessionRecord:
-        """Open or return a stable **service** session for *origin* (0.58.13).
+        """Open or return a stable **service** session for *origin*.
 
         Service sessions attribute **automated / internal** start (work drain,
         host housekeeping). They are not outside subjects. Id is deterministic
@@ -268,7 +266,7 @@ class SessionPlaneService:
     def get(self, session_id: str) -> SessionRecord | None:
         return self._store.get(session_id)
 
-    # ── session context metadata (0.58.14) ─────────────────────────────────
+    # ── session context metadata ─────────────────────────────────
     # Walk / surface / attribution facts live here — not on job metadata.
     # Product door: SessionService.get_metadata / merge_metadata.
 
@@ -320,7 +318,7 @@ class SessionPlaneService:
     def stamp(
         self, session_id: str, key: str, instance_id: str
     ) -> SessionRecord:
-        """Stamp a named instance-id key if absent (0.69.1 / 0.69.8 walk write).
+        """Stamp a named instance-id key if absent.
 
         Degenerate allow: the session must own *instance_id* (attached).
         Does not change continue focus. Attach does not stamp.
@@ -384,7 +382,7 @@ class SessionPlaneService:
         Refuses if another session already owns the instance.
         Promotes OPEN → ACTIVE on first attach.
 
-        **Active focus (0.58.10):** a newly attached instance becomes
+        **Active focus:** a newly attached instance becomes
         ``active_instance_id`` (new work under the session is the continue
         focus). Re-attach of an already listed id leaves focus alone.
         """
@@ -428,7 +426,7 @@ class SessionPlaneService:
         Closed sessions may still detach (cleanup). Does not reopen closed.
 
         If the detached id was active, focus moves to the last remaining
-        attached instance, or ``None`` when the list is empty (0.58.10).
+        attached instance, or ``None`` when the list is empty.
         """
         iid = (instance_id or "").strip()
         if not iid:
@@ -452,7 +450,7 @@ class SessionPlaneService:
         return self._store.put(rec)
 
     def set_active_instance(self, session_id: str, instance_id: str) -> SessionRecord:
-        """Set the plane continue focus to an **already attached** instance (0.58.10).
+        """Set the plane continue focus to an **already attached** instance.
 
         Does not attach. Does not resume. Closed sessions refuse.
         """
@@ -472,7 +470,7 @@ class SessionPlaneService:
         return self._store.put(rec)
 
     def clear_active_instance(self, session_id: str) -> SessionRecord:
-        """Clear continue focus without detaching instances (0.58.10)."""
+        """Clear continue focus without detaching instances."""
         rec = self.require_open(session_id)
         if rec.active_instance_id is None:
             return rec
@@ -499,7 +497,7 @@ class SessionPlaneService:
         return self._store.get_by_instance(instance_id)
 
     def owns_instance(self, session_id: str, instance_id: str) -> bool:
-        """True when the session's attach list includes the instance (0.58.11).
+        """True when the session's attach list includes the instance.
 
         Closed sessions may still "own" history for inspect; continue uses
         :meth:`require_owned_instance` which requires a non-closed session.
@@ -519,7 +517,7 @@ class SessionPlaneService:
     def require_owned_instance(
         self, session_id: str, instance_id: str
     ) -> SessionRecord:
-        """Owner gate for continue when a system session is bound (SI-015 / 0.58.11).
+        """Owner gate for continue when a system session is bound.
 
         * Session must exist and not be closed.
         * ``instance_id`` must be on that session's attach list.
@@ -558,7 +556,7 @@ class SessionPlaneService:
         *,
         strict: bool = True,
     ) -> str | None:
-        """Resolve the system session that may continue *instance_id* (0.58.15).
+        """Resolve the system session that may continue *instance_id*.
 
         **Strict (default):** every continue is attributed.
 
@@ -571,7 +569,7 @@ class SessionPlaneService:
           (:meth:`resolve_continue_instance`); this method only attributes.
 
         **Compat (``strict=False``):** only gate when ``session_id`` is present
-        (0.58.11 SI-015 behavior). Missing session → return ``None`` (legacy
+. Missing session → return ``None`` (legacy
         bare-instance path).
 
         Returns the bound system session id, or ``None`` only when not strict
@@ -603,7 +601,7 @@ class SessionPlaneService:
         return owner.session_id
 
     def resolve_continue_instance(self, session_id: str) -> str | None:
-        """Pick an instance under the session for continue (0.58.8 + 0.58.10).
+        """Pick an instance under the session for continue.
 
         Order (plane truth first):
 
@@ -636,7 +634,7 @@ class SessionPlaneService:
         payload: dict[str, Any] | None = None,
         context: Any = None,
     ) -> str | None:
-        """Best-effort system session id for an event (0.58.8 watches).
+        """Best-effort system session id for an event.
 
         Order: EventContext.session_id → payload system keys → payload
         session_id when system-shaped → reverse index on instance_id.
@@ -656,7 +654,7 @@ class SessionPlaneService:
             if isinstance(ctx, dict) and ctx.get("session_id"):
                 return str(ctx["session_id"]).strip() or None
 
-        # 0.58.9: payload session_id is system subject when system-shaped;
+        # Payload session_id is system subject when system-shaped;
         # instance-shaped → reverse index (legacy product payloads).
         raw_sid = pay.get("session_id")
         if raw_sid is not None and str(raw_sid).strip():
@@ -732,7 +730,7 @@ class SessionPlaneService:
         return _filter
 
     def inspect(self, session_id: str) -> dict[str, Any]:
-        """Journey view for a session: instances + open waits (0.58.5).
+        """Journey view for a session: instances + open waits.
 
         **Inspect only.** Does not resume, input, or cancel jobs. Continue
         remains the wait plane.
@@ -937,7 +935,7 @@ def bind_session_plane(
     Install session on the *planes* subsystem using *install* interface.
 
     Seat-first DI — no system instance bag. Always ensures the well-known
-    **host** service session when *ensure_host* is true (0.58.13).
+    **host** service session when *ensure_host* is true.
     """
     return planes.install_session(
         install,

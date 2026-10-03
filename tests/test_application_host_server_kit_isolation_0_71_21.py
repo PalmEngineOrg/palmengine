@@ -1,4 +1,4 @@
-"""0.71.21 — ApplicationHost path must not load plugins.kits.server."""
+"""ApplicationHost path must not load plugins.kits.server."""
 
 from __future__ import annotations
 

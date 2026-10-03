@@ -1,9 +1,9 @@
-"""0.71.11 — invert StructureEngine place observations off a second body book.
+"""Invert StructureEngine place observations off a second body book.
 
 Assemble readiness reads the place registry via a typed ready hand.
 PLACE_READY does not accumulate a second places set when that hand is bound.
 Bound bare / os: assemble acks live on the registry local register; places
-stays book projection only (0.71.9).
+stays book projection only.
 """
 
 from __future__ import annotations
@@ -97,7 +97,7 @@ def test_engine_with_ready_hand_does_not_fold_place_ready_into_local_set() -> No
 
 
 def test_engine_without_hand_does_not_admit_from_place_ready_alone() -> None:
-    """0.71.15: unbound hand — no second observation set; fail closed."""
+    """Unbound hand — no second observation set; fail closed."""
     eng = StructureEngine()
     eng.initialize()
     dna = StructureDefinition(

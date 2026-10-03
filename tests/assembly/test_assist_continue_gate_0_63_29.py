@@ -1,4 +1,4 @@
-"""0.63.29 — assist product continue doors are business paths that need admission; cancel named residual."""
+"""Assist product continue doors are business paths that need admission; cancel named residual."""
 
 from __future__ import annotations
 
@@ -63,7 +63,7 @@ def test_assist_session_backtrack_refused_on_oath() -> None:
 
 
 def test_assist_session_cancel_not_admission_citizen() -> None:
-    """Cancel stays control path when admission is closed (named residual)."""
+    """Cancel stays control path when admission is closed."""
     assist = _closed_assist()
     flow = MagicMock()
     flow.cancel.return_value = {"cancelled": True}

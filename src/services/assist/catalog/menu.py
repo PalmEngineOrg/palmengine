@@ -1,4 +1,4 @@
-"""Assist menu protocol — browse / search / page (0.34).
+"""Assist menu protocol — browse / search / page.
 
 Returns a structured menu page consumed by chat (choices + input.widget=menu)
 and tool profiles (items + cursors).

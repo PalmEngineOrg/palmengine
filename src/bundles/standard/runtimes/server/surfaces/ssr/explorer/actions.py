@@ -130,7 +130,7 @@ class ExplorerActions:
                     f"Instance {instance_id!r} is not waiting for input "
                     f"(status={job.status.value})"
                 )
-            # 0.63.34 — host packaging door or admission + port
+            # Host packaging door or admission + port
             host = self._ctx.host
             if host is not None:
                 host.resume_job(job.id)
@@ -168,7 +168,7 @@ class ExplorerActions:
                 error="Wizard not found",
             )
         except (TypeError, ValueError, RuntimeError) as exc:
-            # 0.63.37: AdmissionRefusedError is RuntimeError — honest voice, not 500
+            # AdmissionRefusedError is RuntimeError — honest voice, not 500
             return self._wizard_action_response(
                 request,
                 instance_id,

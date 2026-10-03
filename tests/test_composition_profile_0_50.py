@@ -1,10 +1,8 @@
-"""CompositionProfile skeleton (0.50.1).
+"""CompositionProfile skeleton.
 
-Pins the profile against what ApplicationHost builds *today* so a preset can't
-silently drift from reality — especially ``all_in_one.services`` vs the actual
-``CORE_SERVICE_PROVIDERS``. The profile is declared here but not yet wired
-(0.50.2+ makes the host assemble from it); these tests are the safety net for
-that transition. See VISION-0.50 / ADR-019.
+Pins the profile against what ApplicationHost builds *today* so a preset can't silently drift from
+reality — especially ``all_in_one.services`` vs the actual ``CORE_SERVICE_PROVIDERS``. The profile
+is declared here but not yet wired ; these tests are the safety net for that transition.
 """
 
 from __future__ import annotations
@@ -39,8 +37,8 @@ def test_all_in_one_services_match_what_host_builds_today() -> None:
 
 
 def test_default_resolver_matches_all_in_one_services_and_surfaces() -> None:
-    """0.51.1: the resolver now *derives* capabilities from settings, but services and
-    surfaces still match all_in_one (their behaviour was settled in 0.50 — preserved).
+    """The resolver now *derives* capabilities from settings, but services and
+    surfaces still match all_in_one (their behaviour was settled — preserved).
     Capability derivation itself is pinned in test_living_capabilities_0_51.py."""
     profile = composition_profile_from_settings(PalmSettings.for_tests(load_examples=False))
     assert profile.services == composition_profile_from_name("all_in_one").services
@@ -49,7 +47,7 @@ def test_default_resolver_matches_all_in_one_services_and_surfaces() -> None:
 
 def test_presets_declare_the_shapes_palm_ships() -> None:
     # all_in_one has every surface available (the server deployment mounts them).
-    # webhook membership is DNA (0.67.13), not a composition preset.
+    # webhook membership is DNA, not a composition preset.
     assert composition_profile_from_name("server").surfaces == SERVER_SURFACES
     assert composition_profile_from_name("all_in_one").surfaces == SERVER_SURFACES
     assert not composition_profile_from_name("server").has("webhook")
@@ -86,7 +84,7 @@ def test_helpers() -> None:
     assert not server.has("analytics")
 
 
-# ── 0.50.2: the host reads its composition ───────────────────────────────────
+# ── The host reads its composition ───────────────────────────────────
 
 
 def test_host_default_composition_builds_all_services() -> None:
@@ -105,7 +103,6 @@ def test_host_default_composition_builds_all_services() -> None:
             "analytics",
         ):
             assert getattr(host, name) is not None
-        # SD-007 migration alias
         assert host.system is host.inspect
     finally:
         host.shutdown()
@@ -132,7 +129,7 @@ def test_host_embedded_composition_builds_core_only() -> None:
         assert host.execution is not None
         assert host.assist is None
         assert host.design is None
-        # 0.67.17: host.analytics is the install organ. Embedded composition
+        # host.analytics is the install organ. Embedded composition
         # infers cli DNA, which lists analytics; product service is still omitted.
         from services.analytics import AnalyticsService
 
@@ -143,7 +140,7 @@ def test_host_embedded_composition_builds_core_only() -> None:
         host.shutdown()
 
 
-# ── 0.50.3: surfaces driven by the profile ───────────────────────────────────
+# ── Surfaces driven by the profile ───────────────────────────────────
 
 
 def test_default_surfaces_respects_composition_filter() -> None:
@@ -165,7 +162,7 @@ def test_default_surfaces_respects_composition_filter() -> None:
     )
 
 
-# ── host query flats (grouping objects composted 0.68.15) ────────────────────
+# ── host query flats ────────────────────
 
 
 def test_host_query_flats_list_without_grouping_objects() -> None:

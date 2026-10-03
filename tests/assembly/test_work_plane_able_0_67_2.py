@@ -1,4 +1,4 @@
-"""0.67.2 — work-plane able is drain membership; wait stays ready-only."""
+"""work-plane able is drain membership; wait stays ready-only."""
 
 from __future__ import annotations
 

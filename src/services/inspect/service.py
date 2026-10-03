@@ -1,14 +1,14 @@
 """Inspect service — operational present/debug API (product door).
 
-0.61.4 / SD-007: renamed from product ``SystemService`` so English no longer
+Renamed from product ``SystemService`` so English no longer
 collides with the system layer or the supervisor continuous-loop protocol.
 
-0.61.5: ``top`` / ``vitality`` present **only** from system vitality projection.
+``top`` / ``vitality`` present **only** from system vitality projection.
 
-0.61.6 / OD-001: ``doctor`` is demoted to **anatomy packaging** — nests living
+``doctor`` is demoted to **anatomy packaging** — nests living
 eyes from projection; does not invent seat law.
 
-0.61.11: ``benchmark`` presents the vitality tool (opt-in thrash via
+``benchmark`` presents the vitality tool (opt-in thrash via
 ``run_benchmark``); not enabled on everyday ``top`` / ``project``.
 """
 
@@ -59,7 +59,7 @@ def _application_host_from(runtime: Any) -> Any | None:
 
 
 def _host_packaging(host: Any) -> dict[str, Any] | None:
-    """Residual host packaging bag (CS-002) — not living seat law."""
+    """Residual host packaging bag — not living seat law."""
     if host is None:
         return None
     try:
@@ -81,7 +81,7 @@ class InspectService(BaseService):
     :meth:`benchmark` presents the opt-in load tool (recipe → snapshot diff).
     Not part of everyday ``top``; thrash only when called.
 
-    :meth:`doctor` is a **legacy verb** (OD-001): anatomy packaging that nests
+    :meth:`doctor` is a **legacy verb**: anatomy packaging that nests
     projection output. Prefer ``top`` / ``vitality`` for operate physiology.
 
     Supervisor continuous loops keep the unrelated protocol name
@@ -130,10 +130,10 @@ class InspectService(BaseService):
     def doctor(self, runtime: Any) -> dict[str, Any]:
         """Legacy anatomy packaging — nests vitality; does not invent seat law.
 
-        Prefer :meth:`top` / :meth:`vitality` for living eyes (OD-001 demotion).
+        Prefer :meth:`top` / :meth:`vitality` for living eyes.
         """
         host = _application_host_from(runtime)
-        # CS-002: packaging residual only — living eyes nest from projection below.
+        # Packaging residual only — living eyes nest from projection below.
         control_plane = _host_packaging(host)
         anatomy = build_doctor_report(runtime, control_plane=control_plane)
         try:

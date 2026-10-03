@@ -1,4 +1,4 @@
-"""0.70.6 — adapter commit lands a ResourceDefinition; pack leaf is the door.
+"""Adapter commit lands a ResourceDefinition; pack leaf is the door.
 
 Library land/commit of a resource is the same adapter. A pack run submits a
 ResourceDefinition mapping; authoring-commit walks bound().commit. Pytest is

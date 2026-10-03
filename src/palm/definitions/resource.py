@@ -1,9 +1,8 @@
 """
 Resource definition — declarative description of an external capability invocation.
 
-Resources reference registered providers and bind parameters for later resolution
-by :class:`~palm.core.resource.ResourceEngine`. Phase 1 catalogs definitions;
-Phase 2 adds ``invoke()`` with param binding and provider ``ProviderResult``.
+Resources reference registered providers and bind parameters for later resolution by
+:class:`~palm.core.resource.ResourceEngine`.
 """
 
 from __future__ import annotations

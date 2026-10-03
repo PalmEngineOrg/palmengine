@@ -1,4 +1,4 @@
-"""0.71.6 — invert host_bind off getattr/isinstance duck nests.
+"""Invert host_bind off getattr/isinstance duck nests.
 
 host_bind takes a typed workload-bearing shell, StructureEffectPort /
 PlaceEffectPort, and RegisteredPlaceSpawn workload_bind. It does not

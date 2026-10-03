@@ -32,7 +32,7 @@ _WIZARD_BODY_STRIP = frozenset(
 
 
 def want_input_schema(params: dict[str, Any] | None) -> bool:
-    """True when Portal/WS asks for structured ``input`` widgets (0.32.6)."""
+    """True when Portal/WS asks for structured ``input`` widgets."""
     if not params:
         return False
     raw = params.get("include_input_schema")

@@ -1,4 +1,4 @@
-"""0.58.18 — session operate + surface_view v2."""
+"""Session operate + surface_view v2."""
 
 from __future__ import annotations
 

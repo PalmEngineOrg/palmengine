@@ -1,4 +1,4 @@
-"""0.60.2 — WorkPlaneService on system (enqueue / tick / attach)."""
+"""WorkPlaneService on system (enqueue / tick / attach)."""
 
 from __future__ import annotations
 
@@ -97,7 +97,7 @@ def test_supervised_work_drain_background_when_enabled() -> None:
 
 
 def test_work_plane_multi_worker_background() -> None:
-    """0.62.4 — N continuous claimers; exclusive store (default path still N=1)."""
+    """N continuous claimers; exclusive store (default path still N=1)."""
     reset_system_log_for_tests()
     submitted: list[str] = []
     lock = __import__("threading").Lock()

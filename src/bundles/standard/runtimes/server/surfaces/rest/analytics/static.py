@@ -1,4 +1,4 @@
-"""Serve Analytics dashboard dogfood static assets (0.35.6)."""
+"""Serve Analytics dashboard dogfood static assets."""
 
 from __future__ import annotations
 

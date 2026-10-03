@@ -1,5 +1,5 @@
 """
-Palm design-entry — assist scenario shell for Design Service discovery (0.30.2).
+Palm design-entry — assist scenario shell for Design Service discovery.
 
 Guides create / improve flow and propose-resource intents. Does **not** call
 DesignService; agents use ``palm_design_*`` tools from assistant actions.
@@ -80,7 +80,7 @@ DESIGN_ENTRY_FLOW = FlowDefinition(
     name="palm-design-entry",
     pattern="wizard",
     options={
-        # 0.30.5 — no summary confirm; finish after name_or_base (weak-LLM)
+        # No summary confirm; finish after name_or_base (weak-LLM)
         "include_summary": False,
         "allow_backtrack": True,
         "metadata": {
@@ -139,7 +139,7 @@ DESIGN_ENTRY_FLOW = FlowDefinition(
                 "field_type": "text",
                 "required": False,
                 "params": {
-                    # 0.30.5 — end after name (skip summary/bye sequential)
+                    # End after name (skip summary/bye sequential)
                     "route_on_answer": {"default": "__end__"},
                 },
             },

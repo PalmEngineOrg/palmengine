@@ -1,4 +1,4 @@
-"""0.71.16 — stdlib PalmSettings; file load via dotenv extra (fail closed)."""
+"""Stdlib PalmSettings; file load via dotenv extra (fail closed)."""
 
 from __future__ import annotations
 

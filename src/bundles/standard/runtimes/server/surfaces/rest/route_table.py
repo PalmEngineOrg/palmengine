@@ -2,10 +2,6 @@
 REST route metadata — declarative table without handler imports.
 
 Shared by route registration, OpenAPI generation, and HTML docs.
-
-Legacy job/instance/plan monolith routes were removed in 0.17 — use
-``/v1/api/system``, ``/v1/api/flows``, ``/v1/api/processes``, and
-``/v1/api/definitions`` instead.
 """
 
 from __future__ import annotations

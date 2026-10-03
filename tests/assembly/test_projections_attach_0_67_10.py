@@ -1,4 +1,4 @@
-"""projections leftover — one attach, one host object, not a loop (0.67.10)."""
+"""projections leftover — one attach, one host object, not a loop."""
 
 from __future__ import annotations
 

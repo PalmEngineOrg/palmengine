@@ -37,7 +37,7 @@ class WorkIntentStore:
     """Append / exclusive claim / ack work intents (run-when-able queue).
 
     In-process multi-claimer safety uses a store lock around mutate paths.
-    Multi-process shared store still needs storage CAS (SD-019 residual).
+    Multi-process shared store still needs storage CAS.
     """
 
     def __init__(self, storage: StorageEngine) -> None:

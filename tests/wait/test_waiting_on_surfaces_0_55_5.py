@@ -1,4 +1,4 @@
-"""0.55.5 — waiting_on on inspect / list-waiting / doctor / Assist helpers."""
+"""waiting_on on inspect / list-waiting / doctor / Assist helpers."""
 
 from __future__ import annotations
 

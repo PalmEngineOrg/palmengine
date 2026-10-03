@@ -1,4 +1,4 @@
-"""0.58.1 — Session plane system seat (types + StorageEngine store + runtime)."""
+"""Session plane system seat (types + StorageEngine store + runtime)."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""0.45.6 — work-drain submit path, inbound debounce defer, declarative skip."""
+"""work-drain submit path, inbound debounce defer, declarative skip."""
 
 from __future__ import annotations
 

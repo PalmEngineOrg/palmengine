@@ -1,4 +1,4 @@
-"""0.45.1 — put_resource transform rule."""
+"""put_resource transform rule."""
 
 from __future__ import annotations
 
