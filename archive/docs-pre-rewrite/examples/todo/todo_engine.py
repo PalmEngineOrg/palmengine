@@ -111,7 +111,6 @@ class TodoEngine:
         registries.install("pattern", Registry("pattern"))
         registries.install("pattern_builder", Registry("pattern builder"))
         registries.install("provider", Registry("provider"))
-        registries.install("wizard_step", Registry("wizard step"))
         register_wizard(registries)
         register_kv(registries)
         runtime = app.start()

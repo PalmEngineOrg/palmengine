@@ -10,9 +10,7 @@ from palm.common.exceptions import DefinitionBuildError
 from palm.common.patterns.build_context import PatternBuildContext
 from palm.common.patterns.effects import resolve_resource_invoker, resolve_workload_driver
 from palm.core.behavior_tree import BasePattern
-from palm.core.registry import Registry
 from palm.definitions.flow import FlowDefinition
-from plugins.patterns.wizard.bindings.compensation.handler import CommitRegistry
 from plugins.patterns.wizard.bindings.context.keys import WizardKeys
 from plugins.patterns.wizard.bindings.definitions.config import WizardConfig, WizardStepConfig
 from plugins.patterns.wizard.bindings.definitions.kinds import WizardStepKind
@@ -34,19 +32,19 @@ def build(
     """Instantiate a wizard pattern from a flow definition."""
     if not issubclass(pattern_cls, WizardPattern):
         raise DefinitionBuildError("Registry entry for 'wizard' is not WizardPattern")
-    if context.registries is None:
-        raise DefinitionBuildError(
-            f"pattern build has no system registries for flow {flow.name!r}"
-        )
-    step_table = context.registries.require("wizard_step")
+
+    commit_registry = context.commit_registry
+    if commit_registry is None:
+        from plugins.patterns.wizard.bindings.compensation.handler import default_commit_registry
+
+        commit_registry = default_commit_registry()
 
     kwargs: dict[str, Any] = {
         "name": flow.name,
         "event_engine": context.event_engine,
         "resource_engine": resolve_resource_invoker(context),
         "workload_engine": resolve_workload_driver(context),
-        "commit_registry": _commit_registry(flow, context),
-        "step_registry": step_table,
+        "commit_registry": commit_registry,
     }
 
     options = flow.options
@@ -61,7 +59,7 @@ def build(
         )
         return pattern_cls(config=config, **kwargs)
 
-    config = wizard_config_from_options(options, steps=step_table)
+    config = wizard_config_from_options(options)
     config = materialize_wizard_step_schemas(config, context.definition_repository)
     if config.include_commit and not config.commit_hook:
         hook = options.get("commit_hook")
@@ -72,49 +70,7 @@ def build(
     return pattern_cls(config=config, **kwargs)
 
 
-def _includes_commit(flow: FlowDefinition) -> bool:
-    """Return whether this flow builds a commit step."""
-    options = flow.options or {}
-    config = options.get("config")
-    if isinstance(config, WizardConfig):
-        return bool(config.include_commit)
-    return bool(options.get("include_commit", False))
-
-
-def _commit_registry(flow: FlowDefinition, context: PatternBuildContext) -> CommitRegistry:
-    """Resolve commit handlers. A flow without commit does not read the process table."""
-    injected = context.commit_registry
-    if isinstance(injected, CommitRegistry):
-        return injected
-    if not _includes_commit(flow):
-        return CommitRegistry()
-    if context.registries is None:
-        raise DefinitionBuildError(
-            f"pattern build has no system registries for flow {flow.name!r}"
-        )
-    table = context.registries.require("commit")
-    registry = CommitRegistry()
-    for name in table.names():
-        registry.register(name, table.get(name))
-    return registry
-
-
-def _kind_table(steps: Any | None) -> Any:
-    return steps if steps is not None else default_wizard_step_registry()
-
-
-def _has_kind(steps: Any | None, kind: str) -> bool:
-    table = _kind_table(steps)
-    if isinstance(table, Registry):
-        return kind in table.names()
-    return bool(table.has(kind))
-
-
-def wizard_config_from_options(
-    options: dict[str, Any],
-    *,
-    steps: Any | None = None,
-) -> WizardConfig:
+def wizard_config_from_options(options: dict[str, Any]) -> WizardConfig:
     """Build ``WizardConfig`` from flow ``options`` (wizard flows only)."""
     options = parse_wizard_flow_options(options)
     config = options.get("config")
@@ -150,7 +106,7 @@ def wizard_config_from_options(
                 commit_hook=str(commit_hook) if commit_hook else None,
             )
         if isinstance(steps_value[0], dict):
-            built = tuple(_step_from_mapping(item, steps=steps) for item in steps_value)
+            built = tuple(_step_from_mapping(item) for item in steps_value)
             return WizardConfig(
                 steps=built,
                 allow_backtrack=allow_backtrack,
@@ -176,7 +132,7 @@ def wizard_config_from_options(
     )
 
 
-def _step_from_mapping(data: dict[str, Any], *, steps: Any | None = None) -> WizardStepConfig:
+def _step_from_mapping(data: dict[str, Any]) -> WizardStepConfig:
     slug = data.get("slug")
     if not slug:
         raise DefinitionBuildError("Wizard step dict requires 'slug'")
@@ -209,14 +165,12 @@ def _step_from_mapping(data: dict[str, Any], *, steps: Any | None = None) -> Wiz
         raise DefinitionBuildError(
             "step_kind 'action' was removed in 0.12; use step_kind 'resource' with resource_ref",
         )
-    if not _has_kind(steps, step_kind):
-        available = _kind_table(steps).names()
-        if steps is None:
-            hint = "Register custom kinds via default_wizard_step_registry().register(...). "
-        else:
-            hint = ""
+    if not default_wizard_step_registry().has(step_kind):
+        available = default_wizard_step_registry().names()
         raise DefinitionBuildError(
-            f"Invalid wizard step_kind: {step_kind!r}. {hint}Available: {available}"
+            f"Invalid wizard step_kind: {step_kind!r}. "
+            f"Register custom kinds via default_wizard_step_registry().register(...). "
+            f"Available: {available}"
         )
 
     inline_schema = data.get("state_schema")
@@ -261,18 +215,8 @@ def _step_from_mapping(data: dict[str, Any], *, steps: Any | None = None) -> Wiz
         if not isinstance(raw_when, dict):
             raise DefinitionBuildError(f"Branch step {slug!r} requires a when object")
         when_clause = dict(raw_when)
-        then_steps = _nested_branch_steps(
-            data.get("then"),
-            label="then",
-            parent_slug=str(slug),
-            steps=steps,
-        )
-        else_steps = _nested_branch_steps(
-            data.get("else"),
-            label="else",
-            parent_slug=str(slug),
-            steps=steps,
-        )
+        then_steps = _nested_branch_steps(data.get("then"), label="then", parent_slug=str(slug))
+        else_steps = _nested_branch_steps(data.get("else"), label="else", parent_slug=str(slug))
 
     transform = None
     if step_kind == "transform":
@@ -326,7 +270,6 @@ def _nested_branch_steps(
     *,
     label: str,
     parent_slug: str,
-    steps: Any | None = None,
 ) -> tuple[WizardStepConfig, ...]:
     if not isinstance(raw_steps, list) or not raw_steps:
         raise DefinitionBuildError(
@@ -338,7 +281,7 @@ def _nested_branch_steps(
             raise DefinitionBuildError(
                 f"Branch step {parent_slug!r} {label}[{index}] must be an object",
             )
-        nested = _step_from_mapping(item, steps=steps)
+        nested = _step_from_mapping(item)
         if nested.step_kind == "branch":
             raise DefinitionBuildError(
                 f"Branch step {parent_slug!r} cannot nest another branch at {label}[{index}]",

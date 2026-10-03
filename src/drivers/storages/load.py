@@ -21,7 +21,6 @@ _OPTIONAL_STORAGES: dict[str, str] = {
 _STORAGE_MODULES: dict[str, str] = {
     "memory": "drivers.storages.memory",
     "filesystem": "drivers.storages.filesystem",
-    "tiered": "drivers.storages.tiered",
     "postgres": "drivers.storages.postgres",
     "mongodb": "drivers.storages.mongodb",
 }

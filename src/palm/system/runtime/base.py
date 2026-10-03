@@ -18,6 +18,7 @@ from palm import __version__
 from palm.common import DefinitionRepository, InstanceRepository
 from palm.common.events import OutboxProcessor, OutboxStore
 from palm.common.managers import InstanceManager
+from palm.common.providers._registry import get_runtime_unbinding
 from palm.core import (
     AuthEngine,
     BehaviorTreeEngine,
@@ -302,8 +303,6 @@ class BaseRuntime:
         workload runtime.
 
         0.72.8 — ``registries`` freezes before the walk. Engines read that set.
-
-        0.72.9 — after the walk, the resource engine receives this runtime's storage.
         """
         refused = [key for key in ("plugin_install", "composition_packages") if key in options]
         if refused:
@@ -354,7 +353,6 @@ class BaseRuntime:
                 log=slog,
                 require_handlers=True,
             )
-            self.resource.bind_storage(self.storage)
         except Exception as exc:
             slog.emit(
                 1,
@@ -374,14 +372,6 @@ class BaseRuntime:
         if "storage" in names:
             self.storage.bind_registry(self.registries.require("storage"))
 
-    def _run_runtime_unbinding(self) -> None:
-        """Call ``runtime_unbinding`` entries. A missing registry does nothing."""
-        if "runtime_unbinding" not in self.registries.names():
-            return
-        table = self.registries.require("runtime_unbinding")
-        for name in table.names():
-            table.get(name)()
-
     def stop(self) -> None:
         """Stop orchestration and shut down all engines."""
         if not self._started:
@@ -396,7 +386,9 @@ class BaseRuntime:
             runtime=str(runtime),
         )
 
-        self._run_runtime_unbinding()
+        unbind_runtime = get_runtime_unbinding()
+        if unbind_runtime is not None:
+            unbind_runtime()
 
         if self._supervisor is not None:
             try:
