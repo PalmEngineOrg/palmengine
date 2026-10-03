@@ -30,6 +30,7 @@ from palm.core.workload.handle import WorkloadHandle
 from palm.core.workload.owner import WorkloadOwner
 from palm.core.workload.protocol import WorkloadRuntime
 from palm.core.workload.record import Workload
+from palm.core.workload.registry import workload_runtime_registry
 from palm.core.workload.result import WorkloadResult
 from palm.core.workload.spec import (
     IsolationPolicy,
@@ -117,7 +118,10 @@ class WorkloadEngine(BasePalmEngine):
             runtime = self._runtime_factory(name)
             self._runtimes[name] = runtime
             return runtime
-        raise WorkloadPlacementError(f"workload runtime {name!r} is not bound")
+        cls = workload_runtime_registry.get(name)
+        runtime = cls(name=name)
+        self._runtimes[name] = runtime
+        return runtime
 
     def _select_runtime_name(self, spec: WorkloadSpec) -> str:
         """Minimal pure-core placement: honor explicit runtime; fail closed."""
@@ -403,7 +407,7 @@ class WorkloadEngine(BasePalmEngine):
     def runtimes(self) -> list[dict[str, Any]]:
         """Doctor-oriented view of bound + registered runtimes (incl. health)."""
         with self._lock:
-            names = set(self._runtimes)
+            names = set(self._runtimes) | set(workload_runtime_registry.names())
             rows: list[dict[str, Any]] = []
             for name in sorted(names):
                 try:

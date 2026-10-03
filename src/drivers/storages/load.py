@@ -21,7 +21,6 @@ _OPTIONAL_STORAGES: dict[str, str] = {
 _STORAGE_MODULES: dict[str, str] = {
     "memory": "drivers.storages.memory",
     "filesystem": "drivers.storages.filesystem",
-    "tiered": "drivers.storages.tiered",
     "postgres": "drivers.storages.postgres",
     "mongodb": "drivers.storages.mongodb",
 }
@@ -88,7 +87,6 @@ def initialize_engine(
         data_dir=data_dir,
         **backend_options,
     )
-    engine.bind_registry(storage_registry)
     engine.initialize(backend=backend, backend_options=options)
     return engine
 

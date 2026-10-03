@@ -77,13 +77,8 @@ assert "wizard" not in pattern_registry.names()
 assert "kv" not in provider_registry.names()
 engine = TodoEngine()
 engine.start()
-assert "wizard" not in pattern_registry.names()
-assert "kv" not in provider_registry.names()
-registries = engine.app.runtime.registries
-assert registries.frozen
-assert "wizard" in registries.require("pattern").names()
-assert "kv" in registries.require("provider").names()
-assert "resource" in registries.require("wizard_step").names()
+assert "wizard" in pattern_registry.names()
+assert "kv" in provider_registry.names()
 try:
     assert engine.list_todos() == []
     item = engine.add_todo("milk")

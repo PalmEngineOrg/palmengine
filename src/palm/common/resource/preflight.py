@@ -7,6 +7,7 @@ from typing import Any
 
 from palm.common.resource.catalog import ResourceCatalog
 from palm.common.resource.document_storage import (
+    build_tiered_preflight_stats,
     resolve_documents_root,
     resolve_kv_backend,
 )
@@ -86,16 +87,9 @@ def probe_check_health(runtime: Any) -> dict[str, Any]:
     return payload
 
 
-def _provider_registry(runtime: Any) -> Any | None:
-    registries = getattr(runtime, "registries", None)
-    if registries is None or "provider" not in registries.names():
-        return None
-    return registries.require("provider")
-
-
 def build_kv_preflight(runtime: Any, repository: Any) -> dict[str, Any]:
     """Report KV provider catalog usage and resolved ``auto`` backend."""
-    catalog = ResourceCatalog(repository, providers=_provider_registry(runtime))
+    catalog = ResourceCatalog(repository)
     entries = catalog.by_provider("kv")
     storage = getattr(runtime, "storage", None)
     storage_backend_name = storage.backend_name if storage is not None else None
@@ -109,17 +103,37 @@ def build_kv_preflight(runtime: Any, repository: Any) -> dict[str, Any]:
         backend_resolved = "memory"
 
     namespace_set: set[str] = set()
+    uses_tiered = False
+    tiered_hot_max_keys = 500
     for entry in entries:
         resource = repository.get_resource(entry.name)
         namespace_set.add(str(resource.params.get("namespace") or "default"))
+        backend = str(resource.params.get("backend") or "auto").strip().lower()
+        if backend == "tiered":
+            uses_tiered = True
+            configured = resource.params.get("hot_max_keys")
+            if configured is not None:
+                try:
+                    tiered_hot_max_keys = max(1, int(configured))
+                except (TypeError, ValueError):
+                    pass
     namespaces = sorted(namespace_set)
 
-    return {
+    payload: dict[str, Any] = {
         "resource_count": len(entries),
         "backend_resolved": backend_resolved,
         "storage_backend": storage_backend_name,
         "namespaces": namespaces,
     }
+    if uses_tiered:
+        primary_namespace = namespaces[0] if namespaces else "default"
+        payload["tiered"] = build_tiered_preflight_stats(
+            runtime,
+            storage,
+            namespace=primary_namespace,
+            hot_max_keys=tiered_hot_max_keys,
+        )
+    return payload
 
 
 def _documents_root_writable(root: Path) -> bool:
@@ -135,15 +149,14 @@ def _documents_root_writable(root: Path) -> bool:
 
 def build_file_preflight(runtime: Any, repository: Any) -> dict[str, Any]:
     """Report ``file`` document resources and documents_root writability."""
-    catalog = ResourceCatalog(repository, providers=_provider_registry(runtime))
+    catalog = ResourceCatalog(repository)
     entries = catalog.by_provider("file")
-    installed = _file_provider_installed(runtime)
     if not entries:
         return {
             "resource_count": 0,
             "documents_root": None,
             "writable": None,
-            "provider_installed": installed,
+            "provider_installed": _file_provider_installed(),
         }
 
     root = resolve_documents_root(runtime)
@@ -151,15 +164,18 @@ def build_file_preflight(runtime: Any, repository: Any) -> dict[str, Any]:
         "resource_count": len(entries),
         "documents_root": str(root.resolve()),
         "writable": _documents_root_writable(root),
-        "provider_installed": installed,
+        "provider_installed": _file_provider_installed(),
     }
 
 
-def _file_provider_installed(runtime: Any) -> bool:
-    providers = _provider_registry(runtime)
-    if providers is None:
+def _file_provider_installed() -> bool:
+    try:
+        from palm.core.registry import provider_registry
+
+        provider_registry.get("file")
+        return True
+    except Exception:
         return False
-    return "file" in providers.names()
 
 
 def build_resource_preflight(runtime: Any) -> dict[str, Any]:

@@ -49,7 +49,6 @@ class WizardPattern(BasePattern, JobInspectable):
         resource_engine: ResourceInvoker | None = None,
         workload_engine: WorkloadDriver | None = None,
         commit_registry: CommitRegistry | None = None,
-        step_registry: Any | None = None,
         context_engine: ContextEngine | None = None,
     ) -> None:
         super().__init__(name=name)
@@ -72,7 +71,6 @@ class WizardPattern(BasePattern, JobInspectable):
             resource_engine=self._resource_engine,
             workload_engine=self._workload_engine,
             context_engine=self._context_engine,
-            step_registry=step_registry,
         )
 
     @property

@@ -18,6 +18,7 @@ from palm import __version__
 from palm.common import DefinitionRepository, InstanceRepository
 from palm.common.events import OutboxProcessor, OutboxStore
 from palm.common.managers import InstanceManager
+from palm.common.providers._registry import get_runtime_unbinding
 from palm.core import (
     AuthEngine,
     BehaviorTreeEngine,
@@ -46,7 +47,6 @@ from palm.system.bound import BOUND_DRIVERS_VERSION, BoundDrivers
 from palm.system.executions import DefinitionExecutor
 from palm.system.interfaces.install import SystemInstall
 from palm.system.log import get_system_log
-from palm.system.registries import SystemRegistries
 from palm.system.runtime.schedulers import QueuedScheduler
 from palm.system.runtime.wiring import SchedulerPolicy
 from palm.system.structure.seat import StructureSeat
@@ -113,7 +113,6 @@ class BaseRuntime:
         self._last_boot_walk: list[Any] | None = None
         self._start_options: dict[str, Any] = {}
         self.application_host: Any | None = None
-        self.registries = SystemRegistries()
 
     @property
     def is_started(self) -> bool:
@@ -300,10 +299,6 @@ class BaseRuntime:
         0.72.6 — ``drivers`` is a :class:`~palm.system.bound.BoundDrivers` value.
         This schedule attaches that storage. It does not choose a storage or a
         workload runtime.
-
-        0.72.8 — ``registries`` freezes before the walk. Engines read that set.
-
-        0.72.9 — after the walk, the resource engine receives this runtime's storage.
         """
         refused = [key for key in ("plugin_install", "composition_packages") if key in options]
         if refused:
@@ -329,8 +324,6 @@ class BaseRuntime:
         if not drivers.storage.is_open:
             raise RuntimeError("bound storage is not initialized")
 
-        self.registries.freeze()
-        self._bind_installed_registries()
         self._start_options = dict(options)
         slog = get_system_log()
         runtime = getattr(self, "name", None) or self.runtime_name
@@ -354,7 +347,6 @@ class BaseRuntime:
                 log=slog,
                 require_handlers=True,
             )
-            self.resource.bind_storage(self.storage)
         except Exception as exc:
             slog.emit(
                 1,
@@ -365,22 +357,6 @@ class BaseRuntime:
                 reason=f"{type(exc).__name__}: {exc}",
             )
             raise
-
-    def _bind_installed_registries(self) -> None:
-        """Attach registries the caller installed. A missing name stays unbound."""
-        names = set(self.registries.names())
-        if "provider" in names:
-            self.resource.bind_registry(self.registries.require("provider"))
-        if "storage" in names:
-            self.storage.bind_registry(self.registries.require("storage"))
-
-    def _run_runtime_unbinding(self) -> None:
-        """Call ``runtime_unbinding`` entries. A missing registry does nothing."""
-        if "runtime_unbinding" not in self.registries.names():
-            return
-        table = self.registries.require("runtime_unbinding")
-        for name in table.names():
-            table.get(name)()
 
     def stop(self) -> None:
         """Stop orchestration and shut down all engines."""
@@ -396,7 +372,9 @@ class BaseRuntime:
             runtime=str(runtime),
         )
 
-        self._run_runtime_unbinding()
+        unbind_runtime = get_runtime_unbinding()
+        if unbind_runtime is not None:
+            unbind_runtime()
 
         if self._supervisor is not None:
             try:
