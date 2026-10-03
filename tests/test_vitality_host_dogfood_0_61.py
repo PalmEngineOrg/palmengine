@@ -1,5 +1,5 @@
 """
-0.61 — vitality dogfood through ApplicationHost → primary system instance.
+Vitality dogfood through ApplicationHost → primary system instance.
 
 Host is packaging. Eyes read the **system** after spawn.
 This is the proof that composition-root start seats a living kernel we can see.

@@ -22,7 +22,7 @@ class ProcessInstance:
     ``instance_id`` is stable across runtime restarts; ``job_id`` links to the
     active orchestration job (may match ``instance_id`` on first submit).
 
-    ``session_id`` (0.58.4) is the optional **system session** owner — not the
+    ``session_id`` is the optional **system session** owner — not the
     same as ``instance_id``. Legacy records may only carry it under metadata.
     """
 

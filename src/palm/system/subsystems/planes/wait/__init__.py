@@ -3,7 +3,7 @@
 Pure interest types live in :mod:`palm.core.wait`. Coordination and
 :class:`~palm.system.subsystems.planes.wait.plane.WaitPlaneService` live here.
 
-**Public door (0.55.15)** — production open/match/present only:
+**Public door** — production open/match/present only:
 
 * :class:`WaitPlaneService`
 * :func:`get_wait_plane` and :func:`open_interest_on_job` (etc.) when

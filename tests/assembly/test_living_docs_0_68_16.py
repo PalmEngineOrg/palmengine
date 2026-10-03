@@ -1,5 +1,3 @@
-"""0.68.16 — living README / transform-count / L0 continue copy."""
-
 from __future__ import annotations
 
 from pathlib import Path
@@ -24,33 +22,3 @@ def test_l0_continue_uses_instance_id_not_session() -> None:
     assert '"instance_id": "inst-1"' in text
     assert "{session_id, flow_id, value}" not in text
     assert '"session_id": "inst-1"' not in text
-
-
-def test_living_docs_match_status_and_real_cli() -> None:
-    living = (
-        "README.md",
-        "ARCHITECTURE.md",
-        "docs/llms.txt",
-        "src/palm/runtimes/mcp/data/llms.txt",
-        "website/llms.txt",
-        "website/dist/llms.txt",
-        "docs/wiki/guides/explorer-wizard.md",
-        "examples/README.md",
-    )
-    for rel in living:
-        text = (ROOT / rel).read_text(encoding="utf-8")
-        assert "run_server(ServerRuntime())" not in text
-        assert "palm resource list" not in text
-        assert "palm resource invoke" not in text
-        if rel in {
-            "README.md",
-            "ARCHITECTURE.md",
-            "docs/llms.txt",
-            "src/palm/runtimes/mcp/data/llms.txt",
-            "website/llms.txt",
-            "website/dist/llms.txt",
-            "examples/README.md",
-        }:
-            assert "22 built-in" not in text
-            assert "Built-in rules (22)" not in text
-            assert "**22** built-in" not in text

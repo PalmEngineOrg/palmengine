@@ -40,7 +40,6 @@ def test_common_subpackage_imports() -> None:
 
 
 def test_common_runtimes_package_is_gone() -> None:
-    """0.68.8 — empty parking lot after 0.68.2 doctor registry compost."""
     import importlib.util
 
     assert importlib.util.find_spec("palm.common.runtimes") is None

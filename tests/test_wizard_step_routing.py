@@ -1,4 +1,4 @@
-"""Tests for wizard step routing via step params (0.23.1)."""
+"""Tests for wizard step routing via step params."""
 
 from __future__ import annotations
 

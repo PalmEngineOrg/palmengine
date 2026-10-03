@@ -1,7 +1,7 @@
 """
-Process resources — host-process load sample (0.61.8).
+Process resources — host-process load sample.
 
-**Law (ADR-030 / VISION-0.61):**
+**Law:**
   - Observation only — no start/continue, no second metrics write path.
   - Stdlib first (``resource``, ``os``, ``threading``; Linux ``/proc`` when present).
   - Honest units and sources — do not invent cross-platform RSS without labeling.

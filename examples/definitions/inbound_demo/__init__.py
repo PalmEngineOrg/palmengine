@@ -1,4 +1,4 @@
-"""Inbound resource dogfood pack (0.43) — resources that listen."""
+"""Inbound resource dogfood pack — resources that listen."""
 
 from __future__ import annotations
 

@@ -177,8 +177,8 @@ class DefinitionExecutor:
         Rebuilds the flow executable, restores state (and wizard position), and
         re-submits to orchestration using the stored ``job_id`` when free.
 
-        **0.63.29 (cartography):** ``_require_runtime`` includes
-        ``require_business_admission`` (same law as submit since 0.63.4).
+        ``_require_runtime`` includes
+        ``require_business_admission`` (same law as submit).
         """
         self._require_runtime()
         repo = self._instances
@@ -442,7 +442,7 @@ class DefinitionExecutor:
             raise RuntimeError(
                 "Runtime host is not started; call start() before submitting definitions"
             )
-        # 0.63.4 — product submit path: admission fail closed (same law as work plane).
+        # Product submit path: admission fail closed (same law as work plane).
         from palm.system.structure.errors import require_business_admission
 
         require_business_admission(self._runtime)

@@ -1,4 +1,4 @@
-"""0.68.2 — runner ready() doctor register composted."""
+"""Runner ready() doctor register composted."""
 
 from __future__ import annotations
 
@@ -8,14 +8,14 @@ from plugins.kits.server.diagnostics import build_doctor_report
 
 
 def test_doctor_contributor_registry_is_gone() -> None:
-    # 0.68.2 dropped the doctor registry. 0.68.8 dropped the empty parking lot.
+    # Dropped the doctor registry.
     assert importlib.util.find_spec("palm.common.runtimes") is None
     assert importlib.util.find_spec("drivers.runners.host.doctor") is None
     assert importlib.util.find_spec("drivers.runners.neonroot.doctor") is None
 
 
 def test_host_and_neonroot_ready_are_not_doctor_registers() -> None:
-    # 0.68.2 dropped the doctor ready() hooks. 0.68.7 dropped the postcard classes.
+    # Dropped the doctor ready() hooks.
     assert importlib.util.find_spec("drivers.runners.host.app") is None
     assert importlib.util.find_spec("drivers.runners.neonroot.app") is None
     assert importlib.util.find_spec("drivers.runners.host.doctor") is None

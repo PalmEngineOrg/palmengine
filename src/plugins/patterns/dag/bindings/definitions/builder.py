@@ -1,5 +1,5 @@
 """
-DAG pattern builder — parse FlowDefinition.options into DagConfig (0.54.3).
+DAG pattern builder — parse FlowDefinition.options into DagConfig.
 """
 
 from __future__ import annotations

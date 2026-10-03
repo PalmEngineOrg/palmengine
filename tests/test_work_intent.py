@@ -1,4 +1,4 @@
-"""0.37 — pure WorkIntent."""
+"""Pure WorkIntent."""
 
 from __future__ import annotations
 

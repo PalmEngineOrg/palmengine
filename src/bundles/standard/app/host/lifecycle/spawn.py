@@ -1,5 +1,5 @@
 """
-RuntimeSpawner (T2 / 0.48.4, seam 5) — create runtimes for the host's profile.
+RuntimeSpawner — create runtimes for the host's profile.
 
 Extracted from ``ApplicationHost._spawn_runtimes``: collapsed/master/worker/server
 runtime creation and registration. Reads host state (app, profile, worker

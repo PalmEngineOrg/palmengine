@@ -10,7 +10,7 @@ from palm.core.work import WorkIntent
 
 
 def _system_session_from_signal(payload: dict[str, Any]) -> str | None:
-    """Pull system session id from an event payload for inherit-or-service (0.58.16).
+    """Pull system session id from an event payload for inherit-or-service.
 
     EventContext.enriched_payload and flow.session.* already surface
     ``session_id`` when the parent job had one. Only ``sess-…`` is carried —
@@ -208,7 +208,7 @@ class TriggerRegistry:
             )
 
         if spec.kind == "on_workload":
-            # Public plane: workload.started|ready|failed|stopped (ADR-024 / EVENT-PLANE)
+            # Public plane: workload.started|ready|failed|stopped
             if not event_type.startswith("workload."):
                 return None
             suffix = event_type.removeprefix("workload.")

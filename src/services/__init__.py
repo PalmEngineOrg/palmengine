@@ -21,7 +21,6 @@ _EXPORTS: dict[str, tuple[str, str]] = {
     "InspectService": ("services.inspect", "InspectService"),
     "ReplSession": ("services.execution", "ReplSession"),
     "SessionService": ("services.session", "SessionService"),
-    # SD-007 compat: product SystemService was the inspect door.
     "SystemService": ("services.inspect", "InspectService"),
 }
 

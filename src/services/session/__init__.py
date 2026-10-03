@@ -1,6 +1,6 @@
-"""Product session domain — surface door over the system session plane (0.58.12+).
+"""Product session domain — surface door over the system session plane.
 
-0.58.14: :class:`BoundSurface` is the session-owned surface context handle.
+:class:`BoundSurface` is the session-owned surface context handle.
 """
 
 from services.session.bound_surface import (

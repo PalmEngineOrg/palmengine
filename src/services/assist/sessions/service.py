@@ -22,7 +22,7 @@ class AssistSessionService:
         self._assist = assist
 
     def get(self, session_id: str) -> AssistSession:
-        # 0.58.9: session_id may be system subject — resolve primary instance.
+        # session_id may be system subject — resolve primary instance.
         instance_id = self._resolve_instance_id(session_id)
         view = self._assist.inspect.inspect_instance(instance_id)
         flow_id = flow_id_from_view(view)
@@ -59,7 +59,6 @@ class AssistSessionService:
     def _gate_bound_session_owns(
         self, instance_id: str, params: dict[str, Any] | None
     ) -> None:
-        """Continue attribution: SI-015 owner + 0.58.15 strict (product door)."""
         product = self._product_session()
         if product is not None:
             product.gate_bound_session_owns(instance_id, params)

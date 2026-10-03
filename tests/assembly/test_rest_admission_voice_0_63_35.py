@@ -1,4 +1,4 @@
-"""0.63.35 — REST honest voice for AdmissionRefusedError (not submit_failed 500)."""
+"""REST honest voice for AdmissionRefusedError (not submit_failed 500)."""
 
 from __future__ import annotations
 

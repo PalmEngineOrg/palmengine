@@ -2,7 +2,7 @@
 Concrete behavior patterns (Django-style apps).
 
 Catalog: dag, parallel, pipeline, wizard.
-Intention stubs (etl) stay off that catalog (ST-003 / SD-013).
+Intention stubs (etl) stay off that catalog.
 
 ``autoload`` does not import a pattern. Import the pattern module to register it.
 """

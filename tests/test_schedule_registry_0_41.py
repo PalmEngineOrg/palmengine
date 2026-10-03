@@ -1,4 +1,4 @@
-"""0.41.1 — durable interval schedules → WorkIntent."""
+"""Durable interval schedules → WorkIntent."""
 
 from __future__ import annotations
 

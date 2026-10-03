@@ -1,5 +1,5 @@
 """
-SystemPlanes — living seat that **consumes** individual planes (0.61).
+SystemPlanes — living seat that **consumes** individual planes.
 
 Same shape as :class:`~palm.system.subsystems.supervisor.SystemSupervisor`:
 

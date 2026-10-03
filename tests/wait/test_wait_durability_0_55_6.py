@@ -1,4 +1,4 @@
-"""0.55.6 — wait interest rehydrate + double-event idempotency."""
+"""Wait interest rehydrate + double-event idempotency."""
 
 from __future__ import annotations
 

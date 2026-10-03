@@ -2,7 +2,7 @@
 ResourceLeaf — invoke a registered resource via :class:`~palm.core.resource.invoker.ResourceInvoker`.
 
 Concrete :class:`~palm.core.resource.ResourceEngine` and system ExecutionPort
-adapters both satisfy ResourceInvoker (0.57.4 P2).
+adapters both satisfy ResourceInvoker.
 """
 
 from __future__ import annotations

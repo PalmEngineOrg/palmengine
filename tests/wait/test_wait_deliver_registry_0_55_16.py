@@ -1,4 +1,4 @@
-"""0.55.16 — pluggable wait completion deliverers."""
+"""Pluggable wait completion deliverers."""
 
 from __future__ import annotations
 

@@ -1,9 +1,9 @@
-"""Reactive start session attribution on the system path (0.60.4).
+"""Reactive start session attribution on the system path.
 
 Mirrors product :meth:`~services.session.SessionService.enrich_reactive_start`
 using the **session plane** only — no product import (system purity).
 
-Law (0.58.16): inherit system ``session_id`` from the signal, else stable
+Law: inherit system ``session_id`` from the signal, else stable
 service session for *origin*. Never mint a random outside ``sess-…``.
 """
 
@@ -41,7 +41,7 @@ def attribute_reactive_start(
 ) -> dict[str, Any]:
     """Return intent payload with system ``session_id`` for automated start.
 
-    Prefer *session_plane* (CS-008). *runtime* remains for lookup/compat only.
+    Prefer *session_plane*. *runtime* remains for lookup/compat only.
     """
     meta = dict(payload or {})
     origin_s = str(origin or "").strip() or reactive_origin(flow_id, meta)

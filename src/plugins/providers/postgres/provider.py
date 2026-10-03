@@ -8,7 +8,7 @@ from palm.core.resource import BaseProvider
 
 
 class PostgresProvider(BaseProvider):
-    """Intention stub — not a live SQL provider (docs/STUBS.md ST-001)."""
+    """Intention stub — not a live SQL provider."""
 
     def connect(self) -> None:
         raise NotImplementedError(

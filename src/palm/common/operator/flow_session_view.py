@@ -35,7 +35,7 @@ def shape_flow_session_view(
     if fmt == "verbose":
         return dict(flat)
     if fmt == "assistant":
-        # 0.58.9: product continue handle is instance_id; system session is sess-…
+        # Product continue handle is instance_id; system session is sess-…
         instance_key = (
             flat.get("instance_id")
             or session_id
@@ -55,7 +55,7 @@ def shape_flow_session_view(
             if sid is not None and not str(sid).startswith("sess-"):
                 flat["instance_id"] = str(sid)
         fid = flow_id or flat.get("flow_name") or flat.get("flow")
-        # 0.32.5 — infer assist scenario / handoff when driving via flows path
+        # Infer assist scenario / handoff when driving via flows path
         scen = scenario_id or _scenario_id_from_flat(flat)
         hready = handoff_ready or _handoff_ready_from_flat(flat)
         intent_val = intent or _intent_from_flat(flat)
@@ -123,7 +123,7 @@ def _handoff_ready_from_flat(flat: dict[str, Any]) -> bool:
     """True only for assist-scenario handoff moments — not every finished flow.
 
     Business flows (todo-builder, …) complete without handoff; treating all
-    SUCCEEDED/summary turns as handoff-ready poisoned Portal finish chrome (0.32.9).
+    SUCCEEDED/summary turns as handoff-ready poisoned Portal finish chrome.
     """
     scenario_id = _scenario_id_from_flat(flat)
     intent = _intent_from_flat(flat)

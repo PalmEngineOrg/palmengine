@@ -1,4 +1,4 @@
-"""Compat shim — product inspect lived here as ``SystemService`` (SD-007).
+"""Compat shim — product inspect lived here as ``SystemService``.
 
 Prefer :mod:`services.inspect` / :class:`~services.inspect.InspectService`.
 """

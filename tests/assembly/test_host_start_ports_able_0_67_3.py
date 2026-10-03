@@ -1,4 +1,4 @@
-"""0.67.3 — host start_ports.able is drain; wait stays ready."""
+"""Host start_ports.able is drain; wait stays ready."""
 
 from __future__ import annotations
 

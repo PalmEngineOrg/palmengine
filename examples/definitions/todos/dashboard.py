@@ -1,4 +1,4 @@
-"""Palm todos analytics dashboard (0.39) — definition tiles only."""
+"""Palm todos analytics dashboard — definition tiles only."""
 
 from __future__ import annotations
 

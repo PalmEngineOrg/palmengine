@@ -1,4 +1,4 @@
-"""Tests for definition migration rules (0.24.2)."""
+"""Tests for definition migration rules."""
 
 from __future__ import annotations
 

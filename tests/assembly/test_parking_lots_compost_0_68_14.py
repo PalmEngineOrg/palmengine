@@ -1,4 +1,4 @@
-"""0.68.14 — unread parking lots and skip stubs composted."""
+"""Unread parking lots and skip stubs composted."""
 
 from __future__ import annotations
 

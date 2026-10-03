@@ -1,4 +1,4 @@
-"""0.35.4a — AnalyticsService on ApplicationHost / ServerContext."""
+"""AnalyticsService on ApplicationHost / ServerContext."""
 
 from __future__ import annotations
 

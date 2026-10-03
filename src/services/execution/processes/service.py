@@ -34,7 +34,7 @@ class ProcessExecutionService(BaseService):
         super().__init__(commands=commands, queries=queries, schemas=schemas)
         self._runtime = runtime
         self._runtime_resolver = runtime_resolver
-        # 0.63.31 — published admission (product façade; no base class).
+        # Published admission (product façade; no base class).
         self._admission_source = admission_source
 
     def dispatch(
@@ -93,7 +93,7 @@ class ProcessExecutionService(BaseService):
     ) -> dict[str, Any]:
         """Stage execution plans (product start — needs definition ground).
 
-        **0.63.31:** product edge fails closed via ``admission_gate()``.
+        Product edge fails closed via ``admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 
@@ -119,7 +119,7 @@ class ProcessExecutionService(BaseService):
     ) -> dict[str, Any]:
         """Consume staged plan ids and submit jobs (product start).
 
-        **0.63.31:** product edge fails closed via ``admission_gate()``.
+        Product edge fails closed via ``admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 
@@ -149,7 +149,7 @@ class ProcessExecutionService(BaseService):
     ) -> dict[str, Any]:
         """Submit a process in one call (product start).
 
-        **0.63.31:** product edge fails closed via ``admission_gate()``.
+        Product edge fails closed via ``admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 
@@ -179,7 +179,7 @@ class ProcessExecutionService(BaseService):
         raise RuntimeError("ProcessExecutionService requires a runtime or runtime_resolver")
 
     def admission_gate(self) -> object:
-        """Published admission source for process product start (0.63.31)."""
+        """Published admission source for process product start."""
         if self._admission_source is not None:
             return self._admission_source
         return self.resolve_runtime()

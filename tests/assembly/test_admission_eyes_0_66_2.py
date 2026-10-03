@@ -1,4 +1,4 @@
-"""0.66.2 — eyes show installed capabilities (not 3-key remain)."""
+"""Eyes show installed capabilities (not 3-key remain)."""
 
 from __future__ import annotations
 

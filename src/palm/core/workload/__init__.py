@@ -3,8 +3,6 @@ Workload plane — pure lifecycle engine for isolated work.
 
 **Invariant:** no neonroot/docker/k8s/SSH clients. Concrete adapters register
 via :data:`workload_runtime_registry` from outside core (``palm.runners``).
-
-See docs/VISION-0.56.md and ADR-024.
 """
 
 from palm.core.workload.driver import WorkloadDriver

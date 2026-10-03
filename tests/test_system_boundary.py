@@ -1,4 +1,4 @@
-"""Architectural boundary tests for ``palm.system`` (0.57.2+)."""
+"""Architectural boundary tests for ``palm.system``."""
 
 from __future__ import annotations
 

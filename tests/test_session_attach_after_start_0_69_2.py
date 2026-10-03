@@ -1,4 +1,4 @@
-"""0.69.2 — session-side attach after start. Job stays session-ignorant.
+"""session-side attach after start. Job stays session-ignorant.
 
 Floor glue: after execution start, SessionService attaches the new instance
 on the bound session. Do not copy session_id onto the job.

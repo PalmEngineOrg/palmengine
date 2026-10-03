@@ -1,4 +1,4 @@
-"""0.63.9 — CLI entry seeds local.cli DNA (dogfood wall)."""
+"""CLI entry seeds local.cli DNA (dogfood wall)."""
 
 from __future__ import annotations
 

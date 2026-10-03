@@ -1,5 +1,3 @@
-"""0.58.16 — inherit-or-service reactive start (finish SI-011)."""
-
 from __future__ import annotations
 
 from bundles.standard.app.host.application_host import ApplicationHost

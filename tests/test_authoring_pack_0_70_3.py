@@ -1,8 +1,7 @@
-"""0.70.3 — authoring pack wizard present can start and wait.
+"""Authoring pack wizard present can start and wait.
 
-Purpose lives in a definition. Proof path is adapter land/commit then
-present start by catalog id. Pack id stays unnamed; as-built
-``authoring-pack``. Job-leaf commit is ``0.70.5``.
+Purpose lives in a definition. Proof path is adapter land/commit then present start by catalog id.
+Pack id stays unnamed; as-built ``authoring-pack``.
 
 Not another generic wizard body. Not design_entry. Not Assist.
 """

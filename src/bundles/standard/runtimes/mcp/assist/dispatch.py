@@ -1,4 +1,4 @@
-"""Parametric operator dispatch — public re-exports (0.33.3 modular split).
+"""Parametric operator dispatch — public re-exports.
 
 Implementation lives in::
 

@@ -272,7 +272,7 @@ async def test_palm_assist_assist_session_returns_assistant(assist_server_ctx) -
 
 @pytest.mark.asyncio
 async def test_palm_assist_flows_session_defaults_assistant(assist_server_ctx) -> None:
-    """0.30.6 — flows via palm_assist use assistant (question/choices), not powertool."""
+    """Flows via palm_assist use assistant (question/choices), not powertool."""
     backend = PalmInProcessBackend(assist_server_ctx)
     config = PalmMcpConfig(
         base_url="http://127.0.0.1:8080",
@@ -287,7 +287,7 @@ async def test_palm_assist_flows_session_defaults_assistant(assist_server_ctx) -
             "palm_assist",
             {"alias": "operator-entry/start", "params": {}},
         )
-        # 0.58.9: session_id = system; product path uses instance_id
+        # session_id = system; product path uses instance_id
         system_sid = started.data["session_id"]
         instance_id = started.data["instance_id"]
         flow_id = started.data["refs"]["flow_id"]

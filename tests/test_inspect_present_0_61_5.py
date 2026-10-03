@@ -1,4 +1,4 @@
-"""0.61.5 — Inspect presents top/vitality from system projection only."""
+"""Inspect presents top/vitality from system projection only."""
 
 from __future__ import annotations
 
@@ -75,7 +75,7 @@ def test_doctor_nests_projection_top() -> None:
         assert "summary" in report["top"]
         assert report["vitality"]["source"] == "palm.system.vitality"
         assert "note" in report["vitality"]
-        # Demoted envelope (0.61.6 / OD-001) + anatomy packaging residual.
+        # Demoted envelope + anatomy packaging residual.
         assert report.get("kind") == "legacy_doctor"
         assert report.get("role") == "anatomy_packaging"
         assert "status" in report

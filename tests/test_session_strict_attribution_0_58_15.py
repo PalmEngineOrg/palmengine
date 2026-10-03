@@ -1,4 +1,4 @@
-"""0.58.15 — strict attribution: start always sessioned; continue requires owner."""
+"""Strict attribution: start always sessioned; continue requires owner."""
 
 from __future__ import annotations
 
@@ -72,7 +72,7 @@ def test_host_strict_default_true() -> None:
 
 
 def test_rewrite_orphan_bare_instance_refused() -> None:
-    """0.58.15: bare orphan continue is no longer a happy path."""
+    """Bare orphan continue is no longer a happy path."""
     host = _host()
     host.start()
     try:

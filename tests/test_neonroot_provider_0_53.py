@@ -1,5 +1,3 @@
-"""Legacy filename — neonroot provider removed in 0.56; see runtime unit tests."""
-
 from __future__ import annotations
 
 from tests.test_neonroot_runtime_unit import (  # noqa: F401

@@ -1,4 +1,4 @@
-"""0.58.5 — Session wait / inspect journey view (no private resume)."""
+"""Session wait / inspect journey view (no private resume)."""
 
 from __future__ import annotations
 

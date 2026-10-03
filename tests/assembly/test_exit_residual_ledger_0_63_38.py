@@ -1,4 +1,4 @@
-"""0.63.38 — exit residuals: open named dual-readiness rows as cartography."""
+"""Exit residuals: open named dual-readiness rows as cartography."""
 
 from __future__ import annotations
 

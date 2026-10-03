@@ -1,5 +1,5 @@
 """
-System event watchdog — internal inbound → pipeline → kv log (0.45.3).
+System event watchdog — internal inbound → pipeline → kv log.
 
 Loop guards:
   - ``event_types`` excludes ``resource.changed`` and ``inbound.received`` (put/inbox

@@ -1,7 +1,7 @@
 """
-Benchmark tool — controlled load recipe + snapshot diff (0.61.10+).
+Benchmark tool — controlled load recipe + snapshot diff.
 
-**Law (ADR-030 / VISION-VITALITY §15.4):**
+**Law:**
   - Registered **tool** capability — consumes projection; no second metric law.
   - ``snapshot₀ → recipe → snapshot₁ → diff`` (RSS/CPU · seats · emissions · bulk).
   - Nested samples are **observe-only** (tools disabled) so this never re-enters.
@@ -162,7 +162,7 @@ def _run_work_cycle(
     Peak pending is recorded in recipe_meta — the story when before/after
     pending returns to ~0 after drain.
 
-    When ``workers>1`` (0.62.6), concurrent claimers call ``tick`` with
+    When ``workers>1``, concurrent claimers call ``tick`` with
     distinct claimer ids (exclusive claim proof). Drive path may still
     serialize under GIL — claim correctness is the story, not host cores.
     """
@@ -590,7 +590,7 @@ def run_benchmark(
 ) -> CapabilityFragment:
     """Public dogfood entry — run without enabling the tool on every project.
 
-    ``workers`` (0.62.6) — concurrent claimers for ``work_cycle`` only.
+    ``workers`` — concurrent claimers for ``work_cycle`` only.
     """
     ctx = SampleContext(mode=mode)
     ctx.bag[_BAG_RECIPE] = recipe

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deferred-import guard (T3 / PD-012) — ratchets function-local palm imports toward zero.
+"""Deferred-import guard — ratchets function-local palm imports toward zero.
 
 Background: the audit's raw "595 deferred imports" grep conflates two things. Imports under
 ``if TYPE_CHECKING:`` are the *correct* way to reference cross-layer types and never run — they
@@ -8,7 +8,7 @@ are NOT debt and are excluded here. The debt is the runtime **function-local** `
 **upward** into a higher layer (those are what actually force the cycles).
 
 This guard is a ratchet: the two ceilings only ever move DOWN as 0.47 slices cut the seams
-(see docs/VISION-0.47.md). It never rewrites code — it just fails ``just check`` / ``just ci``
+. It never rewrites code — it just fails ``just check`` / ``just ci``
 if the counts regress or a new upward edge appears. Model: scripts/guard_core.py.
 """
 
@@ -19,8 +19,8 @@ import sys
 from pathlib import Path
 
 # ── Ratchets — lower these as slices land; NEVER raise. Target: 0 upward. ─────────────
-MAX_FUNCTION_LOCAL = 217  # ratcheted at 0.55.13 (nested park slash removed deferred glue); 287→…→218→217
-MAX_UPWARD = 3  # ratcheted at 0.48.7 (ServerContext relocated to runtimes, PD-013); remaining 3 = app→runtimes runtime-factory (sanctioned lazy seam, ADR-017)
+MAX_FUNCTION_LOCAL = 217
+MAX_UPWARD = 3
 
 # Inward-pointing layer ranks (arrows point toward core). Higher rank imports lower rank.
 LAYER_RANK = {

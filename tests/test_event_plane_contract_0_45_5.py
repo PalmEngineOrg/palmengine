@@ -1,4 +1,4 @@
-"""0.45.5 — event plane contract (buses, doctor, flow.session.* emission)."""
+"""Event plane contract (buses, doctor, flow.session.* emission)."""
 
 from __future__ import annotations
 

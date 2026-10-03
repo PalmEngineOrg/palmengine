@@ -34,7 +34,7 @@ def host() -> Iterator[ApplicationHost]:
 
 
 def test_open_flow_returns_humanized_first_turn(host) -> None:
-    """0.34.5+ — open:flow must not return raw WAITING_FOR_INPUT without question."""
+    """Open:flow must not return raw WAITING_FOR_INPUT without question."""
     from bundles.standard.runtimes.mcp.assist.dispatch import shape_dispatch_result
 
     raw = host.assist.open(

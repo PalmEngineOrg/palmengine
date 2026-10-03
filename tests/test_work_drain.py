@@ -1,4 +1,4 @@
-"""0.37 — drain + resource.changed enqueue (system work plane)."""
+"""Drain + resource.changed enqueue (system work plane)."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Assist open — start/inspect a catalog target (0.34)."""
+"""Assist open — start/inspect a catalog target."""
 
 from __future__ import annotations
 
@@ -71,21 +71,21 @@ def open_target(
         )
 
     if kind_s in {"flow", "flows"}:
-        # 0.63.21 gate · 0.63.22 — published admission, not runtime dig.
+        # Gate: published admission, not runtime dig.
         from palm.system.structure.errors import require_business_admission
 
         require_business_admission(assist.admission_gate())
         body: dict[str, Any] = {"format": view_format}
         if include_input:
             body["include_input_schema"] = True
-        # Create then re-inspect so chat gets question + input schema (0.34.5+)
+        # Create then re-inspect so chat gets question + input schema
         created = _as_mapping(
             assist.execution.flows.dispatch(
                 ["flows", tid, "create"],
                 body,
             )
         )
-        # Product inspect path still keys by instance (SI-001/005). Prefer instance_id.
+        # Product inspect path still keys by instance. Prefer instance_id.
         instance_id = None
         if isinstance(created, dict):
             instance_id = created.get("instance_id")
@@ -112,7 +112,7 @@ def open_target(
                         refs = {}
                         inspected["refs"] = refs
                     refs.setdefault("flow_id", tid)
-                    # Propagate system session + instance from create (0.58.9).
+                    # Propagate system session + instance from create.
                     if isinstance(created, dict):
                         if created.get("instance_id") is not None:
                             inspected.setdefault("instance_id", created["instance_id"])
@@ -141,7 +141,7 @@ def open_target(
         )
 
     if kind_s in {"session", "instance"}:
-        # Optional resume verb before inspect (0.34.5)
+        # Optional resume verb before inspect
         action = str(params.get("action") or params.get("verb") or "").lower()
         if action in {"resume", "continue"}:
             try:
@@ -217,7 +217,7 @@ def _open_dataset(
     dataset: str,
     params: dict[str, Any],
 ) -> dict[str, Any]:
-    """Describe (+ optional preview query) a published analytics dataset (0.40.4)."""
+    """Describe (+ optional preview query) a published analytics dataset."""
     name = (dataset or "").strip()
     analytics = getattr(assist, "analytics", None)
     profile = str(params.get("profile") or "table").strip() or "table"

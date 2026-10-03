@@ -1,4 +1,4 @@
-"""0.68.4 — bare enable_event_outbox composted to a DNA-shaped skip."""
+"""Bare enable_event_outbox composted to a DNA-shaped skip."""
 
 from __future__ import annotations
 

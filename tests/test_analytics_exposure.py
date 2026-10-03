@@ -1,4 +1,4 @@
-"""0.35.1 — parse metadata.analytics exposure."""
+"""Parse metadata.analytics exposure."""
 
 from __future__ import annotations
 

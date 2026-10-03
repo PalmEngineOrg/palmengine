@@ -1,4 +1,4 @@
-"""Tests for pattern-owned design contributor hooks (0.25.4)."""
+"""Tests for pattern-owned design contributor hooks."""
 
 from __future__ import annotations
 

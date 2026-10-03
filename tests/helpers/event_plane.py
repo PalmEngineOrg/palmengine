@@ -1,4 +1,4 @@
-"""Test helpers for the orchestration event plane (0.45.5)."""
+"""Test helpers for the orchestration event plane."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Workload place spawn — structure hands against WorkloadEngine (0.63.16).
+"""Workload place spawn — structure hands against WorkloadEngine.
 
 ``workload:`` places are structure bodies in the place registry. Not product job
 path. Fail closed when no engine is bound. Default kind is *workspace* (warm

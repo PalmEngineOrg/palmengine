@@ -1,4 +1,4 @@
-"""0.40.1 — todos pack declares on_resource triggers; put enqueues WorkIntent."""
+"""Todos pack declares on_resource triggers; put enqueues WorkIntent."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""0.63.5 — structure-definition seed map from mode / composition (not dual law)."""
+"""structure-definition seed map from mode / composition (not dual law)."""
 
 from __future__ import annotations
 

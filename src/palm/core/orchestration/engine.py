@@ -374,10 +374,10 @@ class OrchestrationEngine(BasePalmEngine):
             self._emit_flow_session_terminal(job)
 
     def _emit_flow_session_terminal(self, job: Job) -> None:
-        """Publish session terminal events for trigger/on_flow consumers (0.45.5).
+        """Publish session terminal events for trigger/on_flow consumers.
 
         Payload may include ``instance_id`` and system ``session_id`` when known
-        (0.58.4) — event type names stay ``flow.session.*`` for compatibility.
+ — event type names stay ``flow.session.*`` for compatibility.
         """
         if job.status not in (JobStatus.SUCCEEDED, JobStatus.FAILED):
             return

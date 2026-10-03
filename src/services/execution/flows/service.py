@@ -49,13 +49,13 @@ class FlowExecutionService(BaseService):
         self._session = session
         self._runtime = runtime
         self._runtime_resolver = runtime_resolver
-        # 0.63.30–0.63.32 — published admission for product
+        # Published admission for product
         # start + continue (same shape as AssistService; no product base class).
         self._admission_source = admission_source
 
     @property
     def sessions(self) -> SessionService | None:
-        """Product session door when host-wired (0.58.12)."""
+        """Product session door when host-wired."""
         return self._session
 
     def dispatch(
@@ -85,13 +85,13 @@ class FlowExecutionService(BaseService):
                 body["flow_name"] = parsed.flow_id
                 # Path segment may be definition id (flow-…) or human name
                 # (todo-builder). Prefer by_id only for id-shaped refs so Assist
-                # and Portal keep working with catalog names (0.58.7).
+                # and Portal keep working with catalog names.
                 if str(parsed.flow_id).startswith("flow-"):
                     body.setdefault("by_id", True)
             session = self.run_wizard(body)
             ctx = session.context()
-            # Product FlowSession still keys by instance (SI-001 internal).
-            # Envelope law 0.58.9: session_id = system subject; instance_id = continue.
+            # Product FlowSession still keys by instance.
+            # Envelope law: session_id = system subject; instance_id = continue.
             instance_id = session.session_id
             system_sid = _system_session_from_instance_meta(
                 self.get_instance_metadata(instance_id)
@@ -154,7 +154,7 @@ class FlowExecutionService(BaseService):
         """Return a handle bound to a durable product instance.
 
         ``session_id`` may be a system subject (``sess-…``); then the primary
-        continue instance is resolved via SessionService / plane (0.58.9+).
+        continue instance is resolved via SessionService / plane.
         """
         return FlowSession(
             self,
@@ -181,9 +181,7 @@ class FlowExecutionService(BaseService):
     def _gate_bound_session_owns(
         self, instance_id: str, params: dict[str, Any] | None
     ) -> None:
-        """Continue attribution: SI-015 owner + 0.58.15 strict (product door).
-
-        Prefers product SessionService. Plane fallback uses
+        """Prefers product SessionService. Plane fallback uses
         ``require_continue_attribution`` (strict) when the plane is ready.
         """
         if self._session is not None:
@@ -210,7 +208,7 @@ class FlowExecutionService(BaseService):
     def submit_flow_body(self, body: dict[str, Any]) -> Any:
         """Submit any flow from a REST-shaped body and wait until idle (work drain, triggers).
 
-        **0.63.32:** product start edge fails closed via ``admission_gate()``
+        Product start edge fails closed via ``admission_gate()``
         (published admission — same law as continue; port remains a second admission check).
         """
         from palm.system.structure.errors import require_business_admission
@@ -223,7 +221,7 @@ class FlowExecutionService(BaseService):
     def run_wizard(self, body: dict[str, Any]) -> FlowSession:
         """Submit a wizard flow and return a session on the new instance.
 
-        **0.63.32:** gates via ``submit_flow_body`` (product start).
+        Gates via ``submit_flow_body`` (product start).
         """
         job = self.submit_flow_body(body)
         session_id = instance_id_for_job(job)
@@ -231,12 +229,11 @@ class FlowExecutionService(BaseService):
         return self.session(flow_id, session_id)
 
     def _with_system_session(self, body: dict[str, Any]) -> dict[str, Any]:
-        """Ensure job metadata carries a system session id (0.58.6 / 0.58.12).
+        """Ensure job metadata carries a system session id.
 
-        **Law:** edge and job metadata use one name — ``session_id`` — for the
-        system subject (typically ``sess-…``). ``instance_id`` is the continue
-        handle. Instance-shaped body ``session_id`` is **not** promoted (product
-        must adapt; SI-001). Prefer SessionService.enrich_submit_body.
+        **Law:** edge and job metadata use one name — ``session_id`` — for the system subject
+        (typically ``sess-…``). ``instance_id`` is the continue handle. Prefer
+        SessionService.enrich_submit_body.
         """
         if self._session is not None:
             return self._session.enrich_submit_body(body, surface="execution")
@@ -283,7 +280,7 @@ class FlowExecutionService(BaseService):
     ) -> FlowSession:
         """Submit a flow and return a session on the new instance.
 
-        **0.63.32:** product start edge fails closed via ``admission_gate()``.
+        Product start edge fails closed via ``admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 
@@ -311,7 +308,7 @@ class FlowExecutionService(BaseService):
         job_id: str | None = None,
         state: Any = None,
     ) -> BoundSurface:
-        """Start named work as a same-session sibling (0.69.3).
+        """Start named work as a same-session sibling.
 
         Execution start with no ``session_id`` on the job, then session-side
         attach. Does not open ``WaitInterest`` on parked jobs. Nested park
@@ -405,7 +402,7 @@ class FlowExecutionService(BaseService):
         raise RuntimeError("FlowExecutionService requires a runtime or runtime_resolver")
 
     def admission_gate(self) -> object:
-        """Published admission source for product start + continue (0.63.30–32).
+        """Published admission source for product start + continue.
 
         Prefer injected *admission_source*. Fallback digs the runtime shell only
         when packaging omitted the inject — same shape as AssistService.

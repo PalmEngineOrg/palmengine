@@ -1,8 +1,7 @@
-"""0.72.5 — the kernel schedule has no install phase.
+"""The kernel schedule has no install phase.
 
-The standard bundle installs once, in kernel bootstrap, before system start.
-``start`` refuses ``plugin_install`` and ``composition_packages``.
-``0.72.6`` moves storage loading out of the kernel. ``start`` takes bound drivers.
+The standard bundle installs once, in kernel bootstrap, before system start. ``start`` refuses
+``plugin_install`` and ``composition_packages``. ``start`` takes bound drivers.
 """
 
 from __future__ import annotations

@@ -1,4 +1,4 @@
-"""0.71.14 — invert seat assemble bind_structure off getattr duck-walk.
+"""Invert seat assemble bind_structure off getattr duck-walk.
 
 StructureSeat.assemble binds definition/surfaces via typed StructureEffectPort.
 No getattr(self.effects, "bind_structure", None). PlaceEffectPort /

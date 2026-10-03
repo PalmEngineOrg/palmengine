@@ -1,4 +1,4 @@
-"""0.68.1 — empty host.projections.attach composted."""
+"""Empty host.projections.attach composted."""
 
 from __future__ import annotations
 

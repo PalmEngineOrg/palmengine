@@ -129,7 +129,7 @@ def refs_block(composed: dict[str, Any], context: OperatorViewContext) -> dict[s
     instance_id = composed.get("instance_id")
     if instance_id is not None:
         refs["instance_id"] = instance_id
-    # 0.58.9: session_id in refs is system subject only (sess-…).
+    # session_id in refs is system subject only (sess-…).
     raw_sid = composed.get("session_id")
     if raw_sid is not None and str(raw_sid).strip().startswith("sess-"):
         refs["session_id"] = str(raw_sid).strip()
@@ -223,8 +223,8 @@ def humanize_assistant_view(
     *,
     context: OperatorViewContext,
 ) -> dict[str, Any]:
-    # 0.58.9: instance_id = continue; session_id = system subject (sess-…) only.
-    # context.session_id is still the product instance handle (SI-001 internal).
+    # instance_id = continue; session_id = system subject (sess-…) only.
+    # context.session_id is still the product instance handle.
     instance_id = (
         composed.get("instance_id")
         or context.session_id
@@ -257,7 +257,7 @@ def humanize_assistant_view(
         payload["operator_mode"] = operator_mode
 
     choices = humanize_choices(composed.get("choices"))
-    # 0.34.1 — confirm steps always expose Yes/No for chat chips
+    # Confirm steps always expose Yes/No for chat chips
     field_type = str(composed.get("field_type") or "").lower()
     step_kind = str(composed.get("step_kind") or "").lower()
     if not choices and (
@@ -307,7 +307,7 @@ def humanize_assistant_view(
     if status in {"complete", "failed"}:
         apply_terminal_blurb(payload, composed)
 
-    # Resource actions still key product continue by instance (SI-001).
+    # Resource actions still key product continue by instance.
     resource_actions = resource_assistant_actions(
         composed,
         session_id=str(instance_id) if instance_id else None,

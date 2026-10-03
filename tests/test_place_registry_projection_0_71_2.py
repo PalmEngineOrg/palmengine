@@ -1,7 +1,7 @@
-"""0.71.2 — InProcessPlaceRegistry projects the workload book.
+"""InProcessPlaceRegistry projects the workload book.
 
 Adopted and workload: readiness is the book, not a copied dict.
-Bare in-process ids use the local register only when unbound (see 0.71.9).
+Bare in-process ids use the local register only when unbound.
 """
 
 from __future__ import annotations

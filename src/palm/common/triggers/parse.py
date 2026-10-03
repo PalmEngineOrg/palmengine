@@ -1,4 +1,4 @@
-"""Parse definition trigger metadata (0.37)."""
+"""Parse definition trigger metadata."""
 
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ class TriggerSpec:
     # on_resource
     resource: str | None = None
     actions: tuple[str, ...] = ()
-    # on_workload (0.56) — when maps to workload.stopped|failed|ready|started
+    # on_workload — when maps to workload.stopped|failed|ready|started
     workload_when: str = "stopped"
     workload_labels: dict[str, str] = field(default_factory=dict)
     workload_runtime: str | None = None

@@ -31,7 +31,7 @@ def filter_chat_noise_actions(actions: list[dict[str, Any]] | None) -> list[dict
 
 
 def ensure_browse_menu_actions(payload: dict[str, Any]) -> dict[str, Any]:
-    """On operator-entry intent waiting, offer Browse flows (0.34.4)."""
+    """On operator-entry intent waiting, offer Browse flows."""
     status = str(payload.get("status") or "")
     if status not in {"waiting", "WAITING_FOR_INPUT"}:
         return payload

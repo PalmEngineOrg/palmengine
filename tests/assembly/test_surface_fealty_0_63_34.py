@@ -1,4 +1,4 @@
-"""0.63.34 — surface uses host packaging door; wizard CQRS continue gate."""
+"""Surface uses host packaging door; wizard CQRS continue gate."""
 
 from __future__ import annotations
 

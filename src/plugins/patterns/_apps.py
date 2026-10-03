@@ -7,7 +7,7 @@ Each entry in ``INSTALLED_PATTERNS`` names a package that exists.
 
 from __future__ import annotations
 
-# Real patterns only — intention stubs listed separately (ST-003 / SD-013).
+# Real patterns only — intention stubs listed separately.
 INSTALLED_PATTERNS: tuple[str, ...] = (
     "dag",
     "parallel",
@@ -15,7 +15,7 @@ INSTALLED_PATTERNS: tuple[str, ...] = (
     "wizard",
 )
 
-# Not auto-loaded. Purpose in docs/STUBS.md (phase-ticker body must not look installed).
+# Not auto-loaded.
 INTENTION_PATTERNS: tuple[str, ...] = ("etl",)
 
 

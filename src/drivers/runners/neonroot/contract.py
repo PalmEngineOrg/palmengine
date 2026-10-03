@@ -10,8 +10,6 @@ Canonical spawn params
 ``seed`` (str, default ``git-archive``) — ``git-archive`` | host path | ``none``.
 ``seed_exclude`` / ``outputs`` / ``seed_mode`` / ``vault`` / ``sandbox`` /
 ``isolated`` / ``timeout`` / ``name`` / ``cwd`` — see spawn module.
-
-See ADR-023, ADR-024 (workload plane), VISION-0.56.
 """
 
 from __future__ import annotations

@@ -1,4 +1,4 @@
-"""0.36 — field roles for describe."""
+"""Field roles for describe."""
 
 from __future__ import annotations
 

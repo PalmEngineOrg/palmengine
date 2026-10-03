@@ -1,4 +1,4 @@
-"""0.63.16 — workload: place spawn against WorkloadEngine."""
+"""Workload: place spawn against WorkloadEngine."""
 
 from __future__ import annotations
 

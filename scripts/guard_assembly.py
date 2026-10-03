@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Assembly coherence guard — run the fail-closed / single-truth suite (0.63.4).
-
-This is a fitness instrument: failures mean dual mode or a broken gate, not
-"make green by soft-open." See VISION-0.63 / VISION-ASSEMBLY §6.4.
-"""
+"""Assembly coherence guard — run the fail-closed / single-truth suite."""
 
 from __future__ import annotations
 
@@ -23,7 +19,7 @@ def main() -> int:
         "tests/test_assembly_gate_0_63_3.py",
         "--tb=short",
     ]
-    # tests/assembly includes seed map (0.63.5) and coherence gate (0.63.4)
+    # tests/assembly includes seed map and coherence gate
     print("🔒 Assembly coherence suite (fail-closed / single readiness)...")
     return subprocess.call(cmd)
 

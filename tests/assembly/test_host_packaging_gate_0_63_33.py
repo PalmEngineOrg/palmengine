@@ -1,4 +1,4 @@
-"""0.63.33 — host packaging business start / continue doors need admission; kernel dig named."""
+"""Host packaging business start / continue doors need admission; kernel dig named."""
 
 from __future__ import annotations
 

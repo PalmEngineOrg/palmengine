@@ -1,4 +1,4 @@
-"""compensation materialize — definition capabilities are the install list (0.67.11)."""
+"""compensation materialize — definition capabilities are the install list."""
 
 from __future__ import annotations
 

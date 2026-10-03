@@ -1,9 +1,8 @@
 """
 CLI session context — ApplicationHost-backed commands and queries.
 
-0.58.17: :attr:`bound_surface` is the session-owned surface context truth.
-``active_system_session_id`` / assist / instance slots remain transport mirrors
-until SI-001 rename (0.58.19). Product door is ``host.session`` only.
+:attr:`bound_surface` is the session-owned surface context truth. Product door is ``host.session``
+only.
 """
 
 from __future__ import annotations
@@ -44,9 +43,9 @@ class CliContext:
     active_instance_id: str | None = None
     active_assist_session_id: str | None = None
     active_assist_scenario_id: str | None = None
-    # System session plane bind (0.58.3) — mirror of bound_surface.session_id.
+    # System session plane bind — mirror of bound_surface.session_id.
     active_system_session_id: str | None = None
-    # Session-owned surface context (0.58.17) — product truth for the walk.
+    # Session-owned surface context — product truth for the walk.
     bound_surface: BoundSurface | None = None
     output_format: str = "table"
     _instance_to_job: dict[str, str] = field(default_factory=dict)
@@ -95,10 +94,10 @@ class CliContext:
         surface: str = "cli",
         metadata: dict[str, Any] | None = None,
     ) -> Any:
-        """Bind (or create) a **system** session via product SessionService (0.58.17).
+        """Bind (or create) a **system** session via product SessionService.
 
         Installs :attr:`bound_surface` as truth. Mirrors
-        :attr:`active_system_session_id` for legacy CLI slots (SI-006 residual).
+        :attr:`active_system_session_id` for legacy CLI slots.
         Does **not** treat product assist ``session_id`` as the system subject.
         """
         sid = (
@@ -138,11 +137,11 @@ class CliContext:
     def set_active_assist(self, view: dict[str, Any]) -> None:
         """Track the active assist handle from an assistant envelope.
 
-        Product assist still may use instance-shaped ``session_id`` (SI-001).
-        System bind updates :attr:`bound_surface` (0.58.17).
+        Product assist still may use instance-shaped ``session_id``.
+        System bind updates :attr:`bound_surface`.
         """
         # Bind law first: outside subject before product assist tracking.
-        # 0.58.9: view.session_id is system subject when sess-shaped.
+        # view.session_id is system subject when sess-shaped.
         system_from_view = view.get("session_id")
         if system_from_view and not str(system_from_view).startswith("sess-"):
             system_from_view = None
@@ -152,7 +151,7 @@ class CliContext:
             metadata={"via": "assist"},
         )
 
-        # Product continue handle (SI-001 internal) — instance_id preferred.
+        # Product continue handle — instance_id preferred.
         session_id = view.get("instance_id") or view.get("session_id")
         if not session_id:
             return
@@ -165,7 +164,7 @@ class CliContext:
         self.active_assist_scenario_id = str(scenario_id) if scenario_id else None
         refs = view.get("refs") if isinstance(view.get("refs"), dict) else {}
         job_id = refs.get("job_id")
-        # Prefer explicit instance_id when product starts telling the truth (SI-001).
+        # Prefer explicit instance_id when product starts telling the truth.
         instance_id = view.get("instance_id") or refs.get("instance_id") or session_id
         instance_id = str(instance_id)
         self.active_instance_id = instance_id
@@ -237,7 +236,7 @@ class CliContext:
         return self.app.get_job(job_id)
 
     def resume_job(self, job_id: str) -> None:
-        # 0.63.34 — host packaging door, not kernel dig
+        # Host packaging door, not kernel dig
         self.host.resume_job(job_id)
 
     def persist_job(self, job: Job) -> None:

@@ -1,4 +1,4 @@
-"""Tests for instance definition migration execution (0.24.3)."""
+"""Tests for instance definition migration execution."""
 
 from __future__ import annotations
 

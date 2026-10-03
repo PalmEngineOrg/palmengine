@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from palm.definitions import FlowDefinition, ProcessDefinition
 
-# 0.40.1 — on put of the list (write resource used by todo-builder), enqueue this flow.
+# On put of the list (write resource used by todo-builder), enqueue this flow.
 # Host: resource.changed → WorkIntent → tick_work() runs when able.
 _TODO_ANALYTICS_TRIGGERS = [
     {

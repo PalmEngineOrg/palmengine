@@ -1,9 +1,7 @@
 """
-Host wiring (T2 / 0.48.6, seam 2) — projections + command/query bus handlers.
+Host wiring — projections + command/query bus handlers.
 
-Parameter-based (root-agnostic) so the second composition root (``ServerContext``)
-can share it. Folded in 0.48.6 once the latent ``ServerContext → services`` cycle
-was broken (via lazy ``common.runtimes.server`` composition-root exports).
+Parameter-based (root-agnostic) so the second composition root (``ServerContext``) can share it.
 """
 
 from __future__ import annotations

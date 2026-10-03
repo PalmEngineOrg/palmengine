@@ -13,7 +13,7 @@ CHAT_AUTO_START_INTENTS = frozenset(
     }
 )
 
-# Operator-entry design intents → design-entry scenario (0.34.1)
+# Operator-entry design intents → design-entry scenario
 CHAT_DESIGN_AUTO_START_INTENTS = frozenset(
     {
         "create-flow",

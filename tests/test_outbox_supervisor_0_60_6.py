@@ -1,4 +1,4 @@
-"""0.60.6 / 0.65.2 — outbox is a DNA-listed supervised service."""
+"""Outbox is a DNA-listed supervised service."""
 
 from __future__ import annotations
 

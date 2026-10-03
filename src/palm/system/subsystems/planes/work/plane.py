@@ -1,10 +1,8 @@
-"""WorkPlaneService — first-class **start** plane (0.60.2).
+"""WorkPlaneService — first-class **start** plane.
 
 Peer of wait (continue): trigger / schedule / enqueue → WorkIntent → tick → new job.
 Runtimes attach this service at system boot. Continuous drain is a supervised
 service (later slice) over :meth:`tick`.
-
-See docs/VISION-0.60.md · ADR-029 · docs/WORK-DRAIN.md.
 """
 
 from __future__ import annotations
@@ -44,7 +42,7 @@ class WorkPlaneService:
         self._schedules: ScheduleRegistry | None = None
         self._triggers = TriggerRegistry()
         self._submit_flow: Callable[[str, dict[str, Any]], Any] | None = None
-        # 0.63.23 — fail closed until install wires admission/started able.
+        # Fail closed until install wires admission/started able.
         self._able: Callable[[], bool] = lambda: False
         self._max_depth = 8
         self._batch_size = 10
@@ -118,7 +116,7 @@ class WorkPlaneService:
         self._lease_seconds = max(0.1, float(lease_seconds))
         self._claimer_id = str(claimer_id or DEFAULT_CLAIMER_ID)
         self._workers = max(1, int(workers))
-        # 0.63.23 — omit able → refuse (was fail-open True).
+        # Omit able → refuse (was fail-open True).
         self._able = able if able is not None else (lambda: False)
         self._submit_flow = submit_flow
         self._dropped_depth = 0
@@ -135,9 +133,9 @@ class WorkPlaneService:
         self._submit_flow = submit_flow
 
     def set_able(self, able: Callable[[], bool] | None) -> None:
-        """Replace able gate (kernel: started ∧ ready ∧ work_drain after 0.67.2).
+        """Replace able gate (kernel: started ∧ ready ∧ work_drain).
 
-        ``None`` clears to fail-closed (0.63.23) — not soft-open True.
+        ``None`` clears to fail-closed — not soft-open True.
         """
         self._able = able if able is not None else (lambda: False)
 
@@ -218,7 +216,7 @@ class WorkPlaneService:
         return n
 
     def reload_from_repository(self, repository: Any) -> int:
-        """0.60.7 — arm triggers/schedules from a definition repository (hostless)."""
+        """Arm triggers/schedules from a definition repository (hostless)."""
         try:
             flows = list(repository.list_flows() or [])
         except Exception:
@@ -260,7 +258,7 @@ class WorkPlaneService:
         """Enqueue due schedules when the plane is able (drain membership).
 
         Same query as :meth:`tick`. Ready without ``work_drain`` does not
-        advance the schedule clock (0.67.5). Background poll already skipped
+        advance the schedule clock. Background poll already skipped
         this when not able; the explicit path now matches.
         """
         if self._schedules is None:
@@ -283,7 +281,7 @@ class WorkPlaneService:
         """
         if self._store is None or self._submit_flow is None:
             return 0
-        # Admission gate: able includes admission after 0.63.3 (fail closed).
+        # Admission gate: able includes admission (fail closed).
         if not self.is_able():
             return 0
         cid = str(claimer_id or self._claimer_id or DEFAULT_CLAIMER_ID)
@@ -322,7 +320,7 @@ class WorkPlaneService:
         """Continuous poll loop(s). Supervisor start walks this.
 
         Starts ``workers`` daemon threads (default 1). Each thread has a
-        distinct claimer id under exclusive claim (0.62).
+        distinct claimer id under exclusive claim.
         """
         if self._bg_started:
             return
@@ -412,7 +410,7 @@ def make_submit_flow(
     submit: Callable[..., Any],
     get_session_plane: Callable[[], Any | None],
 ) -> Callable[[str, dict[str, Any]], Any]:
-    """Build work submit from ports (CS-008) — no runtime bag.
+    """Build work submit from ports — no runtime bag.
 
     *submit* is ``(flow_id, metadata=…, state=…) -> result``.
     *get_session_plane* resolves the session plane at call time (after install).

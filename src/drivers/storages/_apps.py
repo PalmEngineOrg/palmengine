@@ -8,7 +8,7 @@ Django-style catalog for storage apps.
 from __future__ import annotations
 
 CORE_STORAGES: tuple[str, ...] = ("memory", "filesystem")
-# Intention backends (ST-002) — load only via drivers.storages.load / explicit opt-in.
+# Intention backends — load only via drivers.storages.load / explicit opt-in.
 OPTIONAL_STORAGES: tuple[str, ...] = ("postgres", "mongodb")
 # Truthful default install = core only (not optional placeholders).
 INSTALLED_STORAGES: tuple[str, ...] = CORE_STORAGES

@@ -1,5 +1,5 @@
 """
-Hermetic CI slice — non-docs dogfood via WorkloadEngine (0.56).
+Hermetic CI slice — non-docs dogfood via WorkloadEngine.
 
     ruff check → guard_core  (neonroot + palm-ci)
 

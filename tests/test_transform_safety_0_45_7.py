@@ -1,4 +1,4 @@
-"""0.45.7 — put_resource list persist defaults + TransformLeaf batch safety."""
+"""put_resource list persist defaults + TransformLeaf batch safety."""
 
 from __future__ import annotations
 

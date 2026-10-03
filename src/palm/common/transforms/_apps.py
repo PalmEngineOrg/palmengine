@@ -2,7 +2,7 @@
 Django-style autoloading for common transform rules.
 
 ``INSTALLED_TRANSFORMS`` is the catalog of real rules.
-The composition record names which rules the install stroke registers (0.72.4).
+The composition record names which rules the install stroke registers.
 Importing a rule module does not register it. Each module exposes ``register()``.
 """
 
@@ -35,7 +35,7 @@ INSTALLED_TRANSFORMS: tuple[str, ...] = (
     "yaml_dump",
     "toml_load",
     "xml_load",
-    # parquet_load is intention-only (ST-004); not auto-registered
+    # parquet_load is intention-only; not auto-registered
 )
 
 # Not in default install — package may still exist for future pyarrow work.

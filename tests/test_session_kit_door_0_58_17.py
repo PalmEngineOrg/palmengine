@@ -1,4 +1,4 @@
-"""0.58.17 — single kit door + BoundSurface dogfood (no product plane dual-path)."""
+"""Single kit door + BoundSurface dogfood (no product plane dual-path)."""
 
 from __future__ import annotations
 
@@ -78,7 +78,7 @@ def test_rewrite_uses_product_door_only_no_plane_fallback() -> None:
         assert path[2] == "inst-a"
         assert params["session_id"] == sid
 
-        # Plane only (no product door) → no rewrite (0.58.17: no dual path)
+        # Plane only (no product door) → no rewrite (no dual path)
         plane_ctx = SimpleNamespace(session_plane=host.session_plane)
         path2, params2 = rewrite_system_session_continue(
             plane_ctx, ["assist", "instance", sid], {}

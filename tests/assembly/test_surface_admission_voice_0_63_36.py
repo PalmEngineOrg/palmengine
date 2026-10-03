@@ -1,4 +1,4 @@
-"""0.63.36 — MCP + WebSocket honest admission_refused voice (extend REST 0.63.35)."""
+"""MCP + WebSocket honest admission_refused voice."""
 
 from __future__ import annotations
 

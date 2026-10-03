@@ -1,4 +1,4 @@
-"""analytics leftover — one organ, host slot aliases it, enabled refines, not a loop (0.67.17)."""
+"""analytics leftover — one organ, host slot aliases it, enabled refines, not a loop."""
 
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 """
-ResourceInvoker — narrow effect protocol for graphs (0.57.4 / P2).
+ResourceInvoker — narrow effect protocol for graphs.
 
 Leaves and patterns call this instead of requiring concrete ResourceEngine.
 ResourceEngine implements it. System adapters map ExecutionPort onto it.

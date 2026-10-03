@@ -22,7 +22,7 @@ class PalmRestError(RuntimeError):
 
 
 def admission_refused_error(detail: str) -> PalmRestError:
-    """Organism gate closed — honest MCP/in-process voice (0.63.36).
+    """Organism gate closed — honest MCP/in-process voice.
 
     Matches REST ``503 admission_refused`` so clients do not treat closed gate
     as a generic 500 or 400 validation failure.
@@ -38,7 +38,7 @@ def admission_refused_error(detail: str) -> PalmRestError:
 
 
 def capability_refused_error(detail: str) -> PalmRestError:
-    """Organ missing after ready — honest MCP/in-process voice (0.67.4).
+    """Organ missing after ready — honest MCP/in-process voice.
 
     Matches REST ``409 capability_refused`` so clients do not treat missing
     organ as a generic 500 or as closed admission.

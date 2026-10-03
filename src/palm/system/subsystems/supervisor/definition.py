@@ -1,5 +1,5 @@
 """
-Continuous service definitions — participation law at the edge (CS-006).
+Continuous service definitions — participation law at the edge.
 
 :class:`~palm.system.subsystems.supervisor.SystemSupervisor` walks these and
 ``register``\\s results. Boot schedule only seats the supervisor and calls

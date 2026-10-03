@@ -73,7 +73,7 @@ class CliInvocation:
     host_workers: int | None = None
     host_bind: str | None = None
     host_port: int | None = None
-    # Vitality benchmark (0.61.11) — opt-in tool present via Inspect
+    # Vitality benchmark — opt-in tool present via Inspect
     benchmark_recipe: str | None = None
     benchmark_iterations: int | None = None
     benchmark_full: bool = False

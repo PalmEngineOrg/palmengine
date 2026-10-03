@@ -1,5 +1,5 @@
 """
-CLI present for vitality benchmark (0.61.11+).
+CLI present for vitality benchmark.
 
 Law: thrash + metrics live in ``palm.system.vitality``; product door is
 ``InspectService.benchmark``; this module only parses args and renders.

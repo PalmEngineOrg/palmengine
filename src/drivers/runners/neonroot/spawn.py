@@ -1,4 +1,4 @@
-"""NeonRoot ``spawn`` action — hermetic command run (0.53.2+).
+"""NeonRoot ``spawn`` action — hermetic command run.
 
 Maps to::
 
@@ -6,18 +6,14 @@ Maps to::
         [--seed <dir>] [--seed-exclude …] [--output host:container …]
         -- <command…>
 
-``seed`` policy (ADR-022):
+``seed`` policy:
 
 - ``git-archive`` (default for hermetic claims) — ``git archive HEAD`` into a
   temp directory, seed that path, delete after spawn.
 - absolute/relative path — seed that host directory; prefer narrow paths
-  (e.g. ``docs/``) or repo root **with** ``seed_exclude`` / ``.neonrootignore``.
 - omit / empty with seed ``none`` — no ``--seed`` flag.
 
 ``outputs`` (NeonRoot  — export after **successful** exit only)::
-
-    [{"host": "docs/styles/output.css", "container": "styles/output.css"}]
-    # or strings "host:container"
 """
 
 from __future__ import annotations

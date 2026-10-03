@@ -1,4 +1,4 @@
-"""Wait plane definition — install law at the edge (SD-015)."""
+"""Wait plane definition — install law at the edge."""
 
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ def install_wait_plane(
     orch = ctx.orchestration
     if orch is None:
         raise RuntimeError("runtime has no orchestration for wait plane")
-    # 0.67.2 — continue is ready-only; work-plane able may close over an organ.
+    # Continue is ready-only; work-plane able may close over an organ.
     able = (
         ctx.admission_able
         if ctx.admission_able is not None

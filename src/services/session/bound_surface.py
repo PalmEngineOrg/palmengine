@@ -1,4 +1,4 @@
-"""BoundSurface — session-owned surface context (0.58.14).
+"""BoundSurface — session-owned surface context.
 
 Surfaces hold **one** :class:`BoundSurface` as truth for who is walking
 and which instance is the continue focus. They do not invent dual slots
@@ -13,8 +13,6 @@ and which instance is the continue focus. They do not invent dual slots
 
 Plane remains law for attach list and ownership. This type is the product
 shape SessionService returns so edges share one handle.
-
-See VISION-0.58 §4.3–4.4 · ADR-027 D13–D14 · SI-016.
 """
 
 from __future__ import annotations
@@ -82,7 +80,7 @@ def derive_session_origin(
 
 @dataclass(frozen=True)
 class BoundSurface:
-    """Session-owned surface context handle (0.58.14).
+    """Session-owned surface context handle.
 
     Immutable snapshot for transport and product edges. Mutations go through
     :class:`~services.session.SessionService` (bind / merge metadata /

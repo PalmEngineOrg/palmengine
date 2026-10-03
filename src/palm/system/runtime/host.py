@@ -6,7 +6,7 @@ Prefer :class:`~palm.system.instance.SystemInstance` + ports for **effects**
 to materialize patterns and drive jobs — that is this protocol's purpose.
 
 Not an edge bypass: :class:`~palm.system.executions.executor.DefinitionExecutor`
-is system-internal and types against this subset (SD-003).
+is system-internal and types against this subset.
 """
 
 from __future__ import annotations

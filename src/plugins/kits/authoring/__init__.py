@@ -1,10 +1,10 @@
-"""Authoring kit — library walk over host.definitions (0.70.1).
+"""Authoring kit — library walk over host.definitions.
 
 One object holds :class:`~services.definitions.service.DefinitionService`
 and walks one-shot catalog commit.
 
 Not an ``AuthoringService``. Not ``DesignService``. Not land verbs on
-``palm.kits.present``. Handle class name stays unnamed (VISION-0.70 §9).
+``palm.kits.present``. Handle class name stays unnamed.
 
 Library door: ``land(host)``. Job leaf: ``bound()`` from the started host.
 ``commit(body)`` walks catalog ``kind`` (``flow`` / ``resource``). José

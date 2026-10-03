@@ -1,4 +1,4 @@
-"""Analytics domain errors (0.35)."""
+"""Analytics domain errors."""
 
 from __future__ import annotations
 

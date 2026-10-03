@@ -1,4 +1,4 @@
-"""PhaseSkip — optional phase declines without failing the walk (0.59.3)."""
+"""PhaseSkip — optional phase declines without failing the walk."""
 
 from __future__ import annotations
 

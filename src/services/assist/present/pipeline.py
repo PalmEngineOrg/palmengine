@@ -33,7 +33,7 @@ def build_assistant_view(
     composed = build_compose_status(invoke_tree, snapshot)
     merge_snapshot_fields(composed, snapshot)
     payload = humanize_assistant_view(composed, context=context)
-    # Compact pipeline drops non-wizard keys; re-apply system session (0.58.9).
+    # Compact pipeline drops non-wizard keys; re-apply system session.
     # session_id = system subject only; instance_id = continue handle.
     system_sid = flat_view.get("session_id") or flat.get("session_id")
     instance_id = (

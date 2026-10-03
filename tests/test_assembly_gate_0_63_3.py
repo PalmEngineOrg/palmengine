@@ -1,4 +1,4 @@
-"""0.63.3 — admission gate on work-plane business path that needs admission (fail closed)."""
+"""Admission gate on work-plane business path that needs admission (fail closed)."""
 
 from __future__ import annotations
 
@@ -92,7 +92,7 @@ def test_work_plane_fail_closed_when_truth_home_down() -> None:
 
 
 def test_install_able_matches_drain_not_ready() -> None:
-    """0.67.2 — board able is work_drain membership, not may_run_business."""
+    """Board able is work_drain membership, not may_run_business."""
     reset_system_log_for_tests()
     rt = BaseRuntime()
     rt.start(drivers=bound_for_runtime(storage_backend="memory"))

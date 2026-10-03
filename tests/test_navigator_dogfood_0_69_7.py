@@ -1,4 +1,4 @@
-"""0.69.7 — empty-handed start dogfood on embedded (floor proof).
+"""empty-handed start dogfood on embedded (floor proof).
 
 One walk without Assist: bind → empty-handed start of navigator → stamp →
 stay WAITING → sibling start (no job session_id, no WaitInterest) →

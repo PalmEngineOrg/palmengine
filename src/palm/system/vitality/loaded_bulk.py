@@ -1,7 +1,7 @@
 """
-Loaded bulk — light structural size map of attached seats (0.61.9).
+Loaded bulk — light structural size map of attached seats.
 
-**Law (ADR-030 / VISION-0.61):**
+**Law:**
   - Observation only — no start/continue, no second write path.
   - **Visibility, not shame** — large modules may be valid; we show bulk.
   - Only **loaded** / **attached** things — not a full package tree scan
@@ -197,7 +197,7 @@ def _ensure_seat_reports(
         if isinstance(cached, list) and cached and isinstance(cached[0], SeatReport):
             return list(cached)
     # Own walk for composition counts only — private bag so projection seats
-    # still require seat_walk (ADR-030 fold lineage).
+    # still require seat_walk.
     options = ctx.walk_options if isinstance(ctx.walk_options, WalkOptions) else None
     result = walk_result(instance, options)
     ctx.bag[_BAG_PRIVATE_REPORTS] = list(result.reports)

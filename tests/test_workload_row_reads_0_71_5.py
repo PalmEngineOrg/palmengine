@@ -1,4 +1,4 @@
-"""0.71.5 — invert workload book row reads off getattr duck-typing.
+"""Invert workload book row reads off getattr duck-typing.
 
 place_registry / workload_place read Workload / WorkloadHandle fields typed.
 They do not getattr status / workload_id / spec / labels / message / runtime

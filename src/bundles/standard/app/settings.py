@@ -86,7 +86,7 @@ class PalmSettings:
     auth_roles: list[str]
     load_example_definitions: bool
     default_scheduler: SchedulerPolicy
-    # 0.62 — QueuedScheduler drive pool (default 1; needs exclusive drive)
+    # QueuedScheduler drive pool (default 1; needs exclusive drive)
     queued_workers: int
     max_concurrent_jobs: int | None
     enable_state_snapshot: bool
@@ -108,16 +108,16 @@ class PalmSettings:
     work_plane_max_depth: int
     work_plane_workers: int
     work_plane_lease_seconds: float
-    # 0.63.13 — explicit structure-definition seed from packaging/env.
+    # Explicit structure-definition seed from packaging/env.
     structure_definition_id: str | None
     rebuild_projections_on_startup: bool
     projection_rebuild_batch_size: int
     projection_rebuild_max_instances: int
     projection_rebuild_skip_if_fresh: bool
-    # 0.56 — Workload plane: host subprocess runtime (default OFF)
+    # Workload plane: host subprocess runtime (default OFF)
     workload_host_enabled: bool
     workload_default_runtime: str | None
-    # 0.58.15 — strict session attribution
+    # Strict session attribution
     session_strict_attribution: bool
     webhook_urls: list[str]
     webhook_event_types: list[str]
@@ -126,7 +126,7 @@ class PalmSettings:
     resource_cache_results: bool
     resource_cache_ttl_seconds: float
     resource_cache_max_entries: int
-    # Refines the install analytics organ (0.67.17). Not a composition seed.
+    # Refines the install analytics organ. Not a composition seed.
     analytics_enabled: bool
     analytics_allow_unpublished: bool
     analytics_allow_unpublished_with_server: bool

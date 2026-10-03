@@ -52,7 +52,7 @@ def test_host_full_product_packaging() -> None:
 def test_host_lean_product_packaging() -> None:
     """Lean host: DNA omit still builds other product services.
 
-    Lean omit is embedded DNA (0.67.9). Analytics leftover (0.67.17): DNA omit
+    Lean omit is embedded DNA. Analytics leftover: DNA omit
     drops the host slot even when composition.services includes analytics.
     """
     composition = CompositionProfile(

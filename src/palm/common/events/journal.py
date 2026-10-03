@@ -1,5 +1,5 @@
 """
-Append-only event journal with named consumer offsets (0.38).
+Append-only event journal with named consumer offsets.
 
 Kafka-*semantics* without cargo-cult: ordered log, at-least-once consumers,
 optional latest-by-key compaction for ``resource.changed``. Not tiered document KV.

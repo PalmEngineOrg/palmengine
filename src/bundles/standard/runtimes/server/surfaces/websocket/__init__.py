@@ -1,4 +1,4 @@
-"""WebSocket surface — Assist real-time channel (0.32+)."""
+"""WebSocket surface — Assist real-time channel."""
 
 from bundles.standard.runtimes.server.surfaces.websocket.session import (
     ASSIST_WS_PATH,

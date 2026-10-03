@@ -1,4 +1,4 @@
-"""0.59.5 — CompositionProfile is membership truth on the migrated path.
+"""CompositionProfile is membership truth on the migrated path.
 
 - Runtime gates read ``composition.has`` / ``composition.surfaces`` / services only.
 - Deployment may *feed* the settings resolver (server work-drain → capability);
@@ -137,7 +137,7 @@ def test_surfaces_skip_when_composition_has_none() -> None:
 
 
 def test_projections_omit_is_admission_not_a_boot_phase() -> None:
-    """0.68.1: DNA omit is admission. Empty host.projections.attach is gone."""
+    """DNA omit is admission. Empty host.projections.attach is gone."""
     settings = PalmSettings.for_tests(load_examples=False)
     host = ApplicationHost(
         settings=settings,

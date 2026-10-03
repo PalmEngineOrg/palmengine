@@ -56,7 +56,7 @@ def test_list_waiting_jobs_resolves_instance_id(server: ServerRuntime) -> None:
         body={"wizard": {"name": "onboard", "steps": 2}},
     )
     assert status in {200, 202}
-    # 0.58.19: product continue is instance_id; session_id is system subject
+    # Product continue is instance_id; session_id is system subject
     instance_id = submit.get("instance_id") or submit["session_id"]
     job_id = submit.get("job_id")
     if job_id is None:

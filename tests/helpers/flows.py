@@ -1,7 +1,7 @@
-"""Shared flow definitions for host / integration tests (0.59.8 cleanup).
+"""Shared flow definitions for host / integration tests.
 
 Legacy ``pattern=\"dag\", options={\"name\": \"quick\"}`` is dead — DAG requires
-``nodes`` / ``steps`` (0.54+). Prefer a one-step wizard for spine assertions.
+``nodes`` / ``steps``. Prefer a one-step wizard for spine assertions.
 """
 
 from __future__ import annotations

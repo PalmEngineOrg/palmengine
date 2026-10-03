@@ -1,4 +1,4 @@
-"""0.60.1 — SystemSupervisor seat: registry, lifecycle, boot wire."""
+"""SystemSupervisor seat: registry, lifecycle, boot wire."""
 
 from __future__ import annotations
 

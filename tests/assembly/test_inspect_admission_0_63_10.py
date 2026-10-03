@@ -1,4 +1,4 @@
-"""0.63.10 — inspect top/vitality present living admission."""
+"""Inspect top/vitality present living admission."""
 
 from __future__ import annotations
 

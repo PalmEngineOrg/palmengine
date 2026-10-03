@@ -59,7 +59,7 @@ def normalize_assist_dispatch_args(
             cleaned = [clean_dispatch_str(segment) for segment in nested]
             path = [segment for segment in cleaned if segment] or None
 
-    # 0.34 — menu chip values open:kind:id always route to assist/open
+    # Menu chip values open:kind:id always route to assist/open
     open_value = clean_dispatch_str(params.get("value")) or clean_dispatch_str(
         params.get("input")
     )
@@ -68,9 +68,9 @@ def normalize_assist_dispatch_args(
         params.setdefault("value", open_value)
 
     if not alias and not path:
-        # 0.58.9: session_id = system subject (sess-…); instance_id = continue.
+        # session_id = system subject (sess-…); instance_id = continue.
         # Bound system session alone must not steal "flow_id only" → create.
-        # 0.58.19: product continue paths use segment ``instance``.
+        # Product continue paths use segment ``instance``.
         # Instance-shaped session_id is still accepted as continue handle.
         raw_session = clean_dispatch_str(params.get("session_id"))
         instance_id = clean_dispatch_str(params.get("instance_id"))

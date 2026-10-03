@@ -1,4 +1,4 @@
-"""0.55.10 — WaitPlaneService continue plane."""
+"""WaitPlaneService continue plane."""
 
 from __future__ import annotations
 
@@ -38,7 +38,7 @@ def test_wait_plane_attach_and_resume() -> None:
     plane = WaitPlaneService()
     plane.open_on_job(owner, make_job_wait("child-p"))
     rt = _Rt()
-    # Unit mechanics: force able (0.63.26 default fail closed).
+    # Unit mechanics: force able.
     plane.attach(
         orchestration=rt.orchestration, event=rt.event, able=lambda: True
     )

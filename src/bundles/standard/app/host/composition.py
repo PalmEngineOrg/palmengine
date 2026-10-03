@@ -5,27 +5,20 @@ The composition axis, twin of ``DeploymentProfile`` (the deployment axis, in
 ``roles.py``). A running app is assembled from one ``CompositionProfile`` and one
 ``DeploymentProfile``; the two are orthogonal and never merge.
 
-**0.59.5 / 0.64 / 0.67.7 / 0.67.9 / 0.67.11 / 0.67.13 / 0.67.16 membership:** this profile seeds product
-services, surfaces, and capabilities other than ``work_drain``, ``outbox``,
-``journal``, ``projections``, ``compensation``, ``webhook``, and ``analytics``. Those names are not composition
-members — after structure definition load, install is definition ``capabilities``.
-Deployment may feed the settings resolver but does not OR at phase time.
-See ADR-028 D4, VISION-0.64, and ``composition_profile_from_settings``.
+Those names are not composition members — after structure definition load, install is definition
+``capabilities``. Deployment may feed the settings resolver but does not OR at phase time.
 
-**0.72.2:** named shapes are saved records (``COMPOSITION_RECORDS``). The host
+Named shapes are saved records (``COMPOSITION_RECORDS``). The host
 builds a ``CompositionProfile`` from that data. Preset classmethods are not the path.
 
-**0.72.3:** each record names the plugin packages it installs (kits, patterns,
+Each record names the plugin packages it installs (kits, patterns,
 providers, runners, storages). The install stroke walks those names.
 ``INSTALLED_*`` stays the catalog of real packages.
 
-**0.72.4:** each record also names transform rules. The same stroke walks
+Each record also names transform rules. The same stroke walks
 those names. Service names stay the phenotype field. The host imports that
 tuple; ``INSTALLED_SERVICES`` stays the catalog.
 
-History: skeleton 0.50 · living capabilities 0.51 · boot schedule 0.59.2-.4 ·
-membership truth 0.59.5 · composition record 0.72.2 · package names 0.72.3 ·
-second menus 0.72.4.
 Typed name-tuples + saved records — not a manifest DSL.
 """
 
@@ -45,7 +38,7 @@ ServiceName = Literal[
 ]
 SurfaceName = Literal["rest", "websocket", "mcp", "explorer", "studio"]
 Capability = Literal[
-    "workloads",  # 0.56 — WorkloadEngine plane (host OFF by default)
+    "workloads",  # WorkloadEngine plane (host OFF by default)
 ]
 
 #: The full service set the host builds today (pinned to CORE_SERVICE_PROVIDERS by tests).
@@ -58,8 +51,8 @@ ALL_SERVICES: tuple[ServiceName, ...] = (
     "design",
     "analytics",
 )
-#: Minimal services for an embedded/library shape — no assist/design/analytics chrome.
-#: Includes product ``session`` (0.58.12) so core submit paths have the surface door.
+# : Minimal services for an embedded/library shape — no assist/design/analytics chrome.
+# : Includes product ``session`` so core submit paths have the surface door.
 CORE_SERVICES: tuple[ServiceName, ...] = (
     "inspect",
     "session",
@@ -75,15 +68,15 @@ DEFAULT_CAPABILITIES: frozenset[Capability] = frozenset(
     }
 )
 
-#: Package names each saved record installs (0.72.3).
-#: The install stroke walks the record. These tuples are the saved data.
-#: ``INSTALLED_*`` in each family package is the catalog of real packages.
+# : Package names each saved record installs.
+# : The install stroke walks the record. These tuples are the saved data.
+# : ``INSTALLED_*`` in each family package is the catalog of real packages.
 RECORD_KITS: tuple[str, ...] = ("present", "authoring")
 RECORD_PATTERNS: tuple[str, ...] = ("dag", "parallel", "pipeline", "wizard")
 RECORD_PROVIDERS: tuple[str, ...] = ("rest", "palm", "kv", "file", "authoring")
 RECORD_RUNNERS: tuple[str, ...] = ("local", "host", "neonroot")
 RECORD_STORAGES: tuple[str, ...] = ("memory", "filesystem")
-#: Transform rules each saved record installs (0.72.4). Same set on every record.
+# : Transform rules each saved record installs. Same set on every record.
 RECORD_TRANSFORMS: tuple[str, ...] = (
     "rename_field",
     "map_fields",
@@ -224,7 +217,7 @@ class CompositionProfile:
     Services, surfaces, and capabilities are the phenotype.
     ``kits`` / ``patterns`` / ``providers`` / ``runners`` / ``storages`` /
     ``transforms`` are the plugin packages and rules this composition installs
-    (0.72.3 / 0.72.4).
+.
     """
 
     services: tuple[str, ...] = ALL_SERVICES

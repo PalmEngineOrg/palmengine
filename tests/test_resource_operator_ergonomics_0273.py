@@ -1,4 +1,4 @@
-"""0.27.3 — resource operator ergonomics (doctor preflight, failure modes, remediation)."""
+"""Resource operator ergonomics (doctor preflight, failure modes, remediation)."""
 
 from __future__ import annotations
 

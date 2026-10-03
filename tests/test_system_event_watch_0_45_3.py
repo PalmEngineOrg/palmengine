@@ -1,4 +1,4 @@
-"""0.45.3 — system event watchdog definitions + loop guards."""
+"""System event watchdog definitions + loop guards."""
 
 from __future__ import annotations
 

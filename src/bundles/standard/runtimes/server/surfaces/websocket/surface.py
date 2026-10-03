@@ -1,5 +1,5 @@
 """
-WebSocket surface — real-time Assist channel (0.32.1+) + Portal dogfood (0.32.4).
+WebSocket surface — real-time Assist channel + Portal dogfood.
 
 HTTP discovery: ``GET /v1/surfaces/websocket``
 Assist channel: ``GET /ws/v1/assist`` with WebSocket upgrade (stdlib transport).

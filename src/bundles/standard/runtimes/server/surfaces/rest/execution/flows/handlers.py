@@ -56,13 +56,13 @@ def create_session(
         return auth_error
 
     body: dict[str, Any] = dict(request.body) if isinstance(request.body, dict) else {}
-    # Cookie-like system session transport (0.58.7) — same contract as WS bind
+    # Cookie-like system session transport — same contract as WS bind
     from plugins.kits.server.middleware import (
         extract_system_session_hint,
         set_cookie_header_value,
     )
 
-    # Cookie/header → edge session_id (system subject only, 0.58.9).
+    # Cookie/header → edge session_id.
     if not body.get("session_id") or not str(body.get("session_id", "")).startswith(
         "sess-"
     ):
@@ -250,7 +250,7 @@ def _session_body(
 ) -> dict[str, Any]:
     flat = flatten_session_context(ctx_obj)
     view_format = _view_format(request)
-    # Product continue key is instance_id (0.58.19); session_id kw is legacy alias.
+    # Product continue key is instance_id; session_id kw is legacy alias.
     continue_hint = instance_id if instance_id is not None else session_id
     instance_key = (
         flat.get("instance_id")
@@ -289,7 +289,7 @@ def _session_body(
 
 def _create_body(result: Any) -> dict[str, Any]:
     if isinstance(result, dict):
-        # 0.58.9: session_id = system; instance_id = continue handle.
+        # session_id = system; instance_id = continue handle.
         body: dict[str, Any] = {
             "flow_id": result.get("flow_id"),
             "job_id": result.get("job_id"),

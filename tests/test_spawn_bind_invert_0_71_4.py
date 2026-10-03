@@ -1,4 +1,4 @@
-"""0.71.4 — invert spawn-hand discovery off the handles duck-walk.
+"""Invert spawn-hand discovery off the handles duck-walk.
 
 Typed book binds live on RegisteredPlaceSpawn. host_bind / place_registry
 walk that table; they do not getattr(spawn, \"handles\") for bind hands.

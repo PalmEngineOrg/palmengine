@@ -1,4 +1,4 @@
-"""0.40.3 — named journal consumers + doctor control_plane."""
+"""Named journal consumers + doctor control_plane."""
 
 from __future__ import annotations
 

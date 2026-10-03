@@ -97,7 +97,7 @@ class StandaloneCommandHandlers:
             body = dict(command.flow)
             if command.job_id is not None:
                 body.setdefault("job_id", command.job_id)
-            # 0.58.9: command.metadata (e.g. system session_id) must not be dropped
+            # command.metadata (e.g. system session_id) must not be dropped
             # when flow payload is a dict (wizard/inline body path).
             if command.metadata:
                 meta = dict(body.get("metadata") or {})
@@ -372,11 +372,11 @@ def wire_standalone_query_bus(query_bus: QueryBus, runtime: BaseRuntime) -> None
     """Register direct-from-runtime read handlers for the standalone query types.
 
     The read half of :func:`wire_standalone_buses`, extracted so a lean
-    (projection-less) :class:`~palm.app.host.ApplicationHost` can reuse it (0.51.6):
+    (projection-less) :class:`~palm.app.host.ApplicationHost` can reuse it:
     when a composition omits the ``projections`` capability the host serves reads
     straight from its primary runtime instead of from a projection layer — the read
     half of the composition-root convergence, achieved *without* dissolving
-    ``ServerContext`` (see ``docs/SCOUT-0.51.6-serverctx-foldin.md``).
+    ``ServerContext``.
     """
     queries = StandaloneQueryHandlers(runtime)
     for query_type in collect_cqrs_query_types(mode="standalone"):

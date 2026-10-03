@@ -1,4 +1,4 @@
-"""0.71.20 — pattern/provider autoload at bootstrap, not package import."""
+"""pattern/provider autoload at bootstrap, not package import."""
 
 from __future__ import annotations
 

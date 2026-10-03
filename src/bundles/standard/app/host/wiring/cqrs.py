@@ -79,7 +79,7 @@ class PalmCommandHandlers:
                 return contributor.handle_command(command, self)
 
         if isinstance(command, SubmitFlowCommand):
-            # 0.63.33 — packaging CQRS business path that needs admission
+            # Packaging CQRS business path that needs admission
             # (port remains a second admission check)
             runtime_name = self._router.route_job_runtime(command.runtime_name)
             self._require_business_admission(runtime_name)
@@ -148,7 +148,7 @@ class PalmCommandHandlers:
         raise TypeError(f"Unsupported command: {type(command).__name__}")
 
     def _require_business_admission(self, runtime_name: str | None = None) -> None:
-        """Packaging CQRS business-start gate (0.63.33)."""
+        """Packaging CQRS business-start gate."""
         from palm.system.structure.errors import require_business_admission
 
         name = self._router.route_job_runtime(runtime_name)

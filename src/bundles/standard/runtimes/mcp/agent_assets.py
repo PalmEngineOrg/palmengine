@@ -18,7 +18,6 @@ SKILL_ASSET_FILES: dict[str, str] = {
 
 
 def resolve_skill_root(override: str | None) -> Path | None:
-    """Return the directory containing ``SKILL.md`` and ``references/``."""
     if override:
         candidate = Path(override)
         if candidate.is_dir() and (candidate / "SKILL.md").is_file():

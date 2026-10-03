@@ -33,7 +33,7 @@ class OutboxDrainHook(JobHookAdapter):
         try:
             self._processor.process_batch()
         except Exception:
-            # Documented ignore: outbox drain must not fail job lifecycle (CS-005).
+            # Documented ignore: outbox drain must not fail job lifecycle.
             _log.exception(
                 "outbox drain failed after job status change job_id=%s",
                 getattr(job, "id", None),

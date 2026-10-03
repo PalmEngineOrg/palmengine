@@ -1,4 +1,4 @@
-"""journal materialize — definition capabilities are the install list (0.67.7)."""
+"""journal materialize — definition capabilities are the install list."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""0.61.6 / OD-001 — doctor demoted to anatomy packaging; eyes = top/vitality."""
+"""Doctor demoted to anatomy packaging; eyes = top/vitality."""
 
 from __future__ import annotations
 

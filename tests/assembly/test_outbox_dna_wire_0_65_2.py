@@ -1,4 +1,4 @@
-"""0.65.2 — host outbox store wire follows DNA listing (not composition)."""
+"""Host outbox store wire follows DNA listing (not composition)."""
 
 from __future__ import annotations
 
@@ -56,7 +56,7 @@ def test_host_outbox_wire_when_dna_lists_outbox() -> None:
 
 
 def test_start_option_does_not_override_dna() -> None:
-    """0.68.4: CLI DNA still wires; there is no enable_event_outbox override."""
+    """CLI DNA still wires; there is no enable_event_outbox override."""
     reset_system_log_for_tests()
     host = ApplicationHost.for_mode(BootMode.cli(), settings=_lean())
     host.start()

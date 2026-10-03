@@ -6,7 +6,7 @@ from typing import Any
 
 from services.assist.present.actions import merge_assistant_actions
 
-# Intents that surface Design Service tools (0.30.1)
+# Intents that surface Design Service tools
 DESIGN_DISCOVERY_INTENTS = frozenset({"create-flow", "improve-flow", "propose-resource"})
 
 
@@ -91,7 +91,7 @@ def prioritize_assistant_actions_for_design(
     handoff_ready: bool = False,
     waiting_for_input: bool = False,
 ) -> list[dict[str, Any]]:
-    """Put design tools first; drop noisy session verbs for design intents (0.30.4)."""
+    """Put design tools first; drop noisy session verbs for design intents."""
     if intent not in DESIGN_DISCOVERY_INTENTS:
         return actions
 

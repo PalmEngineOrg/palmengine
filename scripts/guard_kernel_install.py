@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Kernel install guard (0.72.5).
+"""Kernel install guard.
 
 ``palm.system`` has no install phase. The only remaining install-key names
 are the two keys ``BaseRuntime.start`` refuses.

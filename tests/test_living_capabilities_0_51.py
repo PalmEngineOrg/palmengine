@@ -1,11 +1,7 @@
-"""Living Capabilities (0.51.1) — the resolver derives capabilities from settings.
+"""Living Capabilities — the resolver derives capabilities from settings.
 
-Derived, **not yet gating**: 0.51.1 makes ``composition_profile_from_settings`` compute
-``capabilities`` from the ``enable_*`` flags, pinned against today's effective wiring,
-*before* any host machinery reads them (0.51.2+ switches each gate to
-``composition.has(...)``). These tests are the safety net for that transition — they lock
-the derivation so a later gate can't silently change what a shape wires. See VISION-0.51 /
-ADR-020.
+These tests are the safety net for that transition — they lock the derivation so a later gate can't
+silently change what a shape wires.
 """
 
 from __future__ import annotations
@@ -42,7 +38,7 @@ def _caps(**overrides: object) -> frozenset[str]:
 
 
 def test_full_recovery_derives_exactly_default_capabilities() -> None:
-    """full_recovery no longer seeds compensation (0.67.11 DNA). Always-on
+    """full_recovery no longer seeds compensation. Always-on
     workloads is DEFAULT_CAPABILITIES. journal / projections / compensation /
     webhook / analytics are DNA, not composition seeds."""
     profile = composition_profile_from_settings(PalmSettings.for_tests(full_recovery=True))
@@ -69,7 +65,7 @@ def test_each_flag_toggles_exactly_its_capability() -> None:
 
 
 def test_journal_is_not_a_composition_seed() -> None:
-    """journal has no enable_* flag and is not a composition seed (0.67.7 DNA + hand)."""
+    """journal has no enable_* flag and is not a composition seed."""
     assert "journal" not in _caps()
     assert "journal" not in _caps(
         analytics_enabled=False,
@@ -77,7 +73,7 @@ def test_journal_is_not_a_composition_seed() -> None:
 
 
 def test_projections_is_not_a_composition_seed() -> None:
-    """projections has no enable_* flag and is not a composition seed (0.67.9 DNA + hand)."""
+    """projections has no enable_* flag and is not a composition seed."""
     assert "projections" not in _caps()
     assert "projections" not in _caps(
         analytics_enabled=False,
@@ -85,7 +81,7 @@ def test_projections_is_not_a_composition_seed() -> None:
 
 
 def test_compensation_is_not_a_composition_seed() -> None:
-    """compensation is DNA + hand (0.67.11); not a composition seed."""
+    """compensation is DNA + hand; not a composition seed."""
     assert "compensation" not in _caps()
     assert "compensation" not in _caps(
         analytics_enabled=False,
@@ -93,7 +89,7 @@ def test_compensation_is_not_a_composition_seed() -> None:
 
 
 def test_webhook_is_not_a_composition_seed() -> None:
-    """webhook is DNA + hand (0.67.13); not a composition seed."""
+    """webhook is DNA + hand; not a composition seed."""
     assert "webhook" not in _caps()
     assert "webhook" not in _caps(
         analytics_enabled=False,
@@ -101,7 +97,7 @@ def test_webhook_is_not_a_composition_seed() -> None:
 
 
 def test_analytics_is_not_a_composition_seed() -> None:
-    """analytics is DNA + hand (0.67.16); not a composition seed."""
+    """analytics is DNA + hand; not a composition seed."""
     assert "analytics" not in _caps()
     assert "analytics" not in _caps(
         analytics_enabled=True,
@@ -113,7 +109,7 @@ def test_analytics_is_not_a_composition_seed() -> None:
 
 
 def test_resolver_preserves_services_and_surfaces() -> None:
-    """0.51.1 touches only capabilities; services/surfaces stay all_in_one's."""
+    """Touches only capabilities; services/surfaces stay all_in_one's."""
     profile = composition_profile_from_settings(PalmSettings.for_tests(load_examples=False))
     assert profile.services == ALL_SERVICES == composition_profile_from_name("all_in_one").services
     assert (
@@ -122,7 +118,7 @@ def test_resolver_preserves_services_and_surfaces() -> None:
 
 
 def test_services_not_gated_by_capabilities_yet() -> None:
-    """Service construction is settled by composition.services (0.50), not capabilities:
+    """Service construction is settled by composition.services, not capabilities:
     a lean-capability host still builds every service."""
     host = ApplicationHost(settings=PalmSettings.for_tests(load_examples=False))
     host.start()
@@ -144,11 +140,11 @@ def test_services_not_gated_by_capabilities_yet() -> None:
         host.shutdown()
 
 
-# ── 0.51.2: the first gates read the composition, not scattered flags ─────────
+# ── The first gates read the composition, not scattered flags ─────────
 
 
 def test_compensation_gate_reads_dna_not_composition() -> None:
-    """RecoveryCoordinator gates compensation on DNA has_capability (0.67.11).
+    """RecoveryCoordinator gates compensation on DNA has_capability.
     Composition omit on a listed phenotype does not hide it. Lean omit is embedded DNA."""
     settings = PalmSettings.for_tests(full_recovery=True)
 
@@ -176,9 +172,9 @@ def test_compensation_gate_reads_dna_not_composition() -> None:
 
 
 def test_analytics_gate_reads_dna_not_composition() -> None:
-    """Admission gates analytics on DNA has_capability (0.67.16).
+    """Admission gates analytics on DNA has_capability.
     Composition omit on a listed phenotype does not hide it.
-    Lean omit is embedded DNA. Host product slot aliases the install organ (0.67.17)."""
+    Lean omit is embedded DNA. Host product slot aliases the install organ."""
     from palm.core.structure import CAPABILITY_ANALYTICS
 
     listed = ApplicationHost.for_mode(
@@ -206,8 +202,8 @@ def test_analytics_gate_reads_dna_not_composition() -> None:
 
 
 def test_webhook_gate_reads_dna_not_composition() -> None:
-    """RecoveryCoordinator gates webhook on DNA has_capability (0.67.13).
-    URLs refine the install dispatcher (0.67.14). Do not mint a recover twin.
+    """RecoveryCoordinator gates webhook on DNA has_capability.
+    URLs refine the install dispatcher. Do not mint a recover twin.
     Composition omit on a listed phenotype does not hide it.
     Lean omit is embedded DNA."""
     settings = replace(
@@ -238,7 +234,7 @@ def test_webhook_gate_reads_dna_not_composition() -> None:
         lean.shutdown()
 
 
-# ── 0.51.3: available (composition) and activated (deployment) ───────────────
+# ── Available (composition) and activated (deployment) ───────────────
 
 
 def test_outbox_install_follows_dna_not_composition() -> None:
@@ -320,11 +316,11 @@ def test_work_drain_settings_side_routes_through_the_capability() -> None:
         off.shutdown()
 
 
-# ── 0.51.4: journal gated by the capability ──────────────────────────────────
+# ── Journal gated by the capability ──────────────────────────────────
 
 
 def test_journal_gated_by_capability() -> None:
-    """Journal wiring is gated by DNA ``has_capability('journal')`` (0.67.7).
+    """Journal wiring is gated by DNA ``has_capability('journal')``.
     Default hosts list it on server/cli DNA; embedded omits it."""
     from palm.core.structure import CAPABILITY_JOURNAL
 
@@ -347,7 +343,7 @@ def test_journal_gated_by_capability() -> None:
         lean.shutdown()
 
 
-# ── 0.51.5: projections are a capability (the payoff — a lean ApplicationHost) ─
+# ── Projections are a capability (the payoff — a lean ApplicationHost) ─
 
 
 def test_projections_are_a_capability_lean_host_starts_without_them() -> None:
@@ -379,9 +375,9 @@ def test_projections_are_a_capability_lean_host_starts_without_them() -> None:
 
 
 def test_lean_host_serves_reads_direct_from_runtime() -> None:
-    """0.51.6: a projection-less ApplicationHost serves reads via the standalone
+    """A projection-less ApplicationHost serves reads via the standalone
     direct-from-runtime handlers — read-complete without a projection layer, and without
-    dissolving ServerContext (see docs/SCOUT-0.51.6-serverctx-foldin.md). The reads return
+    dissolving ServerContext. The reads return
     rather than raising "no handler for query"."""
     from palm.common.cqrs.query import GetJobStatusQuery, ListInstancesQuery, ListJobStatusQuery
 

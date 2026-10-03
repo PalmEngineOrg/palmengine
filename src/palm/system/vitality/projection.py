@@ -1,7 +1,7 @@
 """
-VitalityProjection — read-only fold of enabled capabilities (0.61.2).
+VitalityProjection — read-only fold of enabled capabilities.
 
-Law (ADR-030):
+Law:
   iterate enabled capabilities → each returns a fragment → merge → snapshot
 
 Projection **receives** seat reports and capability data. It does not:

@@ -42,7 +42,7 @@ def test_resolve_dispatch_format_assist_defaults_assistant() -> None:
 
 
 def test_resolve_dispatch_format_flows_honors_assistant_tool_format() -> None:
-    """0.30.6+ — palm_assist passes tool_format=assistant for flows paths."""
+    """palm_assist passes tool_format=assistant for flows paths."""
     assert (
         resolve_dispatch_format(
             ["flows", "onboard", "instance", "inst-1"],

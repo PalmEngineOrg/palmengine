@@ -1,4 +1,4 @@
-"""0.63.37 — SSR explorer honest voice for closed admission."""
+"""SSR explorer honest voice for closed admission."""
 
 from __future__ import annotations
 

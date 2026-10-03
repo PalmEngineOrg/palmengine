@@ -120,7 +120,7 @@ class DesignService(BaseService):
         *,
         base_name: str | None = None,
     ) -> dict[str, Any]:
-        """Store a dashboard proposal (0.41) — commit registers durable dashboard."""
+        """Store a dashboard proposal — commit registers durable dashboard."""
         from services.analytics.dashboard_design import resolve_dashboard_name
 
         # Normalize envelope
@@ -337,7 +337,7 @@ class DesignService(BaseService):
         *,
         base_flow_id: str | None = None,
     ) -> dict[str, Any]:
-        """One-shot propose → impact → commit for weak-LLM agents (0.30.4).
+        """One-shot propose → impact → commit for weak-LLM agents.
 
         Stops without commit when validation fails. Impact is always run when
         valid so agents get a single response with ``status`` and next ``actions``.
@@ -413,7 +413,7 @@ class DesignService(BaseService):
         *,
         base_resource_id: str | None = None,
     ) -> dict[str, Any]:
-        """One-shot propose → impact → commit for resource definitions (0.30.4)."""
+        """One-shot propose → impact → commit for resource definitions."""
         proposed = self.propose_resource(body, base_resource_id=base_resource_id)
         proposal = proposed.get("proposal") or {}
         proposal_id = str(proposal.get("proposal_id") or "")
@@ -462,7 +462,7 @@ class DesignService(BaseService):
         *,
         base_name: str | None = None,
     ) -> dict[str, Any]:
-        """One-shot propose → validate → commit dashboard (0.41.2)."""
+        """One-shot propose → validate → commit dashboard."""
         proposed = self.propose_dashboard(body, base_name=base_name)
         proposal = proposed.get("proposal") or {}
         proposal_id = str(proposal.get("proposal_id") or "")

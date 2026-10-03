@@ -1,4 +1,4 @@
-"""0.55.14 — plane delivers nested completion; interest always closed on match."""
+"""Plane delivers nested completion; interest always closed on match."""
 
 from __future__ import annotations
 

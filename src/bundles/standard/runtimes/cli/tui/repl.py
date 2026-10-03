@@ -75,7 +75,7 @@ def run_repl(ctx: CliContext, *, history_path: Path | None = None) -> int:
             ctx.console.print("^C")
             continue
         except Exception as exc:
-            # 0.63.38 — honest admission brand if a command path re-raises
+            # Honest admission brand if a command path re-raises
             from bundles.standard.runtimes.cli.shared.admission_voice import print_cli_error
 
             print_cli_error(ctx.console, exc)

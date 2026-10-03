@@ -1,10 +1,10 @@
-"""Rehydrate wait interests from instance / state snapshots (0.55.6).
+"""Rehydrate wait interests from instance / state snapshots.
 
 Wait interests live under ``palm.wait.interests`` on job/instance state.
 Normalize after restore so corrupt rows never block resume.
 
 Pure ``palm.core.wait`` home — callers above core must not reach through
-``palm.system`` for this (0.71.19 cut the common→system edge).
+``palm.system`` for this.
 """
 
 from __future__ import annotations

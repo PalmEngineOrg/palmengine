@@ -18,7 +18,6 @@ INSTALLED_KITS: tuple[str, ...] = (
     "authoring",
 )
 
-# Named futures without a body (do not auto-load; purpose lives in STUBS/VISION).
 INTENTION_KITS: tuple[str, ...] = ()
 
 

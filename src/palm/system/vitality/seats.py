@@ -1,5 +1,5 @@
 """
-Default discovery seeds for Palm living seats (0.61).
+Default discovery seeds for Palm living seats.
 
 **Planes:** vitality probes the live :class:`~palm.system.subsystems.planes.hub.SystemPlanes`
 hub and expands members from it (same pattern as supervisor services).

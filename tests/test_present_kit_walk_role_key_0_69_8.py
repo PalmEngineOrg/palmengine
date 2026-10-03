@@ -1,4 +1,4 @@
-"""0.69.8 — present kit owns the walk-role key; session walk-write stays generic.
+"""Present kit owns the walk-role key; session walk-write stays generic.
 
 Session stores the pointer as named metadata. The kit owns the key string
 and the stamp/replace callers. Session verbs do not say guidance.

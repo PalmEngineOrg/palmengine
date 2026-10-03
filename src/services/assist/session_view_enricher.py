@@ -24,7 +24,7 @@ def merge_assist_session_actions(
     handoff_ready: bool,
     status: str,
 ) -> dict[str, Any]:
-    """Blend scenario-aware CTAs onto a flows-path turn (0.32.5)."""
+    """Blend scenario-aware CTAs onto a flows-path turn."""
     waiting = status in {
         JobStatus.WAITING_FOR_INPUT.value,
         "waiting",

@@ -1,5 +1,5 @@
 """
-workload-followup — reactive dogfood (0.56.9).
+workload-followup — reactive dogfood.
 
 When a workload with label ``dogfood=run-python`` stops, work-drain enqueues
 this flow (start verb). Completer only emits; Palm matches.

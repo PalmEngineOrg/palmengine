@@ -1,4 +1,4 @@
-"""0.70.1 — plugins.kits.authoring kit-as-composition.
+"""plugins.kits.authoring kit-as-composition.
 
 Library door: one object holds host.definitions and walks one-shot commit.
 Not an AuthoringService. Not Design. Not land verbs on present.

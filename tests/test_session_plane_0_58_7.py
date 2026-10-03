@@ -1,4 +1,4 @@
-"""0.58.7 / 0.58.9 — WS / cookie-like bind; session_id = system subject."""
+"""WS / cookie-like bind; session_id = system subject."""
 
 from __future__ import annotations
 

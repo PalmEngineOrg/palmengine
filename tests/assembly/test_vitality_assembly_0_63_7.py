@@ -1,4 +1,4 @@
-"""0.63.7 — vitality eyes on assembly admission."""
+"""Vitality eyes on assembly admission."""
 
 from __future__ import annotations
 

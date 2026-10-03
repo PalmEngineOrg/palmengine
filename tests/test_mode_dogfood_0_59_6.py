@@ -1,4 +1,4 @@
-"""0.59.6 — Mode dogfood: ``safe`` + ``test`` green in CI.
+"""Mode dogfood: ``safe`` + ``test`` green in CI.
 
 Green bar for this slice:
 - Both modes boot via :meth:`ApplicationHost.for_mode` (no private internals).

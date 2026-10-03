@@ -94,7 +94,7 @@ def compact_wizard_inspect(
     if collection_field:
         payload["collection_field"] = collection_field
 
-    # 0.32.3 — carry schema fields for Portal dynamic input
+    # Carry schema fields for Portal dynamic input
     if "required" in prompt:
         payload["required"] = bool(prompt.get("required"))
     validation_rules = prompt.get("validation")

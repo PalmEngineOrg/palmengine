@@ -1,6 +1,6 @@
 """Map assist command paths to REST method / url / body.
 
-**0.58.19:** product continue URLs use ``/instance/``; legacy ``/session/``
+Product continue URLs use ``/instance/``; legacy ``/session/``
 path *segments* in the command path still map to the new REST shape.
 """
 

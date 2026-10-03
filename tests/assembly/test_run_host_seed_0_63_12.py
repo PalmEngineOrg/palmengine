@@ -1,4 +1,4 @@
-"""0.63.12 — run_host / deployment profile seeds DNA without BootMode."""
+"""run_host / deployment profile seeds DNA without BootMode."""
 
 from __future__ import annotations
 

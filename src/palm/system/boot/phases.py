@@ -1,5 +1,5 @@
 """
-Locked boot phase tables (0.59.2).
+Locked boot phase tables.
 
 Phase ids are the schedule contract. Handlers migrate into seats over later
 slices; until then most seats are ``imperative`` (code still in start soup)
@@ -40,7 +40,7 @@ class PhaseSpec:
 
 
 # ── Host schedule (ApplicationHost) ─────────────────────────────────────────
-# 0.59.4 — full table walked by ApplicationHost.start (all seats implemented).
+# Full table walked by ApplicationHost.start.
 
 HOST_PHASES: tuple[PhaseSpec, ...] = (
     PhaseSpec(
@@ -108,7 +108,7 @@ HOST_PHASES: tuple[PhaseSpec, ...] = (
 )
 
 # ── System schedule (BaseRuntime) ────────────────────────────────────────────
-# 0.59.3 — full table walked by BaseRuntime.start (all seats implemented).
+# Full table walked by BaseRuntime.start.
 
 SYSTEM_PHASES: tuple[PhaseSpec, ...] = (
     PhaseSpec(

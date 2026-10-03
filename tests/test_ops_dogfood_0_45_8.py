@@ -1,4 +1,4 @@
-"""0.45.8 — ops dogfood: test isolation, invoke routes, control_plane ops."""
+"""Ops dogfood: test isolation, invoke routes, control_plane ops."""
 
 from __future__ import annotations
 

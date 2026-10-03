@@ -71,7 +71,7 @@ def _create_session(server: ServerRuntime, *, body: dict[str, Any] | None = None
 
 def test_create_session_returns_session_id(server: ServerRuntime) -> None:
     payload = _create_session(server)
-    # 0.58.9: instance_id = continue; session_id = system subject when plane binds
+    # instance_id = continue; session_id = system subject when plane binds
     assert payload.get("instance_id")
     assert payload.get("session_id")
     assert str(payload["session_id"]).startswith("sess-")

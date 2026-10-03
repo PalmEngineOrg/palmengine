@@ -42,7 +42,7 @@ class StructureSeat:
         self._bind_place_ready_hand()
 
     def _bind_place_ready_hand(self) -> None:
-        """Bind the effects ``ready`` hand; no engine second places set (0.71.15)."""
+        """Bind the effects ``ready`` hand; no engine second places set."""
         match self.effects:
             case StructureEffectPort() as port:
                 self.engine.bind_place_ready(port.registry.ready)
@@ -73,11 +73,11 @@ class StructureSeat:
     ) -> AssembleLoopResult:
         """Structure assemble: load definition (default embedded) and reconcile until steady.
 
-        When *surfaces* are provided, definition refuse is checked (0.63.6).
+        When *surfaces* are provided, definition refuse is checked.
         ``work_drain`` membership is definition ``capabilities`` (omit is enough).
         Violations block admission — fail closed, no soft dual.
 
-        *force* voids same-id READY and re-converges (0.63.18 reassemble edge).
+        *force* voids same-id READY and re-converges.
         Membership is always re-evaluated: prior refuse reasons clear first.
         """
         if definition is None:
@@ -123,7 +123,7 @@ class StructureSeat:
         surfaces: Iterable[str] = (),
         force: bool = False,
     ) -> AssembleLoopResult:
-        """Re-converge after definition or membership change (0.63.18).
+        """Re-converge after definition or membership change.
 
         Uses the current seat definition when *definition* is omitted.
         Fails closed while invalidated/blocked; business paths that need admission must not soft-skip.

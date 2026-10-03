@@ -1,4 +1,4 @@
-"""0.72.6 — start receives bound drivers.
+"""Start receives bound drivers.
 
 The kernel does not import a storage or a runner, and it does not default one.
 The bundle binds storage before start.

@@ -1,4 +1,4 @@
-"""0.71.1 — adopt a named existing body into the workload book.
+"""Adopt a named existing body into the workload book.
 
 No WorkloadRuntime.start. Missing handle fails closed. Structure ENSURE
 and places_required converge when the book already holds the place.

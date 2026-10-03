@@ -1,4 +1,4 @@
-"""0.68.7 — write-only RunnerApp bag composted. Autoload + core registry stay."""
+"""write-only RunnerApp bag composted. Autoload + core registry stay."""
 
 from __future__ import annotations
 

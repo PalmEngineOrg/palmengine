@@ -1,4 +1,4 @@
-"""webhook materialize — definition capabilities are the install list (0.67.13)."""
+"""webhook materialize — definition capabilities are the install list."""
 
 from __future__ import annotations
 

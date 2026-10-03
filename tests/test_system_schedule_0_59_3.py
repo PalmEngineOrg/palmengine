@@ -1,4 +1,4 @@
-"""0.59.3 — BaseRuntime walks the full system phase table."""
+"""BaseRuntime walks the full system phase table."""
 
 from __future__ import annotations
 

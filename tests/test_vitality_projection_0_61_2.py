@@ -1,4 +1,4 @@
-"""0.61.2 — VitalityRegistry + VitalityProjection (seat_walk fold)."""
+"""VitalityRegistry + VitalityProjection (seat_walk fold)."""
 
 from __future__ import annotations
 
@@ -52,7 +52,7 @@ def test_default_registry_has_seat_walk_enabled() -> None:
     assert reg.is_enabled(CAPABILITY_EMISSION_WINDOW)
     row = next(r for r in reg.catalog() if r["id"] == CAPABILITY_EMISSION_WINDOW)
     assert row["maturity"] == MATURITY_INSTALLED
-    # process_resources + loaded_bulk installed (0.61.8–9); intention stubs still off.
+    # process_resources + loaded_bulk installed; intention stubs still off.
     assert CAPABILITY_PROCESS_RESOURCES in reg
     assert reg.is_enabled(CAPABILITY_PROCESS_RESOURCES)
     pr = next(r for r in reg.catalog() if r["id"] == CAPABILITY_PROCESS_RESOURCES)

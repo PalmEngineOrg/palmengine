@@ -1,10 +1,9 @@
-"""0.55.15 — continue plane public package surface is the slim door."""
+"""Continue plane public package surface is the slim door."""
 
 from __future__ import annotations
 
 import palm.system.subsystems.planes.wait as wait_pkg
 
-# Locked by VISION-0.55.15 — expand only with deliberate API design.
 EXPECTED_PUBLIC = frozenset(
     {
         "WaitPlaneService",

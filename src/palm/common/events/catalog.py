@@ -1,5 +1,5 @@
 """
-Public Palm event catalog (0.42).
+Public Palm event catalog.
 
 These types are safe to stream to authorized consumers (Portal, palm provider).
 Payloads should stay **small** (refs, ids, hashes) — not full documents.
@@ -24,7 +24,7 @@ PUBLIC_EVENT_TYPES: frozenset[str] = frozenset(
         "job.completed",
         "job.status_changed",
         "inbound.received",
-        # 0.55.7 workload wait-kind stub (full engine 0.56)
+        # Workload wait-kind stub (full engine 0.56)
         "workload.ready",
         "workload.failed",
         "workload.completed",

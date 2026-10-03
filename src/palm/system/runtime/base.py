@@ -1,9 +1,8 @@
 """
 BaseRuntime — concrete **system instance** for a running Palm.
 
-Holds engines, planes, and the :class:`~palm.system.interfaces.execution.ExecutionPort`
-surface for graphs and product. Canonical home: :mod:`palm.system.runtime`.
-
+Holds engines, planes, and the :class:`~palm.system.interfaces.execution.ExecutionPort` surface for
+graphs and product.
 
 Concrete surfaces (:class:`~palm.runtimes.embedded.runtime.EmbeddedRuntime`,
 :class:`~palm.runtimes.daemon.runtime.DaemonRuntime`) differ only in default scheduling
@@ -62,7 +61,7 @@ class BaseRuntime:
     """
     System instance shell: engines, planes, effect ports.
 
-    **Start law lives in** ``palm.system.boot`` (0.59.3+). This class holds the
+    **Start law lives in** ``palm.system.boot``. This class holds the
     machine; ``start()`` walks the system phase table. Do not grow private boot
     order here — add or migrate a phase handler under boot.
 
@@ -71,7 +70,7 @@ class BaseRuntime:
     Also satisfies the thin legacy :class:`~palm.system.runtime.host.RuntimeHost`.
 
     Subclasses set :attr:`default_scheduler_policy` to choose inline vs queued driving.
-    Prefer ``runtime.execution`` for resource/workload effects (0.57+), not edge
+    Prefer ``runtime.execution`` for resource/workload effects, not edge
     field access to engines.
     """
 
@@ -178,7 +177,7 @@ class BaseRuntime:
 
     @property
     def planes(self) -> SystemPlanes | None:
-        """Planes hub — consumes wait/session/work (0.61). ``None`` before attach."""
+        """Planes hub — consumes wait/session/work. ``None`` before attach."""
         return self._planes
 
     @property
@@ -189,7 +188,7 @@ class BaseRuntime:
 
     @property
     def wait_matcher(self) -> Any:
-        """Matcher inside the continue plane (0.55.4+), or ``None``."""
+        """Matcher inside the continue plane, or ``None``."""
         plane = self.wait_plane
         return None if plane is None else plane.matcher
 
@@ -212,7 +211,7 @@ class BaseRuntime:
 
     @property
     def supervisor(self) -> Any | None:
-        """Continuous system services supervisor (0.60), or ``None`` before wire."""
+        """Continuous system services supervisor, or ``None`` before wire."""
         return self._supervisor
 
     def bind_system_install(self) -> SystemInstall:
@@ -246,7 +245,7 @@ class BaseRuntime:
         def _drain_able() -> bool:
             """Work-plane start port: ready **and** ``work_drain`` installed.
 
-            0.67.2 — ready is not membership. Host spawn may inject
+            Ready is not membership. Host spawn may inject
             ``install_able`` (drain) and ``install_admission_able`` (ready).
             """
             if not _able():
@@ -280,7 +279,7 @@ class BaseRuntime:
 
     @property
     def last_boot_walk(self) -> list[Any] | None:
-        """Last system boot walk results (0.59+), or ``None`` before start.
+        """Last system boot walk results, or ``None`` before start.
 
         Vitality / membership observation reads this seat. Prefer this property
         over the private ``_last_boot_walk`` field.
@@ -290,13 +289,13 @@ class BaseRuntime:
     def start(self, **options: Any) -> None:
         """Hand control to the system boot schedule (``SYSTEM_PHASES``).
 
-        0.59.3 — no private soup here. Rules live in
+        No private soup here. Rules live in
         ``palm.system.boot.system_schedule``. Observation via SystemLog.
 
-        0.72.5 — this schedule does not install packages. The bundle installs
+        This schedule does not install packages. The bundle installs
         before it calls ``start``.
 
-        0.72.6 — ``drivers`` is a :class:`~palm.system.bound.BoundDrivers` value.
+        ``drivers`` is a :class:`~palm.system.bound.BoundDrivers` value.
         This schedule attaches that storage. It does not choose a storage or a
         workload runtime.
         """
@@ -494,7 +493,7 @@ class BaseRuntime:
     def provide_input(self, job_id: str, value: Any) -> str | None:
         """Provide input for a waiting interactive job and resume execution.
 
-        **0.63.25:** product continue through the shell requires
+        Product continue through the shell requires
         admission (same law as submit / resume_job). Wait-plane deliver that
         drives orchestration directly is a named residual (not this door).
         """
@@ -507,9 +506,9 @@ class BaseRuntime:
     def resume_process(self, instance_id: str) -> Job:
         """Resume a persisted process instance (product continue).
 
-        **0.63.29 cartography:** fail closed under admission. Enforcement is
+        Fail closed under admission. Enforcement is
         on ``DefinitionExecutor.resume_process`` via ``_require_runtime``
-        (same gate as submit since 0.63.4); shell documents the product-continue door.
+        (same gate as submit); shell documents the product-continue door.
         """
         self._require_started()
         return self.executor.resume_process(instance_id)
@@ -527,7 +526,7 @@ class BaseRuntime:
     def cancel_job(self, job_id: str) -> bool:
         """Cancel a non-terminal job — control path (not an admission-gated business path).
 
-        **0.63.30 named residual:** remains available when admission is closed
+        Remains available when admission is closed
         so operators and shutdown can stop work (same spirit as stop_workload).
         """
         self._require_started()
@@ -572,7 +571,7 @@ class BaseRuntime:
     ) -> Any:
         """Invoke a resource via the resource engine (ExecutionPort).
 
-        **0.63.24:** product / graph resource effects through this port
+        Product / graph resource effects through this port
         require admission (same law as submit_flow / start_workload). Direct
         ``ResourceEngine.invoke`` remains available for unit / place-registry paths
         that are not product business doors.
@@ -604,7 +603,7 @@ class BaseRuntime:
     ) -> Any:
         """Start a workload via the workload engine (ExecutionPort).
 
-        **0.63.20:** product / graph start through this port requires
+        Product / graph start through this port requires
         admission (same law as submit_flow). Structure assemble / place-registry spawn uses
         ``WorkloadEngine`` directly and is not forced through this door.
         """
@@ -614,7 +613,7 @@ class BaseRuntime:
         engine = self._require_workload_engine()
         parsed = spec if isinstance(spec, WorkloadSpec) else WorkloadSpec.from_dict(dict(spec))
         bound_owner = _coerce_workload_owner(owner)
-        # 0.58.8 — fill session/job/instance from event context when job path has them
+        # Fill session/job/instance from event context when job path has them
         bound_owner = _enrich_workload_owner_from_event_context(self, bound_owner)
         return engine.start(
             parsed,
@@ -634,9 +633,9 @@ class BaseRuntime:
     ) -> Any:
         """Exec argv on a READY workload (ExecutionPort).
 
-        **0.63.27:** product / graph exec through this port requires
+        Product / graph exec through this port requires
         admission (same law as start_workload). Direct ``WorkloadEngine.exec``
-        remains ungated for unit / non-port paths (named residual).
+        remains ungated for unit / non-port paths.
         """
         from palm.system.structure.errors import require_business_admission
 
@@ -649,12 +648,7 @@ class BaseRuntime:
         )
 
     def stop_workload(self, workload_id: str, **kwargs: Any) -> Any:
-        """Idempotent stop of a workload (ExecutionPort).
-
-        Not an admission-gated business path: stop/cancel must remain available for
-        shutdown and cleanup when business is closed (named residual under
-        SD-020 if product misuse appears).
-        """
+        """Idempotent stop of a workload (ExecutionPort)."""
         del kwargs  # reserved for future flags
         return self._require_workload_engine().stop(str(workload_id))
 
@@ -668,9 +662,7 @@ class BaseRuntime:
     def resume_job(self, job_id: str) -> Any:
         """Re-drive a registered orchestration job (ExecutionPort).
 
-        **0.63.25:** product / surface re-drive through this port
-        requires admission. Wait plane may still call ``orchestration.resume_job``
-        directly — named residual under SD-020 (system continue spine).
+        Product / surface re-drive through this port requires admission.
         """
         from palm.system.structure.errors import require_business_admission
 

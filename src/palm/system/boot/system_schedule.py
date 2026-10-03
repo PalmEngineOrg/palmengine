@@ -1,5 +1,5 @@
 """
-System schedule — bind phase definitions for the walker (0.59.3 / 0.61 OCP).
+System schedule — bind phase definitions for the walker.
 
 **Ownership**
 

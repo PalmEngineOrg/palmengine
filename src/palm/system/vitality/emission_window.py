@@ -1,7 +1,7 @@
 """
-Emission window — recent yield / heat sample + actor partition (0.61.3).
+Emission window — recent yield / heat sample + actor partition.
 
-**Law (ADR-030 D8 / VISION-0.61):**
+**Law:**
   - Observation only — no start/continue, no second metrics write path.
   - Envelope: actor_kind · session subject · channel · kind · outcome · time.
   - Prefer **declared** actor_kind; otherwise explicit ``unknown``.

@@ -1,4 +1,4 @@
-"""Serve Palm Portal static dogfood assets (0.32.4)."""
+"""Serve Palm Portal static dogfood assets."""
 
 from __future__ import annotations
 

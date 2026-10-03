@@ -11,7 +11,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any, Self
 
-# Builtin structure-definition ids (VISION-0.63 catalog)
+# Builtin structure-definition ids
 LOCAL_EMBEDDED_ID = "local.embedded"
 LOCAL_CLI_ID = "local.cli"
 LOCAL_SERVER_ID = "local.server"
@@ -19,12 +19,12 @@ LOCAL_ALL_IN_ONE_ID = "local.all_in_one"
 LOCAL_WORKER_ID = "local.worker"
 LOCAL_MCP_ID = "local.mcp"
 
-# Local install names. Drain phenotypes list outbox (0.65). Journal is attach
-# (0.67.7): cli/server/all_in_one/mcp list; embedded/worker omit.
-# Projections is attach (0.67.9): same list as journal; embedded/worker omit.
-# Compensation is attach (0.67.11): same list as journal; embedded/worker omit.
-# Webhook is attach (0.67.13): same list as journal; embedded/worker omit.
-# Analytics is attach (0.67.16): same list as journal; embedded/worker omit.
+# Local install names. Drain phenotypes list outbox. Journal is attach
+# : cli/server/all_in_one/mcp list; embedded/worker omit.
+# Projections is attach: same list as journal; embedded/worker omit.
+# Compensation is attach: same list as journal; embedded/worker omit.
+# Webhook is attach: same list as journal; embedded/worker omit.
+# Analytics is attach: same list as journal; embedded/worker omit.
 CAPABILITY_WORK_DRAIN = "work_drain"
 CAPABILITY_OUTBOX = "outbox"
 CAPABILITY_JOURNAL = "journal"

@@ -1,7 +1,6 @@
 """Workload execution service — policy + engine façade (product path).
 
 Does not import neonroot/docker. Resolves runtime → WorkloadEngine.
-See VISION-0.56 §8 · ADR-024 D8.
 """
 
 from __future__ import annotations
@@ -35,7 +34,7 @@ class WorkloadExecutionService(BaseService):
         super().__init__(commands=commands, queries=queries, schemas=schemas)
         self._runtime = runtime
         self._runtime_resolver = runtime_resolver
-        # 0.63.31 — published admission (product façade; no base class).
+        # Published admission (product façade; no base class).
         self._admission_source = admission_source
 
     def resolve_runtime(self, runtime_name: str | None = None) -> BaseRuntime:
@@ -46,7 +45,7 @@ class WorkloadExecutionService(BaseService):
         return self._runtime
 
     def admission_gate(self) -> object:
-        """Published admission source for product workload start (0.63.31)."""
+        """Published admission source for product workload start."""
         if self._admission_source is not None:
             return self._admission_source
         return self.resolve_runtime()
@@ -66,7 +65,7 @@ class WorkloadExecutionService(BaseService):
     ) -> dict[str, Any]:
         """Start a workload (product start — admission + ExecutionPort).
 
-        **0.63.31:** product edge fails closed via ``admission_gate()``; port
+        Product edge fails closed via ``admission_gate()``; port
         remains a second admission check.
         """
         from palm.system.structure.errors import require_business_admission
@@ -99,7 +98,7 @@ class WorkloadExecutionService(BaseService):
     ) -> dict[str, Any]:
         """Exec argv on a READY workspace/service (product start).
 
-        **0.63.31:** product edge fails closed via ``admission_gate()``.
+        Product edge fails closed via ``admission_gate()``.
         """
         from palm.system.structure.errors import require_business_admission
 

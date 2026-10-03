@@ -1,4 +1,4 @@
-"""0.61.7 / CS-002 — host status demoted to packaging residual."""
+"""Host status demoted to packaging residual."""
 
 from __future__ import annotations
 

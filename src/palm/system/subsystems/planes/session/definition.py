@@ -1,4 +1,4 @@
-"""Session plane definition — install law at the edge (SD-015)."""
+"""Session plane definition — install law at the edge."""
 
 from __future__ import annotations
 

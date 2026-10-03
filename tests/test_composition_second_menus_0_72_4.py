@@ -1,4 +1,4 @@
-"""0.72.4 — second menus follow the composition record.
+"""Second menus follow the composition record.
 
 Transform names are on the record. The install stroke walks them.
 Service names stay the phenotype tuple. The host imports that tuple.

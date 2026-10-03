@@ -1,4 +1,4 @@
-"""0.69.6 — navigator wizard pack beside operator_entry.
+"""Navigator wizard pack beside operator_entry.
 
 New catalog chooser: stays WAITING_FOR_INPUT after naming work. Named
 work is a same-session sibling (kit start / spawn_sibling). Return is

@@ -2,9 +2,7 @@
 
 Freezes how graphs wait, fail, and complete before patterns invent divergent
 shapes. Concrete WorkloadEngine and system ExecutionPort adapters both satisfy
-WorkloadDriver (0.57.4 P2). Tests may bind the pure engine + fake runtime.
-
-See docs/VISION-0.56.md §11 and ADR-024 D8b.
+WorkloadDriver. Tests may bind the pure engine + fake runtime.
 """
 
 from __future__ import annotations

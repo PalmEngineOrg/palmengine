@@ -1,4 +1,4 @@
-"""Design service resource proposals (0.27.2)."""
+"""Design service resource proposals."""
 
 from __future__ import annotations
 

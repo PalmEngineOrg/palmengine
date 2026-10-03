@@ -1,4 +1,4 @@
-"""run_script provider action removed (0.56) — use run-python workload dogfood."""
+"""run_script provider action removed — use run-python workload dogfood."""
 
 from __future__ import annotations
 

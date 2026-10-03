@@ -1,4 +1,4 @@
-"""0.63.25 — product continue doors are business paths that need admission; not-this-door residuals named."""
+"""Product continue doors are business paths that need admission; not-this-door residuals named."""
 
 from __future__ import annotations
 
@@ -76,7 +76,7 @@ def test_inventory_continue_citizens_and_named_digs() -> None:
         "named_0_63_27",
     )
     assert pretenders["execution.resource_engine_dig"] == "named_0_63_25"
-    # 0.63.26 paid wait-plane able; row remains for cartography history.
+    # Paid wait-plane able; row remains for cartography history.
     assert pretenders["wait_plane.orch_resume_dig"] in (
         "named_0_63_25",
         "paid_0_63_26",

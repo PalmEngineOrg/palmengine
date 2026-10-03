@@ -1,5 +1,5 @@
 """
-VitalityRegistry — capability catalog for living-kernel eyes (0.61.2).
+VitalityRegistry — capability catalog for living-kernel eyes.
 
 Eyes grow by registering capabilities, not by editing BaseRuntime forever.
 Enablement is dynamic (composition / mode / maturity); ids are intentional.

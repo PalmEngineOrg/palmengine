@@ -1,7 +1,7 @@
 """
-System log implementation — ring buffer + optional console (0.59.1a).
+System log implementation — ring buffer + optional console.
 
-Levels (docs/SYSTEM-LOG.md):
+Levels:
   0 quiet · 1 lifecycle · 2 system · 3 operate · 4 detail · 5 trace
 """
 
@@ -197,7 +197,7 @@ class SystemLog:
                 try:
                     print(record.format_console(), file=self._stream, flush=True)
                 except OSError:
-                    # Documented ignore: console I/O must not break ring emit (CS-005).
+                    # Documented ignore: console I/O must not break ring emit.
                     pass
         return record
 

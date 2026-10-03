@@ -1,4 +1,4 @@
-"""Integration tests for palm-design-entry assist scenario (0.30.2)."""
+"""Integration tests for palm-design-entry assist scenario."""
 
 from __future__ import annotations
 
@@ -89,7 +89,7 @@ def test_design_entry_create_flow_has_design_actions(
         ["assist", "instance", session_id, "input"],
         {"value": "create-flow"},
     )
-    # name_or_base → complete (no summary in 0.30.5)
+    # name_or_base → complete (no summary)
     updated = assist_host.assist.dispatch(
         ["assist", "instance", session_id, "input"],
         {"value": "my-new-flow"},

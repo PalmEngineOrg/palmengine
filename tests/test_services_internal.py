@@ -1,5 +1,3 @@
-"""Tests for InspectService (product present door; SD-007)."""
-
 from __future__ import annotations
 
 from typing import Any

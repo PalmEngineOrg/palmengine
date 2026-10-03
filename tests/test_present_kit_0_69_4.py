@@ -1,9 +1,8 @@
-"""0.69.4 — plugins.kits.present kit-as-composition.
+"""plugins.kits.present kit-as-composition.
 
-Library door: one object holds one BoundSurface and walks bind, present,
-submit, start, attach, focus. Not a PresentService. No pattern if.
-Empty-handed guidance_definition_id / stamp caller: 0.69.5.
-Title start still must not stamp when the definition id does not match.
+Library door: one object holds one BoundSurface and walks bind, present, submit, start, attach,
+focus. Not a PresentService. No pattern if. Title start still must not stamp when the definition id
+does not match.
 """
 
 from __future__ import annotations

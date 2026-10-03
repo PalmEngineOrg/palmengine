@@ -1,4 +1,4 @@
-"""Durable dashboard definitions on StorageEngine (0.41)."""
+"""Durable dashboard definitions on StorageEngine."""
 
 from __future__ import annotations
 

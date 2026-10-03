@@ -1,4 +1,4 @@
-"""0.63.23 — work-plane able defaults fail closed; admission access helper."""
+"""work-plane able defaults fail closed; admission access helper."""
 
 from __future__ import annotations
 
@@ -33,7 +33,7 @@ def test_attach_without_able_fails_closed() -> None:
     plane.attach(
         storage=_memory_storage(),
         submit_flow=lambda f, _p: submitted.append(f),
-        # able omitted → fail closed (0.63.23)
+        # able omitted → fail closed
     )
     assert plane.is_able() is False
     plane.enqueue(WorkIntent(kind="run_flow", target="x"))

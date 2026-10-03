@@ -1,4 +1,4 @@
-"""0.60.4 — system-path reactive session attribution on work plane submit."""
+"""system-path reactive session attribution on work plane submit."""
 
 from __future__ import annotations
 

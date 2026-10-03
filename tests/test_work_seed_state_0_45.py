@@ -1,4 +1,4 @@
-"""0.45.1 — inbound work.seed_state parse and resolve."""
+"""Inbound work.seed_state parse and resolve."""
 
 from __future__ import annotations
 

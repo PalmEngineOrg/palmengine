@@ -1,6 +1,6 @@
-"""Place spawn port — hands that can grow bodies for ENSURE place (0.63.14).
+"""Place spawn port — hands that can grow bodies for ENSURE place.
 
-In-process registry (0.63.11) marks ready. This port is the **structure hand** that
+In-process registry marks ready. This port is the **structure hand** that
 may later OS-spawn or workload-place. Floor default is in-process success so
 embedded definition stays green. Fail closed when a registered strategy refuses.
 
@@ -247,7 +247,7 @@ def _argv_from_payload(payload: Mapping[str, Any]) -> list[str] | None:
 
 @dataclass
 class OsProcessRegistry:
-    """Real OS process bodies for structure place ensure (0.63.15).
+    """Real OS process bodies for structure place ensure.
 
     Structure assemble / place registry only — not the product job path. Tracks :class:`subprocess.Popen`
     by place id; release terminates the process group when possible.

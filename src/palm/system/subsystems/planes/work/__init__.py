@@ -1,4 +1,4 @@
-"""Start plane — WorkIntent store, schedules, WorkPlaneService (0.60)."""
+"""Start plane — WorkIntent store, schedules, WorkPlaneService."""
 
 from palm.system.subsystems.planes.work.inbound import InboundBinding, InboundBindingService
 from palm.system.subsystems.planes.work.plane import WorkPlaneService

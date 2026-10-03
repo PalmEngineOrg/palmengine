@@ -1,4 +1,4 @@
-"""0.42 — public event catalog + journal HTTP + WS path discovery."""
+"""Public event catalog + journal HTTP + WS path discovery."""
 
 from __future__ import annotations
 

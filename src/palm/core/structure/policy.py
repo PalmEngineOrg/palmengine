@@ -1,4 +1,4 @@
-"""Structure policy — definition refuse vs declared membership (pure, 0.63.6).
+"""Structure policy — definition refuse vs declared membership.
 
 Refuse tokens are structure law. Packaging seeds the structure definition; if membership still
 carries a refused shape, admission must not green-bar the lie.

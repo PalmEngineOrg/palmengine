@@ -1,4 +1,4 @@
-"""0.61.3 — emission_window + actor_kind partition."""
+"""emission_window + actor_kind partition."""
 
 from __future__ import annotations
 

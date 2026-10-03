@@ -96,7 +96,7 @@ def maybe_admission_refused(exc: BaseException) -> ServerResponse | None:
     """Map ready / organ refuse to honest REST voice; else ``None``.
 
     :class:`AdmissionRefusedError` → 503 ``admission_refused``.
-    :class:`CapabilityRefusedError` → 409 ``capability_refused`` (0.67.4).
+    :class:`CapabilityRefusedError` → 409 ``capability_refused``.
     Existing start/continue handlers already call this helper.
     """
     from palm.system.structure.errors import (

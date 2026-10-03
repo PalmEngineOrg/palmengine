@@ -1,8 +1,8 @@
-"""SystemSupervisor — register and run continuous system services (0.60.1).
+"""SystemSupervisor — register and run continuous system services.
 
 Empty registry is valid: boot wires the seat; later slices register services.
 Install walks :class:`~palm.system.subsystems.supervisor.definition.ContinuousServiceDefinition`
-at the edge (CS-006).
+at the edge.
 """
 
 from __future__ import annotations

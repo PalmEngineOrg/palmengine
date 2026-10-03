@@ -1,4 +1,4 @@
-"""0.70.7 — bound() walks the started host, not a land() stash.
+"""bound() walks the started host, not a land() stash.
 
 land(host) is the library door. Job leaf still walks bound().commit.
 Host start already binds the runtime. Definitions come from that host.

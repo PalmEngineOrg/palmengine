@@ -1,4 +1,4 @@
-"""0.71.19 — bare ApplicationHost import must succeed in a cold interpreter."""
+"""Bare ApplicationHost import must succeed in a cold interpreter."""
 
 from __future__ import annotations
 

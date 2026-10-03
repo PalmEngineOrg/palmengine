@@ -1,5 +1,5 @@
 """
-Navigator — operator-guidance wizard (0.69.6).
+Navigator — operator-guidance wizard.
 
 Catalog chooser beside ``operator_entry``. Names any catalog definition.
 Stays ``WAITING_FOR_INPUT`` after naming work. Sibling start is the kit

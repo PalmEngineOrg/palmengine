@@ -1,4 +1,4 @@
-"""0.71.3 — compost extra place maps.
+"""Compost extra place maps.
 
 Workload book is the body book. Spawn hands do not keep place_id → workload_id.
 Adopt / workload outcomes live in the book, not a local register row.

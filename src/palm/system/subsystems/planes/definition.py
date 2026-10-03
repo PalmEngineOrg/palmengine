@@ -1,5 +1,5 @@
 """
-PlaneDefinition — participation law at the edge (0.61 / SD-015).
+PlaneDefinition — participation law at the edge.
 
 **Registry extension:** each plane package owns construct + attach recipe.
 :class:`~palm.system.subsystems.planes.hub.SystemPlanes` walks definitions and ``put``s.

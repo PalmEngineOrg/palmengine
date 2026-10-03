@@ -1,4 +1,4 @@
-"""0.63.32 — flow product start doors are business paths that need admission; list/describe soft residual."""
+"""Flow product start doors are business paths that need admission; list/describe soft residual."""
 
 from __future__ import annotations
 

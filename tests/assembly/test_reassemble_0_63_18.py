@@ -1,4 +1,4 @@
-"""0.63.18 — reassemble edges (new DNA · membership · force invalidate)."""
+"""Reassemble edges (new DNA · membership · force invalidate)."""
 
 from __future__ import annotations
 

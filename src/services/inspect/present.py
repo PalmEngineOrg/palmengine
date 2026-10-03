@@ -1,14 +1,14 @@
 """Present system vitality for surfaces (product door).
 
-Law (ADR-030 / VISION-0.61): truth lives in ``palm.system.vitality``.
+Law: truth lives in ``palm.system.vitality``.
 Product **reads** ``project`` / ``project_top`` / ``run_benchmark`` and shapes
 operate envelopes. Does not invent seat counters or a second observation home.
 
-0.61.6 / OD-001: legacy ``doctor`` is **anatomy packaging** only. Living eyes
+Legacy ``doctor`` is **anatomy packaging** only. Living eyes
 are :func:`present_top` / :func:`present_vitality`. Doctor may nest those;
 it must not invent living seat law.
 
-0.61.11: :func:`present_benchmark` — product door for the vitality **tool**
+:func:`present_benchmark` — product door for the vitality **tool**
 (opt-in thrash). System owns recipe + diff; product only presents.
 """
 
@@ -29,7 +29,7 @@ from palm.system.vitality import (
 # Provenance tag for product envelopes that nest projection.
 SOURCE_VITALITY = "palm.system.vitality"
 
-# Demoted doctor envelope (OD-001).
+# Demoted doctor envelope.
 DOCTOR_KIND = "legacy_doctor"
 DOCTOR_ROLE = "anatomy_packaging"
 OPERATE_EYES_PATHS = (
@@ -143,7 +143,7 @@ def present_benchmark(
 
 
 def present_vitality_for_doctor(top: dict[str, Any]) -> dict[str, Any]:
-    """Thin vitality pointer nested under legacy doctor (OD-001)."""
+    """Thin vitality pointer nested under legacy doctor."""
     return {
         "source": SOURCE_VITALITY,
         "schema": top.get("schema"),

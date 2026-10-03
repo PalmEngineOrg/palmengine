@@ -1,4 +1,4 @@
-"""0.71.15 — invert StructureEngine `_places_ready` dual.
+"""Invert StructureEngine `_places_ready` dual.
 
 Place readiness lives only behind the bound ready hand. No second set.
 Unbound hand: PLACE_READY does not accumulate readiness (fail closed).

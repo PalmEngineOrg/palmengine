@@ -1,4 +1,4 @@
-"""0.71.18 — surface / MCP payload trees stay out of the base wheel.
+"""Surface / MCP payload trees stay out of the base wheel.
 
 Pip extras cannot strip wheel files. Hatch wheel ``artifacts`` must not force
 SSR/Portal/Analytics static or ``mcp/data`` into the wheel. Source / sdist keep

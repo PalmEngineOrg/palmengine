@@ -1,4 +1,4 @@
-"""0.67.1 — require_capability: ready then organ; drain-shaped caller."""
+"""require_capability: ready then organ; drain-shaped caller."""
 
 from __future__ import annotations
 

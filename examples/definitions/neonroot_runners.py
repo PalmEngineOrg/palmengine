@@ -1,4 +1,4 @@
-"""NeonRoot examples — resources removed (0.56).
+"""NeonRoot examples — resources removed.
 
 Use workload dogfood instead::
 

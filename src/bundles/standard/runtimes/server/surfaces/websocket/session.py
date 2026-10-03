@@ -1,13 +1,10 @@
-"""WebSocket Assist session loop — hello / ping / dispatch / bind (0.32.1+).
+"""WebSocket Assist session loop — hello / ping / dispatch / bind.
 
-0.32.1: hello + ping/pong.
-0.32.2: ``dispatch`` → same spine as MCP ``palm_assist`` → ``turn`` frames.
-0.33.2: chat continuity (auto-start / intro / action rewrite) in assist.profiles.
-0.58.7 / 0.58.9: bind law — ``op: bind`` / cookie-like headers resolve **session**
-(``session_id`` = system subject). Continue handle is ``instance_id``
-(product path residual SI-001).
+Hello + ping/pong. ``dispatch`` → same spine as MCP ``palm_assist`` → ``turn`` frames. Chat
+continuity (auto-start / intro / action rewrite) in assist.profiles. Bind law — ``op: bind`` /
+cookie-like headers resolve **session** (``session_id`` = system subject).
 
-0.58.17: product door only — :func:`~palm.kits.server.middleware.resolve_session_service`
+Product door only — :func:`~palm.kits.server.middleware.resolve_session_service`
 + :class:`~services.session.BoundSurface`. No raw ``session_plane`` on this path.
 
 Portal dogfood: ``session_id: null`` drops continue focus unless ``instance_id``
@@ -165,14 +162,13 @@ def run_assist_websocket(
 
 
 class _ConnectionState:
-    """Per-connection bind state (0.32.3 + 0.58.7/0.58.9 + BoundSurface 0.58.17)."""
+    """Per-connection bind state."""
 
     def __init__(self, *, headers: dict[str, str]) -> None:
         # Session-owned surface context (truth). Dual slots below are transport mirrors.
         self.bound: Any | None = None  # BoundSurface | None
         # System outside subject — edge name session_id (mirrors bound.session_id).
         self.session_id: str | None = None
-        # Product continue handle (instance id) — SI-001 residual.
         self.instance_id: str | None = None
         self.flow_id: str | None = None
         self.client: str | None = None
@@ -329,7 +325,7 @@ def _apply_message_bind_fields(
 ) -> None:
     """Apply session / instance / flow fields from hello or bind message.
 
-    0.58.9: ``session_id`` is always the system subject. ``instance_id`` is the
+    ``session_id`` is always the system subject. ``instance_id`` is the
     product continue handle. Instance-shaped values under ``session_id`` are
     treated as ``instance_id`` (product residual), not promoted to system.
     """
@@ -379,7 +375,7 @@ def _service_bind_into(
     create: bool = True,
     instance_id: str | None = None,
 ) -> None:
-    """Bind via product SessionService (0.58.17); store BoundSurface as truth."""
+    """Bind via product SessionService; store BoundSurface as truth."""
     svc = resolve_session_service(ctx)
     if svc is None:
         # Transport-only mirror when host not fully wired (tests / early boot).
@@ -540,14 +536,14 @@ def _handle_dispatch(
             "error": {"code": "session_bind", "message": str(exc)},
         }
 
-    # 0.58.9: session_id = system; instance_id = continue handle
+    # session_id = system; instance_id = continue handle
     if state.session_id and not params.get("session_id"):
         params["session_id"] = state.session_id
     if state.instance_id and not params.get("instance_id"):
         params["instance_id"] = state.instance_id
     if not params.get("flow_id") and state.flow_id:
         params["flow_id"] = state.flow_id
-    # 0.32.6 — Portal needs structured input; service builds it when this is set
+    # Portal needs structured input; service builds it when this is set
     params.setdefault("include_input_schema", True)
 
     path_list: list[str] | None = None
@@ -590,7 +586,7 @@ def _handle_dispatch(
         raw = dispatch_operator_path(ctx, resolved, dispatch_params)
         view_format = str(message.get("format") or "assistant")
         # After create, re-inspect so first turn includes input schema (Portal).
-        # Product path keys by instance_id (SI-001); rewrite resolves sess- if needed.
+        # Product path keys by instance_id; rewrite resolves sess- if needed.
         if (
             view_format == "assistant"
             and len(resolved) >= 2
@@ -622,7 +618,7 @@ def _handle_dispatch(
             tool_format=view_format,
             include_input_schema=True,  # Portal dynamic widgets (not on MCP)
         )
-        # 0.33.2 — chat policy lives in assist.profiles (transport only injects dispatch)
+        # Chat policy lives in assist.profiles (transport only injects dispatch)
         if view_format == "assistant":
 
             def _dispatch(path: list[str], p: dict[str, Any]) -> Any:
@@ -681,7 +677,7 @@ def _handle_dispatch(
             "error": {"code": "validation", "message": str(exc)},
         }
     except Exception as exc:
-        # SI-015 / 0.58.15: map attribution refusal to stable client codes
+        # Map attribution refusal to stable client codes
         from palm.system.subsystems.planes.session import (
             InstanceNotOwnedError,
             SessionAttributionError,

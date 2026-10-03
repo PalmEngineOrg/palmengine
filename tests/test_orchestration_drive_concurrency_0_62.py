@@ -1,4 +1,4 @@
-"""0.62 — orchestration membership lock, exclusive drive, QueuedScheduler pool."""
+"""Orchestration membership lock, exclusive drive, QueuedScheduler pool."""
 
 from __future__ import annotations
 

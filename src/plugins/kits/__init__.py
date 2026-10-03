@@ -5,7 +5,7 @@ Kits are **not** the system layer and **not** product services.
 They hold reusable transport and presentation glue (HTTP protocol, routes,
 SSR helpers, …) so runtimes stay thin adapters.
 
-Law (SD-011 / 0.57.13):
+Law:
 
 - One implementation per kit (no dual trees).
 - Named home: ``palm.kits.<name>`` — not anonymous bulk under ``common``.
@@ -13,8 +13,8 @@ Law (SD-011 / 0.57.13):
 - Surfaces import kits; they do not invent private protocol copies.
 
 Import the server kit as :mod:`palm.kits.server`.
-Import the present kit as :mod:`palm.kits.present` (0.69.4 / 0.69.5).
-Import the authoring kit as :mod:`palm.kits.authoring` (0.70.1).
+Import the present kit as :mod:`palm.kits.present`.
+Import the authoring kit as :mod:`palm.kits.authoring`.
 
 ``autoload`` does not import a kit. Import the kit module to register it.
 """

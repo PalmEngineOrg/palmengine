@@ -4,7 +4,7 @@ Palm operator entry — assist scenario for agent/human triage and handoff.
 Demonstrates the 0.18 assist domain: a wizard-driven entry flow that recommends
 a business flow handoff based on operator intent.
 
-0.30.1 — also surfaces Design Service discovery (create/improve flow) via
+Also surfaces Design Service discovery (create/improve flow) via
 choices, assistant actions, and intent-specific handoff none-hints.
 
 Try via assist REST::
@@ -25,7 +25,7 @@ from services.assist.views import (
     post_terminal_design_actions,
 )
 
-# Demo flow intents → human labels (0.32.5 Portal / chat)
+# Demo flow intents → human labels
 _FLOW_INTENT_LABELS: dict[str, str] = {
     "todo-builder": "Todo Builder",
     "compositional-parent": "Compositional Parent",
@@ -80,7 +80,7 @@ def enrich_operator_entry(view: dict[str, Any], *, context: Any) -> dict[str, An
     elif intent in _FLOW_INTENT_LABELS and (
         payload.get("handoff_ready") or payload.get("status") == "complete"
     ):
-        # 0.32.5 — primary human CTA: start the chosen demo flow (not only agent handoff)
+        # Primary human CTA: start the chosen demo flow (not only agent handoff)
         label = _FLOW_INTENT_LABELS[str(intent)]
         payload["question"] = f"Ready to start {label}."
         payload["hint"] = f"Tap Start {label} (or say start) to begin."
@@ -95,7 +95,7 @@ def enrich_operator_entry(view: dict[str, Any], *, context: Any) -> dict[str, An
 
 
 def post_terminal_flow_actions(*, intent: str, label: str | None = None) -> list[dict[str, Any]]:
-    """Human-first CTAs after choosing a demo flow (0.32.5)."""
+    """Human-first CTAs after choosing a demo flow."""
     from services.assist.views import merge_assistant_actions
 
     human = label or _FLOW_INTENT_LABELS.get(intent) or intent
@@ -239,11 +239,11 @@ OPERATOR_ENTRY_FLOW = FlowDefinition(
                 "params": {
                     "route_on_answer": {
                         "inspect-only": "catalog",
-                        # 0.30.5 — skip summary confirm (weak-LLM); design CTAs on complete
+                        # Skip summary confirm (weak-LLM); design CTAs on complete
                         "create-flow": "__end__",
                         "improve-flow": "__end__",
                         "propose-resource": "__end__",
-                        # 0.32.5 — human-first: demo flows skip summary → start CTA / auto-handoff
+                        # human-first: demo flows skip summary → start CTA / auto-handoff
                         "todo-builder": "__end__",
                         "compositional-parent": "__end__",
                         "coconut-npc": "__end__",

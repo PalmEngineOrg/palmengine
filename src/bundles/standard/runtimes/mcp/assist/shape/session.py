@@ -26,7 +26,7 @@ def is_assistant_shaped(result: dict[str, Any]) -> bool:
 
 
 def input_schema_from_assist_turn(payload: dict[str, Any]) -> dict[str, Any] | None:
-    """Build Portal ``input`` from an already-humanized assist turn (0.32.6)."""
+    """Build Portal ``input`` from an already-humanized assist turn."""
     try:
         from services.assist.present.input_schema import build_input_schema
     except Exception:
@@ -109,7 +109,7 @@ def assist_session_flat(result: dict[str, Any]) -> dict[str, Any]:
 
 
 def looks_like_session(path: list[str], result: dict[str, Any]) -> bool:
-    # 0.58.19: product continue segment is ``instance``; legacy ``session`` still ok.
+    # Product continue segment is ``instance``; legacy ``session`` still ok.
     if "instance" not in path and "session" not in path:
         return False
     return "session_id" in result or "instance_id" in result or "status" in result

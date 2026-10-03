@@ -1,4 +1,4 @@
-"""0.68.10 — unused host webhook event names composted."""
+"""Unused host webhook event names composted."""
 
 from __future__ import annotations
 

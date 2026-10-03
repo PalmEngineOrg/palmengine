@@ -1,4 +1,4 @@
-"""0.63.22 — published admission: inject, not runtime dig for readiness."""
+"""Published admission: inject, not runtime dig for readiness."""
 
 from __future__ import annotations
 

@@ -1,8 +1,8 @@
 """
-Host service construction (T2 / 0.48.2).
+Host service construction.
 
 A typed, dependency-ordered registry that builds the host's core services out of
-``ApplicationHost._wire_cqrs``. See docs/adr/018-application-host-decomposition.md.
+``ApplicationHost._wire_cqrs``.
 
 Post-build product identity (assist↔analytics, dashboards, service CQRS) lives in
 :mod:`palm.app.host.services.packaging` — shared with host-less ``ServerContext``.

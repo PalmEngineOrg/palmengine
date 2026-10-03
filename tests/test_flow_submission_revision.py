@@ -1,4 +1,4 @@
-"""Tests for flow_revision pins on submit (0.24.1)."""
+"""Tests for flow_revision pins on submit."""
 
 from __future__ import annotations
 

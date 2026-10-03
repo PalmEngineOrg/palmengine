@@ -1,5 +1,5 @@
 """
-run-python — simple Workload plane dogfood (0.56).
+run-python — simple Workload plane dogfood.
 
 One Spec, two places:
 

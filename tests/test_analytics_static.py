@@ -1,4 +1,4 @@
-"""0.35.6 — static /analytics dogfood UI."""
+"""Static /analytics dogfood UI."""
 
 from __future__ import annotations
 

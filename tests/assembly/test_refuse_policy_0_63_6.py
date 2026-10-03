@@ -1,4 +1,4 @@
-"""0.63.6 — DNA refuse vs membership; dual shape fails closed."""
+"""DNA refuse vs membership; dual shape fails closed."""
 
 from __future__ import annotations
 

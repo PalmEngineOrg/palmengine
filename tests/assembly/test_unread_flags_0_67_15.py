@@ -1,4 +1,4 @@
-"""Unread packaging flags are gone (0.67.15). Membership is DNA."""
+"""Unread packaging flags are gone. Membership is DNA."""
 
 from __future__ import annotations
 
@@ -14,10 +14,10 @@ def test_packaging_has_no_unread_organ_flags() -> None:
 
 
 def test_coordinator_has_no_attach_runtimes() -> None:
-    """Dual-bus leftover. Attach is one organ on the runtime bus (0.67.12)."""
+    """Dual-bus leftover. Attach is one organ on the runtime bus."""
     assert not hasattr(CompensationCoordinator, "attach_runtimes")
 
 
 def test_projections_have_no_attach_runtimes() -> None:
-    """Dual-bus leftover. Attach is one organ on the runtime bus (0.67.10)."""
+    """Dual-bus leftover. Attach is one organ on the runtime bus."""
     assert not hasattr(ProjectionManager, "attach_runtimes")

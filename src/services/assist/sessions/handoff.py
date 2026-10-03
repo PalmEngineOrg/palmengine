@@ -20,7 +20,7 @@ def create_params_from_answers(
     assist_meta: dict[str, Any],
     answers: dict[str, Any],
 ) -> dict[str, Any]:
-    """Map answer keys → create_params via assist metadata (0.30.3)."""
+    """Map answer keys → create_params via assist metadata."""
     mapping = assist_meta.get("create_params_from_answers")
     if not isinstance(mapping, dict) or not mapping:
         return {}
@@ -38,7 +38,7 @@ def design_handoff_payload(
     answers: dict[str, Any],
     assist_meta: dict[str, Any],
 ) -> dict[str, Any]:
-    """Build ``kind: design`` handoff envelope (0.30.3)."""
+    """Build ``kind: design`` handoff envelope."""
     intent_s = str(intent)
     none_hints = assist_meta.get("handoff_none_hints") or {}
     default_hint = (

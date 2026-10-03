@@ -516,7 +516,7 @@ _RESPONSE_ALIASES: dict[str, str] = {
     "submit_plans": "submit_process",
     "submit_job": "create_session",
     "provide_input": "instance_input",
-    # 0.58.19 soft land for old route_ids in docs
+    # Soft land for old route_ids in docs
     "get_session": "get_instance",
     "session_input": "instance_input",
     "session_backtrack": "instance_backtrack",

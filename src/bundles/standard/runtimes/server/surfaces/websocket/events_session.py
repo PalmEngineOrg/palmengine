@@ -1,4 +1,4 @@
-"""WebSocket control-plane event stream (0.42) — separate from Assist chat.
+"""WebSocket control-plane event stream — separate from Assist chat.
 
 Protocol (JSON text frames)::
 
@@ -11,12 +11,12 @@ Protocol (JSON text frames)::
 
 Catch-up: when ``since_offset`` is set and journal is available, replay then live.
 
-0.58.8: optional **system session** filter (fan-in). Events match via
+Optional **system session** filter (fan-in). Events match via
 SessionService.event_matches (product door) — context, payload, or attached
 instance. Cookie-like ``X-Palm-Session`` / ``palm_session`` binds the default
 filter when subscribe omits session id.
 
-0.58.17: product :func:`~palm.kits.server.middleware.resolve_session_service`
+Product :func:`~palm.kits.server.middleware.resolve_session_service`
 only — no raw session_plane on this path.
 """
 
@@ -278,7 +278,7 @@ def _resolve_subscribe_session(
 ) -> str | None:
     """Session filter for this subscribe (message wins over cookie default).
 
-    Edge key only: ``session_id`` (system subject, 0.58.9). Cookie/header
+    Edge key only: ``session_id``. Cookie/header
     default still applies when the message omits the key.
     """
     if "session_id" in msg:

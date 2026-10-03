@@ -2,7 +2,6 @@
 ExecutionPort — first effect contract for a running Palm system.
 
 Graphs and product must share this port for resource and workload effects.
-See docs/SYSTEM-LOW-LEVEL.md §3 and docs/PALM.md.
 """
 
 from __future__ import annotations

@@ -1,4 +1,4 @@
-"""Attach process instances to the system session plane (0.58.4).
+"""Attach process instances to the system session plane.
 
 Runs after instance persistence creates the durable record. Does not resume
 jobs — only labels ownership via :meth:`SessionPlaneService.attach_instance`.
@@ -71,7 +71,7 @@ class SessionOwnershipHook(JobHookAdapter):
                 plane.open(session_id=sid, metadata={"via": "job_path"})
             plane.attach_instance(sid, iid)
         except Exception:
-            # Documented ignore: ownership is best-effort; never break orchestration (CS-005).
+            # Documented ignore: ownership is best-effort; never break orchestration.
             _log.exception(
                 "session ownership attach failed session_id=%s instance_id=%s",
                 sid,

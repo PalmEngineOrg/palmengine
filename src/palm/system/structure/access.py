@@ -1,6 +1,6 @@
-"""Published admission access helpers — no product base class (0.63.23).
+"""Published admission access helpers — no product base class.
 
-Shape discovered from assist inject (0.63.22): packaging digs once and hands a
+Shape discovered from assist inject: packaging digs once and hands a
 zero-arg factory; business paths that need admission call ``require_business_admission``
 on that source. Acts that need an organ call ``require_capability``.
 No service hierarchy required.

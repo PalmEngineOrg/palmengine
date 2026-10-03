@@ -159,7 +159,7 @@ def _capabilities_from_settings(
     *,
     deployment: DeploymentProfile | None = None,
 ) -> frozenset[str]:
-    """Derive the *available* capabilities for membership (0.51.1 / 0.59.5).
+    """Derive the *available* capabilities for membership.
 
     This is the composition axis — **membership seed**. They do not re-OR
     deployment flags.
@@ -168,12 +168,11 @@ def _capabilities_from_settings(
     ``webhook``, and ``analytics`` are not written here. Structure definition
     ``capabilities`` list them.
 
-    **0.64 / SD-021:** flag → capability map lives in
+    Flag → capability map lives in
     ``palm.system.structure.seed.MEMBERSHIP_CAPABILITY_SEEDS``.
 
-    ``workloads`` has no settings flag: it is always available on a
-    settings-composed host (a lean *explicit* composition can still omit it).
-    See VISION-0.51 / ADR-020 / ADR-028 D4.
+    ``workloads`` has no settings flag: it is always available on a settings-composed host (a lean
+    *explicit* composition can still omit it).
     """
     from palm.system.structure.seed import membership_capabilities_from_settings
 
@@ -187,17 +186,15 @@ def composition_profile_from_settings(
 ) -> CompositionProfile:
     """Resolve a :class:`~palm.app.host.composition.CompositionProfile` from settings.
 
-    The twin of :func:`deployment_profile_from_settings`. **0.51.1:** ``capabilities``
-    are derived from the ``enable_*`` flags. ``work_drain`` is not among them.
-    An explicit ``CompositionProfile`` passed to ``ApplicationHost`` still wins
-    and is never rewritten.
+    The twin of :func:`deployment_profile_from_settings`. ``work_drain`` is not among them. An
+    explicit ``CompositionProfile`` passed to ``ApplicationHost`` still wins and is never rewritten.
 
-    **0.72.2:** services and surfaces come from the saved ``all_in_one`` record.
+    Services and surfaces come from the saved ``all_in_one`` record.
     Capabilities come from settings. This function does not call a preset method.
 
-    **0.72.3:** package names come from that same record.
+    Package names come from that same record.
 
-    **0.72.4:** transform names come from that same record.
+    Transform names come from that same record.
     """
     record = composition_record("all_in_one")
     return CompositionProfile(

@@ -1,4 +1,4 @@
-"""0.63.1 — pure StructureEngine (embedded DNA · admission · fail closed)."""
+"""Pure StructureEngine (embedded DNA · admission · fail closed)."""
 
 from __future__ import annotations
 

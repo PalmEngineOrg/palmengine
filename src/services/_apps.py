@@ -2,7 +2,7 @@
 Service domain bootstrap.
 
 ``INSTALLED_SERVICES`` is the catalog of real service packages.
-The composition record's ``services`` tuple is the set the host walks (0.72.4).
+The composition record's ``services`` tuple is the set the host walks.
 ``HostServiceRegistry`` builds that same tuple. This function imports the packages.
 """
 

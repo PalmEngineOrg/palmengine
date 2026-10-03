@@ -1,4 +1,4 @@
-"""0.63.19 — membership enable_* catalog (SD-021 residual cartography)."""
+"""Membership enable_* catalog."""
 
 from __future__ import annotations
 
@@ -20,10 +20,10 @@ def test_membership_capability_seeds_catalog_complete() -> None:
     assert "outbox" not in caps
     assert "work_drain" not in caps
     assert "journal" not in caps  # DNA + hand, not a composition seed
-    assert "projections" not in caps  # DNA + hand (0.67.9)
-    assert "compensation" not in caps  # DNA + hand (0.67.11)
-    assert "webhook" not in caps  # DNA + hand (0.67.13)
-    assert "analytics" not in caps  # DNA + hand (0.67.16)
+    assert "projections" not in caps  # DNA + hand
+    assert "compensation" not in caps  # DNA + hand
+    assert "webhook" not in caps  # DNA + hand
+    assert "analytics" not in caps  # DNA + hand
     settings_fields = {row["settings"] for row in MEMBERSHIP_CAPABILITY_SEEDS}
     assert "enable_compensation" not in settings_fields
     assert "enable_webhook_dispatcher" not in settings_fields

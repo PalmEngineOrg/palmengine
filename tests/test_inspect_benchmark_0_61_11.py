@@ -1,4 +1,4 @@
-"""0.61.11 — Inspect presents benchmark tool; CLI thin present."""
+"""Inspect presents benchmark tool; CLI thin present."""
 
 from __future__ import annotations
 

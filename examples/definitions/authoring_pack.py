@@ -1,5 +1,5 @@
 """
-Authoring pack — catalog wizard present can start (0.70.3 / 0.70.5).
+Authoring pack — catalog wizard present can start.
 
 Asks for a shape (catalog mapping: flow or resource). A resource step walks
 the authoring adapter (``authoring-commit``). Pack id stays unnamed. As-built

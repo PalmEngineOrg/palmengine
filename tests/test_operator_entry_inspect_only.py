@@ -1,4 +1,4 @@
-"""Integration tests for operator-entry inspect-only catalog mode (0.23.1)."""
+"""Integration tests for operator-entry inspect-only catalog mode."""
 
 from __future__ import annotations
 
@@ -67,7 +67,7 @@ def test_operator_entry_inspect_alias_read_only(assist_host: ApplicationHost) ->
 
 
 def test_todo_builder_skips_summary_for_human_first(assist_host: ApplicationHost) -> None:
-    """0.32.5+ — demo flow intents complete at intent (no summary gate)."""
+    """Demo flow intents complete at intent (no summary gate)."""
     started = assist_host.assist.start_scenario("operator-entry", {})
     session_id = started["session_id"]
     ctx = assist_host.assist.dispatch(

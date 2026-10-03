@@ -1,7 +1,7 @@
 """Pure wait interest — durable continue-interest vocabulary (no I/O).
 
-0.55 Reactive Interests: owners park with an explicit interest; completers emit
-self-events; Palm matches. See docs/VISION-0.55.md and ADR-025.
+0.55 Reactive Interests: owners park with an explicit interest; completers emit self-events; Palm
+matches.
 """
 
 from __future__ import annotations
@@ -10,7 +10,7 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from typing import Any
 
-# --- Locked contract keys (0.55.1) ---
+# --- Locked contract keys ---
 
 WAIT_INTEREST_SCHEMA_VERSION = 1
 """Schema version embedded in serialized wait interests."""
@@ -143,7 +143,7 @@ def make_workload_wait(
     policy: WaitPolicy | None = None,
     meta: dict[str, Any] | None = None,
 ) -> WaitInterest:
-    """Convenience constructor for ``kind=workload`` wait interest (0.55.7+)."""
+    """Convenience constructor for ``kind=workload`` wait interest."""
     kwargs: dict[str, Any] = {
         "kind": WAIT_KIND_WORKLOAD,
         "target_id": str(workload_id),

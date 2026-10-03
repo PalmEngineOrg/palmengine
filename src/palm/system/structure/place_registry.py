@@ -1,17 +1,15 @@
-"""In-process place registry — structure effect hands for ENSURE/RELEASE place (0.63.11+).
+"""In-process place registry — structure effect hands for ENSURE/RELEASE place.
 
-Registry of places this process can mark ready so a definition with
-places_required can converge. **0.63.14:** optional :class:`PlaceSpawnPort`
-grows bodies (OS / workload strategies); default remains in-process success.
+Registry of places this process can mark ready so a definition with places_required can converge.
 
-**0.71.2 / 0.71.9:** when a workload book is bound, ``places`` is a **projection**
+When a workload book is bound, ``places`` is a **projection**
 of that book only — no overlay dict beside it. Unbound, one local register
 holds bare / ``os:`` ready rows. Failed ensures are observations, not rows.
 
-**0.71.7:** ``engine_from_spawn`` matches typed ``RegisteredPlaceSpawn`` (same
+``engine_from_spawn`` matches typed ``RegisteredPlaceSpawn`` (same
 invert as ``host_bind.book_bind_port``); no Protocol ``isinstance``.
 
-**0.71.11:** ``ready(place_id)`` is the assemble readiness hand (book projection
+``ready(place_id)`` is the assemble readiness hand (book projection
 or local assemble ack). StructureEngine binds it; it does not keep a second
 body book of place observations.
 """
@@ -140,7 +138,7 @@ class InProcessPlaceRegistry:
 
 @dataclass
 class PlaceEffectPort:
-    """Apply structure place intents against the registry + optional spawn port (0.63.14)."""
+    """Apply structure place intents against the registry + optional spawn port."""
 
     registry: InProcessPlaceRegistry = field(default_factory=InProcessPlaceRegistry)
     spawn: PlaceSpawnPort = field(default_factory=InProcessPlaceSpawn)
@@ -169,9 +167,9 @@ class PlaceEffectPort:
                         payload={"reason": "empty_place_id"},
                     ),
                 )
-            # Spawn hands first. Ready marks the assemble register (0.71.11).
-            # Failed ensures stay observations (0.71.3+). places stays book-only
-            # when the workload book is home (0.71.9).
+            # Spawn hands first. Ready marks the assemble register.
+            # Failed ensures stay observations. places stays book-only
+            # when the workload book is home.
             result = self.spawn.ensure(target, payload=dict(intent.payload or {}))
             if result.state == "ready":
                 self.registry.mark(target, "ready")

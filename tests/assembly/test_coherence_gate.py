@@ -55,7 +55,7 @@ def test_require_admission_ready_ok() -> None:
 
 
 def test_require_admission_accepts_snapshot_and_factory() -> None:
-    """0.63.22 — published admission shapes, not only runtime shells."""
+    """Published admission shapes, not only runtime shells."""
     seat = StructureSeat()
     seat.assemble(local_embedded())
     ready = seat.admission()

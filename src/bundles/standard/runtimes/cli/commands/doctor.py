@@ -2,7 +2,6 @@
 CLI doctor — render InspectService.doctor. One bag with REST / assist / MCP.
 
 Operator extras (instance list, definition catalog) stay as CQRS present.
-Anatomy, admission pointer, neonroot, and CS-002 packaging come from inspect.
 """
 
 from __future__ import annotations

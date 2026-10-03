@@ -1,8 +1,7 @@
-"""0.71.7 — invert place_registry engine_from_spawn off Protocol isinstance.
+"""Invert place_registry engine_from_spawn off Protocol isinstance.
 
-engine_from_spawn takes typed RegisteredPlaceSpawn book binds (same invert
-as host_bind.book_bind_port). It does not isinstance(spawn, BookBindPort).
-Adopt payload handle invert is `0.71.8` (typed WorkloadHandle only).
+engine_from_spawn takes typed RegisteredPlaceSpawn book binds (same invert as
+host_bind.book_bind_port). It does not isinstance(spawn, BookBindPort).
 """
 
 from __future__ import annotations

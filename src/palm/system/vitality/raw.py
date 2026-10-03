@@ -1,5 +1,5 @@
 """
-Raw sampling — system vitality observes public seat APIs (0.61).
+Raw sampling — system vitality observes public seat APIs.
 
 No adapters. No doctor field maps. Eyes:
 

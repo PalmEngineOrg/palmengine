@@ -1,4 +1,4 @@
-"""0.44.1 — server host profile enables background work drain by default."""
+"""Server host profile enables background work drain by default."""
 
 from __future__ import annotations
 

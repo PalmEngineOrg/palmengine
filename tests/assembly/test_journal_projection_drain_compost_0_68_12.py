@@ -1,4 +1,4 @@
-"""0.68.12 — unused projection journal facade composted."""
+"""Unused projection journal facade composted."""
 
 from __future__ import annotations
 

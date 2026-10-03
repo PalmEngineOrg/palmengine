@@ -1,4 +1,4 @@
-"""Host structure bind — wire shell WorkloadEngine into structure place hands (0.63.17).
+"""Host structure bind — wire shell WorkloadEngine into structure place hands.
 
 Default place-effect hands stay in-process for bare places. Host assemble upgrades
 them to the combined ``os:`` + ``workload:`` spawn port and binds the live
@@ -8,7 +8,7 @@ engine when it is initialized.
 ``structure_bind_workload=False``. Does not force composition membership.
 Does not replace custom effect ports without a place registry.
 
-**0.71.6:** typed shell / engine / effects / spawn hands — no getattr or
+Typed shell / engine / effects / spawn hands — no getattr or
 Protocol-isinstance duck nests for bind discovery.
 """
 

@@ -16,7 +16,7 @@ OUTCOME_READY = "ready"
 POSITIVE_OUTCOMES = frozenset({OUTCOME_SUCCEEDED, OUTCOME_READY})
 NEGATIVE_OUTCOMES = frozenset({OUTCOME_FAILED, OUTCOME_CANCELLED})
 
-# Events the matcher understands in 0.55.2 (+ workload stub names for 0.55.7).
+# Events the matcher understands.
 MATCHER_EVENT_TYPES: tuple[str, ...] = (
     "job.completed",
     "job.status_changed",

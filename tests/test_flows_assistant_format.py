@@ -1,4 +1,4 @@
-"""Flows opt-in assistant view format — REST and MCP (0.21.5)."""
+"""Flows opt-in assistant view format — REST and MCP."""
 
 from __future__ import annotations
 
@@ -146,7 +146,7 @@ async def test_palm_flows_session_assistant_in_process(flows_server_ctx) -> None
             "palm_flows_create_session",
             {"flow_id": "onboard"},
         )
-        # 0.58.9: system session may be used; product resolves to instance
+        # System session may be used; product resolves to instance
         session_id = started.data.get("session_id") or started.data["instance_id"]
         result = await client.call_tool(
             "palm_flows_session",
@@ -230,7 +230,7 @@ def test_flows_rest_session_assistant_opt_in(server: ServerRuntime) -> None:
         body={"wizard": {"name": "onboard", "steps": 2}},
     )
     assert status in {200, 202}
-    # System session on path is resolved to instance (0.58.9 ergonomic)
+    # System session on path is resolved to instance
     session_id = created.get("session_id") or created["instance_id"]
 
     status, payload = _request(

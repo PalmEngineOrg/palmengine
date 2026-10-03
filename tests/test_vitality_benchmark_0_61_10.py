@@ -1,4 +1,4 @@
-"""0.61.10 — benchmark tool (recipe · observe snapshot diff)."""
+"""Benchmark tool (recipe · observe snapshot diff)."""
 
 from __future__ import annotations
 
@@ -158,7 +158,7 @@ def test_extra_enable_runs_tool_once() -> None:
 
 
 def test_work_cycle_enqueues_and_drains() -> None:
-    """Drain needs work_drain. Default DNA is ready without it (0.67.6)."""
+    """Drain needs work_drain. Default DNA is ready without it."""
     rt = BaseRuntime()
     rt.start(
         drivers=bound_for_runtime(storage_backend="memory"), structure_definition_id="local.cli"
@@ -182,9 +182,9 @@ def test_work_cycle_enqueues_and_drains() -> None:
 
 
 def test_work_cycle_multi_claimer_drains() -> None:
-    """0.62.6 — concurrent claimers clear queue without double-own.
+    """Concurrent claimers clear queue without double-own.
 
-    Pin ``local.cli`` so tick is drain-able (0.67.6). Embedded ready is not membership.
+    Pin ``local.cli`` so tick is drain-able. Embedded ready is not membership.
     """
     rt = BaseRuntime()
     rt.start(

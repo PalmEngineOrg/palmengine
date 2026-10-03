@@ -1,4 +1,4 @@
-"""REST surface for AnalyticsService (0.35)."""
+"""REST surface for AnalyticsService."""
 
 from bundles.standard.runtimes.server.surfaces.rest.analytics.routes import register_analytics_routes
 

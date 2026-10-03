@@ -1,4 +1,4 @@
-"""AnalyticsService — thin BI query/present (0.35-0.36)."""
+"""AnalyticsService — thin BI query/present."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Tests that job sync preserves instance migration metadata (0.24.3)."""
+"""Tests that job sync preserves instance migration metadata."""
 
 from __future__ import annotations
 

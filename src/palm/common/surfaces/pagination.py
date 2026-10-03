@@ -1,7 +1,7 @@
 """Shared surface pagination — list envelopes and pagination params.
 
-Transport-agnostic (see :mod:`palm.common.surfaces`). Used by REST, MCP, SSR and
-WebSocket surfaces alike. Relocated from the REST surface in 0.47.3.
+Transport-agnostic (see :mod:`palm.common.surfaces`). Used by REST, MCP, SSR and WebSocket surfaces
+alike.
 """
 
 from __future__ import annotations

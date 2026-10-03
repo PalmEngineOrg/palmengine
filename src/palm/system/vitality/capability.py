@@ -1,11 +1,11 @@
 """
-Vitality capability contract — named observe/tool eyes (0.61.2).
+Vitality capability contract — named observe/tool eyes.
 
 Capabilities sample a live instance and return a **fragment**. Projection
 merges enabled fragments into a snapshot. Capabilities do not start or
 continue work.
 
-Architecture of record for eyes growth (ADR-030 D5). Seat *probes* discover
+Architecture of record for eyes growth. Seat *probes* discover
 attachments; *capabilities* are the registry of what observation tools run.
 """
 

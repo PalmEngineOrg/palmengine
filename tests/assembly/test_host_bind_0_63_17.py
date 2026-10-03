@@ -1,4 +1,4 @@
-"""0.63.17 — host auto-bind WorkloadEngine into default assembly seat."""
+"""Host auto-bind WorkloadEngine into default assembly seat."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Analytics domain — BI exposure / query / present (0.35+)."""
+"""Analytics domain — BI exposure / query / present."""
 
 # Contribute the analytics preflight probe on package import (django-app style),
 # so `common` drains it rather than importing analytics up. The host imports this

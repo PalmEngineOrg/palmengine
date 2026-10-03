@@ -1,8 +1,4 @@
-"""Wait matcher — match runtime.event completer signals → resume/fail owner.
-
-0.55.2: contract + policy. 0.55.4: normative unpark when wired on BaseRuntime.
-0.55.6: thread-safe match + event-id / action-key idempotency.
-"""
+"""Wait matcher — match runtime.event completer signals → resume/fail owner."""
 
 from __future__ import annotations
 
@@ -30,7 +26,7 @@ from palm.core.wait import WaitInterest, close_wait_on_job, list_waits_on_job
 if TYPE_CHECKING:
     from palm.core.event import Event, EventEngine
 
-# Bound recent-event memory (0.55.6 double-delivery guard).
+# Bound recent-event memory.
 _MAX_SEEN_EVENT_IDS = 512
 _MAX_ACTED_KEYS = 512
 
@@ -66,11 +62,11 @@ class WaitMatcher:
     """Subscribe to completer events; unpark or fail owners with open interest.
 
     * ``index`` — optional O(1) target → owners map.
-    * ``list_jobs`` — scan live jobs for open interests (nested flow 0.55.3+).
+    * ``list_jobs`` — scan live jobs for open interests.
     * ``get_job`` — load owner job; when set, interest is verified on ``job.state``.
     * ``resume_owner`` / ``fail_owner`` — side effects (orchestration resume / fail).
 
-    Idempotency (0.55.6): close interest before side effects; ignore duplicate
+    Idempotency: close interest before side effects; ignore duplicate
     event ids; ignore repeat (owner, kind, target_id, action) within the LRU window.
     """
 
@@ -206,7 +202,7 @@ class WaitMatcher:
             return None
 
         # Deliver + resume while interest is still visible to resume_owner, then
-        # always close (0.55.14 — no pattern_park keep-open).
+        # always close.
         if action == ACTION_RESUME_OWNER and self.resume_owner is not None:
             self.resume_owner(owner_job_id, interest, signal)
         elif action == ACTION_FAIL_OWNER and self.fail_owner is not None:

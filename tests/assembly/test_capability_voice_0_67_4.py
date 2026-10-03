@@ -1,4 +1,4 @@
-"""0.67.4 — CapabilityRefusedError has honest surface voice (not generic RuntimeError)."""
+"""CapabilityRefusedError has honest surface voice (not generic RuntimeError)."""
 
 from __future__ import annotations
 

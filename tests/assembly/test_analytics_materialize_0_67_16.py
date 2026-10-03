@@ -1,4 +1,4 @@
-"""analytics materialize — definition capabilities are the install list (0.67.16)."""
+"""analytics materialize — definition capabilities are the install list."""
 
 from __future__ import annotations
 

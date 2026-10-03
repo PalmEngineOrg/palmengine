@@ -1,4 +1,4 @@
-"""journal leftover — one attach, one host object, not a loop (0.67.8)."""
+"""journal leftover — one attach, one host object, not a loop."""
 
 from __future__ import annotations
 

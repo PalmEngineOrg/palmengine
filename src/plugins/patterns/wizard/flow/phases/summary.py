@@ -114,7 +114,7 @@ class WizardSummaryLeaf(InteractiveLeaf):
             )
             return PatternStatus.WAITING_FOR_INPUT
 
-        # 0.32.5 — human "no" means go back, not validation failure
+        # Human "no" means go back, not validation failure
         if is_negative(value):
             clear_validation_feedback(state)
             clear_phase_prompt(state, self._ctx.step.slug)

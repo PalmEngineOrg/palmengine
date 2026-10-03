@@ -1,4 +1,4 @@
-"""Structure — pure organism-structure reconciler (0.63).
+"""Structure — pure organism-structure reconciler.
 
 Core purity: no imports outside ``palm.core``.
 System applies effect intents; clients use :class:`AdmissionSnapshot`.
